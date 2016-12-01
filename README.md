@@ -33,7 +33,7 @@ time ./fib
 
 ## VM bytecode, statically typed
 
-### C# using DotNet - 
+### C# using DotNet - 43 Seconds 
 ```bash
 dotnet restore
 time dotnet run
@@ -72,4 +72,3 @@ time python fib.py
 ```bash
 time php fib.php
 ```
-
