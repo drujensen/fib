@@ -35,7 +35,7 @@ Including crystal-lang for comparison
 
 ## Caveats
 
-(Fibonacci Benchmark)[https://crystal-lang.org/2016/07/15/fibonacci-benchmark.html]
+[Fibonacci Benchmark](https://crystal-lang.org/2016/07/15/fibonacci-benchmark.html)
 
 Languages that do not handle overflow protection: C, C++, Crystal, Java
 
