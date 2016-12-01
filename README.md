@@ -45,6 +45,9 @@ time node fib.js
 ### Ruby
 time ruby fib.rb
 
+### Rubinius
+time rbx fib.rb
+
 ### Python
 time python fib.py
 
