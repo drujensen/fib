@@ -10,7 +10,7 @@ Including crystal-lang for comparison
 | Language  | Time, s | Compile                          | Run          | Overflow |
 |-----------|---------|----------------------------------|--------------|----------|
 | C         | 6.999   | `gcc -o fib fib.c`               | `time ./fib` |          |
-| C++       | 7.166   | `g++ -o fib fib.cpp`             | `time ./fib` |          |
+| C++       | 6.969   | `g++ -o fib fib.cpp`             | `time ./fib` |          |
 | Go        | 6.703   | `go build fib.go`                | `time ./fib` |    X     |
 | Rust      | 12.038  | `rustc fib.rs`                   | `time ./fib` |    X     |
 | Swift     | 13.012  | `swiftc -g fib.swift`            | `time ./fib` |    X     |
