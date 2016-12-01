@@ -1,5 +1,5 @@
 # Recursive Fibonacci using top languages on github
-js, java, python, ruby, php, c++, c#, c, go
+js, java, python, ruby, php, c++, c#, c, go, swift, rust
 
 [reference](http://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html)
 
@@ -12,6 +12,8 @@ Including crystal-lang for comparison
 | C         | 6.999   | `gcc -o fib fib.c`               | `time ./fib` |
 | C++       | 7.166   | `g++ -o fib fib.ccp`             | `time ./fib` |
 | Go        | 6.703   | `go build fib.go`                | `time ./fib` |
+| Rust      | 12.038  | `rustc fib.rs`                   | `time ./fib` |
+| Swift     | 13.012  | `swiftc -g fib.swift`            | `time ./fib` |
 |**Crystal**|**3.857**| `crystal build fib.cr --release` | `time ./fib` |
 
 ## VM bytecode, statically typed
