@@ -5,51 +5,71 @@ js, java, python, ruby, php, c++, c#, c, go
 
 Including crystal-lang for comparison
 
-## Natively compiled
+## Natively compiled, statically typed
 
-### C
+### C - 6.999 Seconds
+```bash
 gcc -o fib fib.c
 time ./fib
+```
 
-### C++
+### C++ - 7.166 Seconds
+```bash
 g++ -o fib fib.cpp
 time ./fib
+```
 
-### Go
+### Go - 6.703 Seconds
+```bash
 go build fib.go
 time ./fib
+```
 
-### Crystal
+### Crystal - 3.857 Seconds
+```bash
 crystal build fib.cr --release
 time ./fib
+```
 
-## VM languages
+## VM bytecode, statically typed
 
-### C# using DotNet
+### C# using DotNet - 
+```bash
 dotnet restore
 time dotnet run
+```
 
-### C# using Mono
+### C# using Mono - 7.166 Seconds
+```bash
 mcs fib.cs
 time mono fib.exe
+```
 
-### Java
+### Java - 4.672 Seconds
+```bash
 javac Fib.java
 time java Fib
+```
 
-## Interpreted languages
+## Interpreted, dynamically typed
 
-### Node
+### Node - 12.76 Seconds
+```bash
 time node fib.js
+```
 
-### Ruby
+### Ruby - 2 Minutes 4 Seconds
+```bash
 time ruby fib.rb
+```
 
-### Rubinius
-time rbx fib.rb
-
-### Python
+### Python - 5 Minutes 44 seconds
+```bash
 time python fib.py
+```
 
-### PHP
+### PHP - 6 Minutes 2 Seconds
+```bash
 time php fib.php
+```
+
