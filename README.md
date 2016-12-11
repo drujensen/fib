@@ -26,12 +26,13 @@ Including crystal-lang for comparison
 
 ## Interpreted, dynamically typed
 
-| Language | Time                 | Run                 | Overflow |
-|----------|----------------------|---------------------|----------|
-| Node     | 12.76 Seconds        | `time node fib.js`  |    X     |
-| Ruby     | 2 Minutes 4 Seconds  | `time ruby fib.rb`  |    X     |
-| Python   | 5 Minutes 44 Seconds | `time python fib.py`|    X     |
-| PHP      | 6 Minutes 2 Seconds  | `time php fib.php`  |    X     |
+| Language | Time                 | Run                  | Overflow |
+|----------|----------------------|----------------------|----------|
+| Node     | 12.76 Seconds        | `time node fib.js`   |    X     |
+| Elixir   | 45.73 Seconds        | `time elixir Fib.exs`|    X     |
+| Ruby     | 2 Minutes 4 Seconds  | `time ruby fib.rb`   |    X     |
+| Python   | 5 Minutes 44 Seconds | `time python fib.py` |    X     |
+| PHP      | 6 Minutes 2 Seconds  | `time php fib.php`   |    X     |
 
 ## Caveats
 
