@@ -1,6 +1,6 @@
 # Recursive Fibonacci Benchmark using top languages on Github
 
-Top 10: Node, Java, Python, Ruby, Php, C++, C#, C, Go, Swift [reference](http://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html)
+Top 10: JavaScript, Java, Python, Ruby, Php, C++, C#, C, Go, Swift [reference](http://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html)
 
 Others: Crystal, Rust, Mono, Elixir
 
