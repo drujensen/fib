@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int fib(int x) {
+long fib(long x) {
     if (x <= 1) {
         return 1;
     } else {
@@ -12,5 +12,5 @@ int fib(int x) {
 
 int main()
 {
-    cout << fib(45);
+    cout << fib(46);
 }

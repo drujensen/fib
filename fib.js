@@ -6,4 +6,4 @@ var fib = function(n) {
   }
 };
 
-console.log(fib(45));
+console.log(fib(46));

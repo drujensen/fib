@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Fib {
-  static int fib(long n) {
+  static long fib(long n) {
     if (n <= 1)
       return 1;
     else
@@ -9,6 +9,6 @@ public class Fib {
   }
 
   public static void main(String[] args) {
-    System.out.print(fib(45));
+    System.out.print(fib(46));
   }
 }

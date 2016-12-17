@@ -6,4 +6,4 @@ func fib(n: Int) -> Int {
     }
 }
 
-print(fib(n: 45))
+print(fib(n: 46))

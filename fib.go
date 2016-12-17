@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func fib(n uint) uint {
+func fib(n uint64) uint64 {
 	if n <= 1 {
 		return 1
 	} else {
@@ -11,5 +11,5 @@ func fib(n uint) uint {
 }
 
 func main() {
-	fmt.Println(fib(uint(45)))
+	fmt.Println(fib(uint64(46)))
 }

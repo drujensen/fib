@@ -16,6 +16,6 @@ public class Fib
 
   static void Main(string[] args)
   {
-    Console.WriteLine(fib(45));
+    Console.WriteLine(fib(46));
   }
 }

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-unsigned int fib(unsigned int n)
+long fib(long n)
 {
   if (n <= 1) {
     return 1;
@@ -10,6 +10,6 @@ unsigned int fib(unsigned int n)
 }
 
 int main(void) {
-  printf("%d", fib(45));
+  printf("%li", fib(46));
   return 0;
 }

@@ -1,4 +1,4 @@
-fn fib(n: u32) -> u32 {
+fn fib(n: u64) -> u64 {
     if n <= 1 {
         1
     } else {
@@ -7,5 +7,5 @@ fn fib(n: u32) -> u32 {
 }
 
 fn main() {
-  println!("{}", fib(45));
+  println!("{}", fib(46));
 }

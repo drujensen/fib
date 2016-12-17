@@ -8,5 +8,5 @@ function fib($n)
   }
 }
 
-echo fib(45);
+echo fib(46);
 ?>
