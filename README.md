@@ -23,7 +23,7 @@ All tests are run on:
 | Rust      | 17.937  | `rustc fib.rs`                   | `time ./fib` | 
 | Swift     | 19.039  | `swiftc -g fib.swift`            | `time ./fib` | 
 
-## VM bytecode, statically typed
+## VM compiled bytecode, statically typed
 
 | Language  | Time, s | Compile          | Run                 | 
 |-----------|---------|------------------|---------------------|
@@ -31,11 +31,17 @@ All tests are run on:
 | C# (Mono) | 11.161  | `mcs fib.cs`     | `time mono fib.exe` |
 | C#        | 72.410  | `dotnet restore` | `time dotnet run`   |
 
+## VM compiled before execution, dynamically typed
+
+| Language | Time                 | Run                  |
+|----------|----------------------|----------------------|
+| Dart     | 8.936 Seconds        | `time dart fib.dart` |
+| Node     | 19.960 Seconds       | `time node fib.js`   |
+
 ## Interpreted, dynamically typed
 
 | Language | Time                 | Run                  |
 |----------|----------------------|----------------------|
-| Node     | 19.960 Seconds       | `time node fib.js`   |
 | Elixir   | 1 Minutes 6 Seconds  | `time elixir Fib.exs`|
 | Ruby     | 3 Minutes 18 Seconds | `time ruby fib.rb`   |
 | Python   | 9 Minutes 13 Seconds | `time python fib.py` |
@@ -52,6 +58,7 @@ All tests are run on:
 - javac 1.8.0_73
 - mcs Mono C# compiler version 4.2.2.0
 - dotnet 1.0.0-preview2-1-003177
+- dart VM version: 1.21.0 (Wed Dec  7 06:44:15 2016)
 - node v6.1.0
 - elixir 1.3.4
 - ruby 2.3.1p112
