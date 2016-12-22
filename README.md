@@ -31,7 +31,7 @@ All tests are run on:
 | C# (Mono) | 11.161  | `mcs fib.cs`     | `time mono fib.exe` |
 | C#        | 72.410  | `dotnet restore` | `time dotnet run`   |
 
-## VM compiled before execution, dynamically typed
+## VM compiled before execution, mixed typed
 
 | Language | Time                 | Run                  |
 |----------|----------------------|----------------------|
