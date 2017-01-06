@@ -14,14 +14,14 @@ All tests are run on:
 
 ## Natively compiled, statically typed
 
-| Language  | Time, s | Compile                          | Run          |
-|-----------|---------|----------------------------------|--------------|
-| C         | 5.459   | `gcc -O3 -o fib fib.c`           | `time ./fib` |
-| C++       | 5.487   | `g++ -O3 -o fib fib.cpp`         | `time ./fib` |
-| Crystal   | 6.113   | `crystal build fib.cr --release` | `time ./fib` |
-| Go        | 10.621  | `go build fib.go`                | `time ./fib` |
-| Rust      | 17.937  | `rustc fib.rs`                   | `time ./fib` |
-| Swift     | 19.039  | `swiftc -g fib.swift`            | `time ./fib` |
+| Language  | Time, s | Compile                                    | Run          |
+|-----------|---------|--------------------------------------------|--------------|
+| C         | 5.459   | `gcc -O3 -o fib fib.c`                     | `time ./fib` |
+| C++       | 5.487   | `g++ -O3 -o fib fib.cpp`                   | `time ./fib` |
+| Crystal   | 5.500   | `crystal build fib.cr --release`           | `time ./fib` |
+| Go        | 10.621  | `go build fib.go`                          | `time ./fib` |
+| Rust      | 11.236  | `rustc -O -C no-prepopulate-passes fib.rs` | `time ./fib` |
+| Swift     | 19.039  | `swiftc -g fib.swift`                      | `time ./fib` |
 
 ## VM compiled bytecode, statically typed
 
@@ -49,7 +49,7 @@ All tests are run on:
 
 ## Versions
 
-- crystal 0.20.1 (2016-12-05)
+- crystal 0.20.3 (2016-12-23)
 - go version go1.7.3 darwin/amd64
 - g++ Apple LLVM version 8.0.0 (clang-800.0.42.1)
 - gcc Apple LLVM version 8.0.0 (clang-800.0.42.1)
