@@ -19,9 +19,9 @@ All tests are run on:
 | C         | 5.459   | `gcc -O3 -o fib fib.c`                     | `time ./fib` |
 | C++       | 5.487   | `g++ -O3 -o fib fib.cpp`                   | `time ./fib` |
 | Crystal   | 5.500   | `crystal build fib.cr --release`           | `time ./fib` |
+| Swift     | 8.576   | `swiftc -O -g Fib.swift`                   | `time ./fib` |
 | Go        | 10.621  | `go build fib.go`                          | `time ./fib` |
 | Rust      | 11.236  | `rustc -O -C no-prepopulate-passes fib.rs` | `time ./fib` |
-| Swift     | 19.039  | `swiftc -g fib.swift`                      | `time ./fib` |
 
 ## VM compiled bytecode, statically typed
 
