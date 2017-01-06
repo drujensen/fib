@@ -14,18 +14,18 @@ All tests are run on:
 
 ## Natively compiled, statically typed
 
-| Language  | Time, s | Compile                          | Run          | 
+| Language  | Time, s | Compile                          | Run          |
 |-----------|---------|----------------------------------|--------------|
-|**Crystal**|**6.113**| `crystal build fib.cr --release` | `time ./fib` | 
+| C         | 5.459   | `gcc -O3 -o fib fib.c`           | `time ./fib` |
+| C++       | 5.487   | `g++ -O3 -o fib fib.cpp`         | `time ./fib` |
+| Crystal   | 6.113   | `crystal build fib.cr --release` | `time ./fib` |
 | Go        | 10.621  | `go build fib.go`                | `time ./fib` |
-| C++       | 11.343  | `g++ -o fib fib.cpp`             | `time ./fib` |
-| C         | 11.427  | `gcc -o fib fib.c`               | `time ./fib` | 
-| Rust      | 17.937  | `rustc fib.rs`                   | `time ./fib` | 
-| Swift     | 19.039  | `swiftc -g fib.swift`            | `time ./fib` | 
+| Rust      | 17.937  | `rustc fib.rs`                   | `time ./fib` |
+| Swift     | 19.039  | `swiftc -g fib.swift`            | `time ./fib` |
 
 ## VM compiled bytecode, statically typed
 
-| Language  | Time, s | Compile          | Run                 | 
+| Language  | Time, s | Compile          | Run                 |
 |-----------|---------|------------------|---------------------|
 | Java      | 6.553   | `javac Fib.java` | `time java Fib`     |
 | C# (Mono) | 11.161  | `mcs fib.cs`     | `time mono fib.exe` |
