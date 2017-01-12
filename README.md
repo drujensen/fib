@@ -20,7 +20,7 @@ All tests are run on:
 | C++       | 5.419   | `g++ -O3 -o fib fib.cpp`                   | `time ./fib` |
 | Crystal   | 5.488   | `crystal build --release fib.cr`           | `time ./fib` |
 | Rust      | 6.077   | `rustc -O fib.rs`                          | `time ./fib` |
-| Swift     | 8.523   | `swiftc -O -g Fib.swift`                   | `time ./fib` |
+| Swift     | 8.523   | `swiftc -O -g fib.swift`                   | `time ./fib` |
 | Go        | 10.910  | `go build fib.go`                          | `time ./fib` |
 
 ## VM compiled bytecode, statically typed
@@ -42,7 +42,7 @@ All tests are run on:
 
 | Language | Time                 | Run                  |
 |----------|----------------------|----------------------|
-| Elixir   | 1 Minutes 6 Seconds  | `time elixir Fib.exs`|
+| Elixir   | 1 Minutes 8 Seconds  | `time elixir fib.exs`|
 | Ruby     | 3 Minutes 18 Seconds | `time ruby fib.rb`   |
 | Python   | 9 Minutes 13 Seconds | `time python fib.py` |
 | Php      | 9 Minutes 34 Seconds | `time php fib.php`   |
