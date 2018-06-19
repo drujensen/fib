@@ -6,3 +6,4 @@ Fib.class
 project.lock.json
 fib.dSYM
 fib.dwarf
+.Rhistory

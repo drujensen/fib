@@ -1,4 +1,4 @@
-def fib(n)
+def fib(n : UInt64)
   if n <= 1
     1_u64
   else
@@ -6,4 +6,4 @@ def fib(n)
   end
 end
 
-puts fib(46_u64)
+puts fib(46)

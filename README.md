@@ -2,7 +2,7 @@
 
 Top 10: JavaScript, Java, Python, Ruby, Php, C++, C#, C, Go [reference](http://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html)
 
-Others: Crystal, Rust, Swift, Mono, Elixir
+Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R
 
 This code performs a recursive fibonacci to the 46th position with the result of 2,971,215,073.
 
@@ -41,11 +41,15 @@ All tests are run on:
 
 ## Interpreted, dynamically typed
 
-| Language | Time, s  | Run                  |
-|----------|----------|----------------------|
-| Ruby     | 195.601 | `time ruby fib.rb`    |
-| Php      | 206.346 | `time php fib.php`   |
-| Python   | 718.681 | `time python3 fib.py` |
+| Language | Time, s  | Run                   |
+|----------|----------|-----------------------|
+| Ruby     |  195.601 | `time ruby fib.rb`    |
+| Php      |  206.346 | `time php fib.php`    |
+| Python   |  502.036 | `time python fib.py`  |
+| Python3  |  718.681 | `time python3 fib.py` |
+| Perl     | 1133.131 | `time perl fib.pl`    |
+| R        | 1796.495 | `time r -f fib.r`     |
+
 
 ## Versions
 
@@ -62,8 +66,11 @@ All tests are run on:
 - node v9.4.0
 - elixir 1.6.5 (compiled with OTP 20)
 - ruby 2.5.1p57 (2018-03-29 revision 63029)
+- python 2.7.15
 - python3 3.6.5
 - php 7.1.16 (cli) (built: Apr  1 2018 13:14:42)
+- perl 5, version 26, subversion 2 (v5.26.2)
+- r version 3.5.0 (2018-04-23)
 
 ## Caveats
 
