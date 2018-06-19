@@ -31,6 +31,12 @@ All tests are run on:
 | C# (Mono) | 14.314  | `mcs fib.cs`     | `time mono fib.exe` |
 | C#        | 72.410  | `dotnet restore` | `time dotnet run`   |
 
+## VM compiled bytecode, dynamically typed
+
+| Language | Time                 | Run                  |
+|----------|----------------------|----------------------|
+| Elixir   | 1 Minutes 8 Seconds  | `time elixir fib.exs`|
+
 ## VM compiled before execution, mixed typed
 
 | Language | Time                 | Run                  |
@@ -42,7 +48,6 @@ All tests are run on:
 
 | Language | Time                 | Run                  |
 |----------|----------------------|----------------------|
-| Elixir   | 1 Minutes 8 Seconds  | `time elixir fib.exs`|
 | Ruby     | 3 Minutes 18 Seconds | `time ruby fib.rb`   |
 | Python   | 9 Minutes 13 Seconds | `time python fib.py` |
 | Php      | 9 Minutes 34 Seconds | `time php fib.php`   |
@@ -68,5 +73,3 @@ All tests are run on:
 ## Caveats
 
 [Fibonacci Benchmark](https://crystal-lang.org/2016/07/15/fibonacci-benchmark.html)
-
-
