@@ -14,61 +14,56 @@ All tests are run on:
 
 ## Natively compiled, statically typed
 
-| Language  | Time, s | Compile                                    | Run          |
-|-----------|---------|--------------------------------------------|--------------|
-| C         | 5.416   | `gcc -O3 -o fib fib.c`                     | `time ./fib` |
-| C++       | 5.419   | `g++ -O3 -o fib fib.cpp`                   | `time ./fib` |
-| Crystal   | 5.488   | `crystal build --release fib.cr`           | `time ./fib` |
-| Rust      | 6.077   | `rustc -O fib.rs`                          | `time ./fib` |
-| Swift     | 8.523   | `swiftc -O -g fib.swift`                   | `time ./fib` |
-| Go        | 10.910  | `go build fib.go`                          | `time ./fib` |
+| Language  | Time, s | Compile                           | Run          |
+|-----------|---------|-----------------------------------|--------------|
+| Crystal   | 4.581   | `crystal build --release fib.cr`  | `time ./fib` |
+| Rust      | 5.891   | `rustc -O fib.rs`                 | `time ./fib` |
+| C++       | 6.265   | `g++ -O3 -o fib fib.cpp`          | `time ./fib` |
+| C         | 6.707   | `gcc -O3 -o fib fib.c`            | `time ./fib` |
+| Swift     | 9.765   | `swiftc -O -g fib.swift`          | `time ./fib` |
+| Go        | 10.607  | `go build fib.go`                 | `time ./fib` |
 
 ## VM compiled bytecode, statically typed
 
 | Language  | Time, s | Compile          | Run                 |
 |-----------|---------|------------------|---------------------|
-| Java      | 6.858   | `javac Fib.java` | `time java Fib`     |
-| C# (Mono) | 14.314  | `mcs fib.cs`     | `time mono fib.exe` |
-| C#        | 72.410  | `dotnet restore` | `time dotnet run`   |
+| Java      | 7.361   | `javac Fib.java` | `time java Fib`     |
+| C# (Mono) | 11.323  | `mcs fib.cs`     | `time mono fib.exe` |
+| C#        | 72.486  | `dotnet restore` | `time dotnet run`   |
 
-## VM compiled bytecode, dynamically typed
+## VM compiled before execution, mixed/dynamically typed
 
-| Language | Time                 | Run                  |
-|----------|----------------------|----------------------|
-| Elixir   | 1 Minutes 8 Seconds  | `time elixir fib.exs`|
-
-## VM compiled before execution, mixed typed
-
-| Language | Time                 | Run                  |
-|----------|----------------------|----------------------|
-| Dart     | 8.936 Seconds        | `time dart fib.dart` |
-| Node     | 19.960 Seconds       | `time node fib.js`   |
+| Language | Time, s  | Run                  |
+|----------|----------|----------------------|
+| Dart     | 9.234    | `time dart fib.dart` |
+| Node     | 18.874   | `time node fib.js`   |
+| Elixir   | 64.219   | `time elixir fib.exs`|
 
 ## Interpreted, dynamically typed
 
-| Language | Time                 | Run                  |
-|----------|----------------------|----------------------|
-| Ruby     | 3 Minutes 18 Seconds | `time ruby fib.rb`   |
-| Python   | 9 Minutes 13 Seconds | `time python fib.py` |
-| Php      | 9 Minutes 34 Seconds | `time php fib.php`   |
+| Language | Time, s  | Run                  |
+|----------|----------|----------------------|
+| Ruby     | 195.601 | `time ruby fib.rb`    |
+| Php      | 206.346 | `time php fib.php`   |
+| Python   | 718.681 | `time python3 fib.py` |
 
 ## Versions
 
-- crystal 0.20.3 (2016-12-23)
-- go version go1.7.3 darwin/amd64
-- g++ Apple LLVM version 8.0.0 (clang-800.0.42.1)
-- gcc Apple LLVM version 8.0.0 (clang-800.0.42.1)
-- rustc 1.13.0
-- swiftc Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)
-- javac 1.8.0_73
-- mcs Mono C# compiler version 4.2.2.0
-- dotnet 1.0.0-preview2-1-003177
-- dart VM version: 1.21.0 (Wed Dec  7 06:44:15 2016)
-- node v6.1.0
-- elixir 1.3.4
-- ruby 2.3.1p112
-- python 2.7.10
-- php 5.6.25 (cli) (built: Sep  6 2016 16:37:16)
+- crystal 0.25.0 (2018-06-15) LLVM: 5.0.1
+- go version go1.10.3 darwin/amd64
+- g++ Apple LLVM version 9.1.0 (clang-902.0.39.2)
+- gcc Apple LLVM version 9.1.0 (clang-902.0.39.2)
+- rustc 1.26.2
+- swiftc Apple Swift version 4.1.2 (swiftlang-902.0.54 clang-902.0.39.2)
+- javac 10.0.1
+- mcs Mono C# compiler version 5.12.0.226
+- dotnet 2.1.4
+- dart VM version: 1.24.3 (Wed Dec 13 23:26:59 2017)
+- node v9.4.0
+- elixir 1.6.5 (compiled with OTP 20)
+- ruby 2.5.1p57 (2018-03-29 revision 63029)
+- python3 3.6.5
+- php 7.1.16 (cli) (built: Apr  1 2018 13:14:42)
 
 ## Caveats
 
