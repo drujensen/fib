@@ -2,7 +2,7 @@
 
 Top 10: JavaScript, Java, Python, Ruby, Php, C++, C#, C, Go [reference](http://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html)
 
-Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R
+Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R, Julia
 
 This code performs a recursive fibonacci to the 46th position with the result of 2,971,215,073.
 
@@ -16,18 +16,18 @@ All tests are run on:
 
 | Language  | Time, s | Compile                           | Run          |
 |-----------|---------|-----------------------------------|--------------|
-| Crystal   | 4.581   | `crystal build --release fib.cr`  | `time ./fib` |
-| Rust      | 5.891   | `rustc -O fib.rs`                 | `time ./fib` |
-| C++       | 6.265   | `g++ -O3 -o fib fib.cpp`          | `time ./fib` |
-| C         | 6.707   | `gcc -O3 -o fib fib.c`            | `time ./fib` |
-| Swift     | 9.765   | `swiftc -O -g fib.swift`          | `time ./fib` |
+| Crystal   |  4.581  | `crystal build --release fib.cr`  | `time ./fib` |
+| Rust      |  5.891  | `rustc -O fib.rs`                 | `time ./fib` |
+| C++       |  6.265  | `g++ -O3 -o fib fib.cpp`          | `time ./fib` |
+| C         |  6.707  | `gcc -O3 -o fib fib.c`            | `time ./fib` |
+| Swift     |  9.765  | `swiftc -O -g fib.swift`          | `time ./fib` |
 | Go        | 10.607  | `go build fib.go`                 | `time ./fib` |
 
 ## VM compiled bytecode, statically typed
 
 | Language  | Time, s | Compile          | Run                 |
 |-----------|---------|------------------|---------------------|
-| Java      | 7.361   | `javac Fib.java` | `time java Fib`     |
+| Java      |  7.361  | `javac Fib.java` | `time java Fib`     |
 | C# (Mono) | 11.323  | `mcs fib.cs`     | `time mono fib.exe` |
 | C#        | 72.486  | `dotnet restore` | `time dotnet run`   |
 
@@ -35,7 +35,8 @@ All tests are run on:
 
 | Language | Time, s  | Run                  |
 |----------|----------|----------------------|
-| Dart     | 9.234    | `time dart fib.dart` |
+| Dart     |  9.234   | `time dart fib.dart` |
+| Julia    | 10.943   | `time julia fib.jl`  |
 | Node     | 18.874   | `time node fib.js`   |
 | Elixir   | 64.219   | `time elixir fib.exs`|
 
@@ -71,6 +72,7 @@ All tests are run on:
 - php 7.1.16 (cli) (built: Apr  1 2018 13:14:42)
 - perl 5, version 26, subversion 2 (v5.26.2)
 - r version 3.5.0 (2018-04-23)
+- julia version 0.6.3
 
 ## Caveats
 
