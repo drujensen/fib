@@ -8,7 +8,7 @@ This code performs a recursive fibonacci to the 46th position with the result of
 
 All tests are run on:
  - iMac (Retina 5K, 27-inch, Late 2015)
- - OS: macOS Sierra 10.12.1
+ - OS: macOS High Sierra 10.13.5
  - Processor: 3.2 GHz Intel Core i5
  - Memory: 16 GB 1867 MHz DDR3
 
