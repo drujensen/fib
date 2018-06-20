@@ -43,6 +43,8 @@ NOTE: The GNU implementation is using a `constexpr` which optimizes the recursiv
 | Node     | 18.874   | `time node fib.js`   |
 | Elixir   | 64.219   | `time elixir fib.exs`|
 
+NOTE: These languages include compilation time which should be taken into consideration when comparing.
+
 ## Interpreted, dynamically typed
 
 | Language | Time, s  | Run                   |
