@@ -24,6 +24,8 @@ All tests are run on:
 | Swift     |  9.765  | `swiftc -O -g fib.swift`          | `time ./fib` |
 | Go        | 10.607  | `go build fib.go`                 | `time ./fib` |
 
+NOTE: The GNU implementation is using a `constexpr` which optimizes the recursive call to a constant.  It breaks the benchmark since it doesn't perform the same tasks the other languages. It demonstrates that all benchmarks will have some caviat. Requested by [eidheim](https://gitlab.com/eidheim).
+
 ## VM compiled bytecode, statically typed
 
 | Language  | Time, s | Compile          | Run                 |

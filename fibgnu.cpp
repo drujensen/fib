@@ -2,7 +2,7 @@
 
 using namespace std;
 
-constexpr long fib(long x) {
+long fib(long x) {
     if (x <= 1) {
         return 1;
     } else {
