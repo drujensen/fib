@@ -1,4 +1,4 @@
-proc fib(n: int): int =
+proc fib(n: uint64): uint64 =
   if n <= 1:
     return 1
   else:

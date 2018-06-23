@@ -19,7 +19,7 @@ All tests are run on:
 | GNU C++   |  0.098  | `g++-8 -O3 -o fib fibgnu.cpp`       | `time ./fib` |
 | Crystal   |  4.581  | `crystal build --release fib.cr`    | `time ./fib` |
 | Rust      |  5.891  | `rustc -O fib.rs`                   | `time ./fib` |
-| Nim       |  5.905  | `nimrod compile -d:release fib.nim` | `time ./fib` |
+| Nim       |  5.965  | `nimrod compile -d:release fib.nim` | `time ./fib` |
 | C++       |  6.265  | `g++ -O3 -o fib fib.cpp`            | `time ./fib` |
 | C         |  6.707  | `gcc -O3 -o fib fib.c`              | `time ./fib` |
 | Swift     |  9.765  | `swiftc -O -g fib.swift`            | `time ./fib` |
