@@ -14,15 +14,16 @@ All tests are run on:
 
 ## Natively compiled, statically typed
 
-| Language  | Time, s | Compile                           | Run          |
-|-----------|---------|-----------------------------------|--------------|
-| GNU C++   |  0.098  | `g++-8 -O3 -o fib fibgnu.cpp`     | `time ./fib` |
-| Crystal   |  4.581  | `crystal build --release fib.cr`  | `time ./fib` |
-| Rust      |  5.891  | `rustc -O fib.rs`                 | `time ./fib` |
-| C++       |  6.265  | `g++ -O3 -o fib fib.cpp`          | `time ./fib` |
-| C         |  6.707  | `gcc -O3 -o fib fib.c`            | `time ./fib` |
-| Swift     |  9.765  | `swiftc -O -g fib.swift`          | `time ./fib` |
-| Go        | 10.607  | `go build fib.go`                 | `time ./fib` |
+| Language  | Time, s | Compile                             | Run          |
+|-----------|---------|-------------------------------------|--------------|
+| GNU C++   |  0.098  | `g++-8 -O3 -o fib fibgnu.cpp`       | `time ./fib` |
+| Crystal   |  4.581  | `crystal build --release fib.cr`    | `time ./fib` |
+| Rust      |  5.891  | `rustc -O fib.rs`                   | `time ./fib` |
+| Nim       |  5.905  | `nimrod compile -d:release fib.nim` | `time ./fib` |
+| C++       |  6.265  | `g++ -O3 -o fib fib.cpp`            | `time ./fib` |
+| C         |  6.707  | `gcc -O3 -o fib fib.c`              | `time ./fib` |
+| Swift     |  9.765  | `swiftc -O -g fib.swift`            | `time ./fib` |
+| Go        | 10.607  | `go build fib.go`                   | `time ./fib` |
 
 NOTE: The GNU implementation is using a `constexpr` which optimizes the recursive call to a constant.  It breaks the benchmark since it doesn't perform the same tasks as the other languages. It demonstrates that all benchmarks will have some caviat. Without the `constexpr`, GNU C++ is on par with the clang version at 6.159s.  This was provided by [eidheim](https://gitlab.com/eidheim).
 
@@ -62,6 +63,7 @@ NOTE: These languages include compilation time which should be taken into consid
 - g++-8 (Homebrew GCC 8.1.0) 8.1.0
 - crystal 0.25.0 (2018-06-15) LLVM: 5.0.1
 - rustc 1.26.2
+- nim Compiler Version 0.18.0 [MacOSX: amd64]
 - g++ Apple LLVM version 9.1.0 (clang-902.0.39.2)
 - gcc Apple LLVM version 9.1.0 (clang-902.0.39.2)
 - swiftc Apple Swift version 4.1.2 (swiftlang-902.0.54 clang-902.0.39.2)
