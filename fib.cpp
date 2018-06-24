@@ -2,15 +2,14 @@
 
 using namespace std;
 
-long fib(long x) {
-    if (x <= 1) {
+long fib(long n) {
+    if (n <= 1) {
         return 1;
     } else {
-        return fib(x - 1) + fib(x - 2);
+        return fib(n - 1) + fib(n - 2);
     }
 }
 
-int main()
-{
+int main() {
     cout << fib(46);
 }

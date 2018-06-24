@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-long fib(long n)
-{
+long fib(long n) {
   if (n <= 1) {
     return 1;
   } else {
