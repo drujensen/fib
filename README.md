@@ -12,7 +12,7 @@ All tests are run on:
  - Processor: 3.2 GHz Intel Core i5
  - Memory: 16 GB 1867 MHz DDR3
 
-### Last benchmark was ran on June 20th, 2018
+Last benchmark was ran on June 20th, 2018
 
 ## Natively compiled, statically typed
 
