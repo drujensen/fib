@@ -8,3 +8,5 @@ fib.dSYM
 fib.dwarf
 .Rhistory
 nimcache
+fib-mem
+fib-constexpr
