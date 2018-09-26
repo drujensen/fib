@@ -1,9 +1,6 @@
 def fib(n)
-  if n <= 1
-    1
-  else
-    fib(n - 1) + fib(n - 2)
-  end
+  return 1 if n <= 1
+  fib(n - 1) + fib(n - 2)
 end
 
 puts fib(46)
