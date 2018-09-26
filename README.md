@@ -21,7 +21,11 @@ Last benchmark was ran on September 25th, 2018
 | Go (mem)        |  0.005*  | `go build -o fib fib-mem.go`         | `time ./fib` |
 | C++ (constexpr) |  0.086*  | `g++-8 -O3 -o fib fib-constexpr.cpp` | `time ./fib` |
 
-NOTE: The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. The Go (mem) is using a new caching feature in Go 1.11. These solutions break the benchmark since they don't perform the same internal tasks as the other languages. It demonstrates that all benchmarks will have some caveat. The C++ (constexpr) was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).  The Go (mem) was provided by [Alexander F. Rødseth](https://github.com/xyproto)
+**NOTE:**
+
+The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. The Go (mem) is using memoization. Go 1.11 is also faster than previous versions.
+
+These solutions break the benchmark since they don't perform the same internal tasks as the other languages. It demonstrates that all benchmarks will have some caveat. The C++ (constexpr) was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).  The Go (mem) was provided by [Alexander F. Rødseth](https://github.com/xyproto).
 
 ## Natively compiled, statically typed
 
