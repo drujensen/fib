@@ -27,6 +27,9 @@ Last benchmark was ran on September 25th, 2018
 | Swift    | 10.307  | `swiftc -O -g fib.swift`                      | `time ./fib` |
 | Go       | 10.492  | `go build fib.go`                             | `time ./fib` |
 
+NOTE: Swift and Go do not seem to use [Tail Call Optimization](https://en.wikipedia.org/wiki/Tail_call) so this may be why they are showing up as twice as slow.  
+Thanks [Ammrage](https://github.com/AmmRage) for pointing out this discrepency.
+
 ## VM compiled bytecode, statically typed
 
 | Language  | Time, s | Compile                            | Run                         |
