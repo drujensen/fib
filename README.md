@@ -2,7 +2,7 @@
 
 Top 10: JavaScript, Java, Python, Ruby, Php, C++, C#, C, Go [reference](http://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html)
 
-Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R, Julia
+Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R, Julia, D
 
 This code performs a recursive fibonacci to the 46th position with the result of 2,971,215,073.
 
@@ -14,38 +14,26 @@ All tests are run on:
 
 Last benchmark was ran on September 25th, 2018
 
-## Natively compiled, statically typed (optimized code)
-
-| Language        | Time, s  | Compile                              | Run          |
-|-----------------|----------|--------------------------------------|--------------|
-| Go (mem)        |  0.005*  | `go build -o fib fib-mem.go`         | `time ./fib` |
-| C++ (constexpr) |  0.086*  | `g++-8 -O3 -o fib fib-constexpr.cpp` | `time ./fib` |
-
-**NOTE:**
-
-The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. The Go (mem) is using memoization. Go 1.11 is also faster than previous versions.
-
-These solutions break the benchmark since they don't perform the same internal tasks as the other languages. It demonstrates that all benchmarks will have some caveat. The C++ (constexpr) was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).  The Go (mem) was provided by [Alexander F. Rødseth](https://github.com/xyproto).
-
 ## Natively compiled, statically typed
 
-| Language | Time, s | Compile                           | Run          |
-|----------|---------|-----------------------------------|--------------|
-| Crystal  |  5.300  | `crystal build --release fib.cr`  | `time ./fib` |
-| C++      |  5.751  | `g++ -O3 -o fib fib.cpp`          | `time ./fib` |
-| Nim      |  6.030  | `nim compile -d:release fib.nim`  | `time ./fib` |
-| C        |  6.258  | `gcc -O3 -o fib fib.c`            | `time ./fib` |
-| Rust     |  6.567  | `rustc -O fib.rs`                 | `time ./fib` |
-| Swift    | 10.307  | `swiftc -O -g fib.swift`          | `time ./fib` |
-| Go       | 10.492  | `go build fib.go`                 | `time ./fib` |
+| Language | Time, s | Compile                                       | Run          |
+|----------|---------|-----------------------------------------------|--------------|
+| Nim      |  4.884  | `nim cpp -d:release fib.nim`                  | `time ./fib` |
+| Crystal  |  5.300  | `crystal build --release fib.cr`              | `time ./fib` |
+| C++      |  5.751  | `g++ -O3 -o fib fib.cpp`                      | `time ./fib` |
+| C        |  6.258  | `gcc -O3 -o fib fib.c`                        | `time ./fib` |
+| Rust     |  6.567  | `rustc -O fib.rs`                             | `time ./fib` |
+| D        |  7.037  | `ldc2 -O3 -release -flto=full -of=fib fib.d ` | `time ./fib` |
+| Swift    | 10.307  | `swiftc -O -g fib.swift`                      | `time ./fib` |
+| Go       | 10.492  | `go build fib.go`                             | `time ./fib` |
 
 ## VM compiled bytecode, statically typed
 
-| Language  | Time, s | Compile          | Run                 |
-|-----------|---------|------------------|---------------------|
-| Java      |  7.447  | `javac Fib.java` | `time java Fib`     |
-| C# (Mono) | 11.323  | `mcs fib.cs`     | `time mono fib.exe` |
-| C#        | 72.486  | `dotnet restore` | `time dotnet run`   |
+| Language  | Time, s | Compile                            | Run                         |
+|-----------|---------|------------------------------------|-----------------------------|
+| Java      |  7.447  | `javac Fib.java`                   | `time java Fib`             |
+| C#        |  7.874  | `dotnet build -c Release -o ./bin` | `time dotnet ./bin/fib.dll` |
+| C# (Mono) | 12.596  | `mcs fib.cs`                       | `time mono fib.exe`         |
 
 ## VM compiled before execution, mixed/dynamically typed
 
@@ -69,6 +57,21 @@ NOTE: These languages include compilation time which should be taken into consid
 | Perl     | 1133.131 | `time perl fib.pl`    |
 | R        | 1796.495 | `time r -f fib.r`     |
 
+## Optimized code that breaks the benchmark
+
+The following code examples use techniques that break the benchmark. They do not perform the same internal tasks as the other examples 
+so are not a good apples to apples comparisons. It demonstrates that all benchmarks will have some caveat.
+
+| Language        | Time, s  | Compile                              | Run                    |
+|-----------------|----------|--------------------------------------|------------------------|
+| Go (mem)        |  0.005*  | `go build -o fib fib-mem.go`         | `time ./fib`           |
+| C++ (constexpr) |  0.086*  | `g++-8 -O3 -o fib fib-constexpr.cpp` | `time ./fib`           |
+| Node (mem)      |  0.112*  |                                      | `time node fib-mem.js` |
+
+**NOTE:**
+The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. It was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).
+The Go (mem) is using memoization.  It was provided by [Alexander F. Rødseth](https://github.com/xyproto).
+The Node (mem) is another example using memoization.  It was provided by [YSTYLE-L.X.Y](https://github.com/ystyle)
 
 ## Versions
 
