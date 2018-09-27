@@ -1,5 +1,5 @@
-def fib(n : UInt32)
-  return 1_u32 if n <= 1
+def fib(n : UInt64)
+  return 1_u64 if n <= 1
   fib(n - 1) + fib(n - 2)
 end
 

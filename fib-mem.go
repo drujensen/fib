@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func fib(n uint32, cache []uint32) uint32 {
+func fib(n uint64, cache []uint64) uint64 {
 	if n <= 1 {
 		return 1
 	}
@@ -19,6 +19,6 @@ func fib(n uint32, cache []uint32) uint32 {
 }
 
 func main() {
-	cache := make([]uint32, 46)
+	cache := make([]uint64, 46)
 	fmt.Println(fib(46, cache))
 }

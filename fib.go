@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func fib(n int) int {
+func fib(n uint64) uint64 {
 	if n <= 1 {
 		return 1
 	}
