@@ -27,7 +27,7 @@ Last benchmark was ran on September 25th, 2018
 | Swift    | 10.307  | `swiftc -O -g fib.swift`                     | `time ./fib` |
 | Go       | 10.600  | `go build fib.go`                            | `time ./fib` |
 
-NOTE: Swift and Go do not seem to use [Tail Call Optimization](https://en.wikipedia.org/wiki/Tail_call) so this may be why they are showing up as twice as slow.  
+NOTE: Swift and Go do not seem to use [Tail Call Optimization](https://en.wikipedia.org/wiki/Tail_call) so this may be why they are showing up as twice as slow.
 Thank you [Ammrage](https://github.com/AmmRage) for pointing this out.
 
 ## VM compiled bytecode, statically typed
@@ -62,12 +62,13 @@ NOTE: These languages include compilation time which should be taken into consid
 
 ## Optimized code that breaks the benchmark
 
-The following code examples use techniques that break the benchmark. They do not perform the same internal tasks as the other examples 
+The following code examples use techniques that break the benchmark. They do not perform the same internal tasks as the other examples
 so are not a good apples to apples comparisons. It demonstrates that all benchmarks will have some caveat.
 
 | Language        | Time, s  | Compile                              | Run                    |
 |-----------------|----------|--------------------------------------|------------------------|
 | Go (mem)        |  0.005*  | `go build -o fib fib-mem.go`         | `time ./fib`           |
+| Nim (mem)       |  0.006*  | `nim cpp -d:release fib_mem.nim`     | `time ./fib_mem`       |
 | C++ (constexpr) |  0.086*  | `g++-8 -O3 -o fib fib-constexpr.cpp` | `time ./fib`           |
 | Node (mem)      |  0.112*  |                                      | `time node fib-mem.js` |
 
@@ -75,6 +76,7 @@ so are not a good apples to apples comparisons. It demonstrates that all benchma
 The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. It was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).
 The Go (mem) is using memoization.  It was provided by [Alexander F. Rødseth](https://github.com/xyproto).
 The Node (mem) is another example using memoization.  It was provided by [YSTYLE-L.X.Y](https://github.com/ystyle)
+The Nim (mem) version is provided by [PMunch](https://github.com/PMunch)
 
 ## Versions
 

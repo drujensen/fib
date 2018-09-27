@@ -2,6 +2,7 @@ fib.o
 bin
 obj
 fib
+fib_mem
 fib.exe
 Fib.class
 project.lock.json
