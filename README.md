@@ -99,6 +99,7 @@ The Node (mem) is another example using memoization.  It was provided by [YSTYLE
 - python3 3.7.0
 - perl 5, version 26, subversion 2 (v5.26.2)
 - r version 3.5.0 (2018-04-23)
+- lcd2 the LLVM D compiler (1.11.0)
 
 ## Caveats
 
