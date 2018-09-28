@@ -27,7 +27,7 @@ Last benchmark was ran on September 25th, 2018
 | Swift    | 10.307  | `swiftc -O -g fib.swift`                     | `time ./fib` |
 | Go       | 10.600  | `go build fib.go`                            | `time ./fib` |
 | Haskell  |         | `ghc -O3 -o fib fib.hs`                      | `time ./fib` |
-| Cython   |         | `cython3 --embed -o fib.pyx.c fib.pyx &&`<br>`g++ -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python3)` | `time ./fib` |
+| Cython   |         | `cython3 --embed -o fib.pyx.c fib.pyx &&`<br>`gcc -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python3)` | `time ./fib` |
 
 
 NOTE: Swift and Go do not seem to use [Tail Call Optimization](https://en.wikipedia.org/wiki/Tail_call) so this may be why they are showing up as twice as slow.
