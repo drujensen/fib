@@ -4,4 +4,4 @@ defmodule Fib do
   defp fib(n, next, result), do: fib(n-1, next + result, next)
 end
 
-IO.puts Fib.fib(46)
+IO.puts Fib.fib(47)
