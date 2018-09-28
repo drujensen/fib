@@ -77,6 +77,7 @@ so are not a good apples to apples comparisons. It demonstrates that all benchma
 | C++ (constexpr)         |  0.086*  | `g++-8 -O3 -o fib fib-constexpr.cpp` | `time ./fib`                |
 | Node (mem)              |  0.112*  |                                      | `time node fib-mem.js`      |
 | Python (lru_cache)      |  TODO    |                                      | `time python3 fib-cache.pu` |
+| Lua (mem)               |  TODO    |                                      | `time luajit fib-mem.lua`   |
 
 **NOTE:**
 The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. It was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).
