@@ -1,6 +1,14 @@
-var fib = function(n) {
-  if (n <= 1) { return 1; }
-  return fib(n - 1) + fib(n - 2);
-};
+function fib(n) {
+  var a = 1, b = 0, temp;
 
-console.log(fib(46));
+  while (n > 0) {
+    temp = a;
+    a = a + b;
+    b = temp;
+    n--;
+  }
+
+  return b;
+}
+
+console.log(fib(46))
