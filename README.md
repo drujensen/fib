@@ -2,7 +2,7 @@
 
 Top 10: JavaScript, Java, Python, Ruby, Php, C++, C#, C, Go [reference](http://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html)
 
-Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R, Julia, D
+Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R, Julia, D, Nim
 
 This code performs a recursive fibonacci to the 46th position with the result of 2,971,215,073.
 
@@ -26,6 +26,7 @@ Last benchmark was ran on September 25th, 2018
 | D        |  6.993  | `ldc2 -O3 -release -flto=full -of=fib fib.d` | `time ./fib` |
 | Swift    | 10.307  | `swiftc -O -g fib.swift`                     | `time ./fib` |
 | Go       | 10.600  | `go build fib.go`                            | `time ./fib` |
+| Haskell  |         | `ghc -O3 -o fib fib.hs`                      | `time ./fib` |
 | Cython   |         | `cython3 --embed -o fib.pyx.c fib.pyx &&`<br>`g++ -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python3)` | `time ./fib` |
 
 
@@ -61,18 +62,20 @@ NOTE: These languages include compilation time which should be taken into consid
 | Python3  |  758.681 | `time python3 fib.py` |
 | Perl     | 1133.131 | `time perl fib.pl`    |
 | R        | 1796.495 | `time r -f fib.r`     |
+| Tcl      |     TODO | `time tclsh fib.tcl`  |  
 
 ## Optimized code that breaks the benchmark
 
 The following code examples use techniques that break the benchmark. They do not perform the same internal tasks as the other examples
 so are not a good apples to apples comparisons. It demonstrates that all benchmarks will have some caveat.
 
-| Language        | Time, s  | Compile                              | Run                    |
-|-----------------|----------|--------------------------------------|------------------------|
-| Go (mem)        |  0.005*  | `go build -o fib fib-mem.go`         | `time ./fib`           |
-| Nim (mem)       |  0.006*  | `nim cpp -d:release fib_mem.nim`     | `time ./fib_mem`       |
-| C++ (constexpr) |  0.086*  | `g++-8 -O3 -o fib fib-constexpr.cpp` | `time ./fib`           |
-| Node (mem)      |  0.112*  |                                      | `time node fib-mem.js` |
+| Language                | Time, s  | Compile                              | Run                         |
+|-------------------------|----------|--------------------------------------|-----------------------------|
+| Go (mem)                |  0.005*  | `go build -o fib fib-mem.go`         | `time ./fib`                |
+| Nim (mem)               |  0.006*  | `nim cpp -d:release fib_mem.nim`     | `time ./fib_mem`            |
+| C++ (constexpr)         |  0.086*  | `g++-8 -O3 -o fib fib-constexpr.cpp` | `time ./fib`                |
+| Node (mem)              |  0.112*  |                                      | `time node fib-mem.js`      |
+| Python (lru_cache)      |  TODO    |                                      | `time python3 fib-cache.pu` |
 
 **NOTE:**
 The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. It was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).
