@@ -60,7 +60,8 @@ NOTE: These languages include compilation time which should be taken into consid
 | Perl     | 1133.131 | `time perl fib.pl`    |
 | Perl 6   | TODO     | `time perl6 fib.p6`   |
 | R        | 1796.495 | `time r -f fib.r`     |
-| Tcl      |     TODO | `time tclsh fib.tcl`  |  
+| Tcl      |     TODO | `time tclsh fib.tcl`  |
+| Q        |     TODO | `time q fib.q`        |
 
 ## Optimized code that breaks the benchmark
 
