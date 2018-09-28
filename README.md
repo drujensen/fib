@@ -65,12 +65,13 @@ NOTE: These languages include compilation time which should be taken into consid
 The following code examples use techniques that break the benchmark. They do not perform the same internal tasks as the other examples
 so are not a good apples to apples comparisons. It demonstrates that all benchmarks will have some caveat.
 
-| Language        | Time, s  | Compile                              | Run                    |
-|-----------------|----------|--------------------------------------|------------------------|
-| Go (mem)        |  0.005*  | `go build -o fib fib-mem.go`         | `time ./fib`           |
-| Nim (mem)       |  0.006*  | `nim cpp -d:release fib_mem.nim`     | `time ./fib_mem`       |
-| C++ (constexpr) |  0.086*  | `g++-8 -O3 -o fib fib-constexpr.cpp` | `time ./fib`           |
-| Node (mem)      |  0.112*  |                                      | `time node fib-mem.js` |
+| Language        | Time, s  | Compile                              | Run                       |
+|-----------------|----------|--------------------------------------|---------------------------|
+| Go (mem)        |  0.005*  | `go build -o fib fib-mem.go`         | `time ./fib`              |
+| Nim (mem)       |  0.006*  | `nim cpp -d:release fib_mem.nim`     | `time ./fib_mem`          |
+| C++ (constexpr) |  0.086*  | `g++-8 -O3 -o fib fib-constexpr.cpp` | `time ./fib`              |
+| Node (mem)      |  0.112*  |                                      | `time node fib-mem.js`    |
+| Lua (mem)       |          |                                      | `time luajit fib-mem.lua` |
 
 **NOTE:**
 The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. It was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).
