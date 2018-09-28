@@ -12,3 +12,5 @@ fib.dwarf
 nimcache
 fib-mem
 fib-constexpr
+fib.cmi
+fib.cmx
