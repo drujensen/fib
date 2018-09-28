@@ -1,7 +1,7 @@
 program fibonacci
     implicit none
 
-    write(*,*) fib_rec(47)
+    write(*,*) fib_rec(46)
     
     contains
     recursive function fib_rec(n) result(fib)
@@ -9,7 +9,7 @@ program fibonacci
 	integer*8                  :: fib
  
 	if (n <= 1) then
-		fib = n
+		fib = 1
 	else
 		fib = fib_rec(n - 1) + fib_rec(n - 2)
 	end if
