@@ -58,6 +58,7 @@ NOTE: These languages include compilation time which should be taken into consid
 | Python   |  502.036 | `time python fib.py`  |
 | Python3  |  758.681 | `time python3 fib.py` |
 | Perl     | 1133.131 | `time perl fib.pl`    |
+| Perl 6   | TODO     | `time perl6 fib.p6`   |
 | R        | 1796.495 | `time r -f fib.r`     |
 
 ## Optimized code that breaks the benchmark
