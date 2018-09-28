@@ -4,19 +4,27 @@ import (
 	"fmt"
 )
 
-func fib(n int, cache *[]uint64) uint64 {
-	if n >= len(*cache) {
-		a := fib(n-2, cache)
-		b := fib(n-1, cache)
-		*cache = append(*cache, a+b)
+type fibCache []uint64
+
+func (c *fibCache) fib(n int) uint64 {
+	if n >= len(*c) {
+		if n > cap(*c) {
+			if *c == nil {
+				*c = make(fibCache, 2, n)
+				(*c)[0], (*c)[1] = 1, 1
+			} else {
+				old := *c
+				*c = make(fibCache, len(old), n)
+				copy(*c, old)
+			}
+		}
+		a := c.fib(n - 2)
+		b := c.fib(n - 1)
+		*c = append(*c, a+b)
 	}
-	return (*cache)[n]
+	return (*c)[n]
 }
 
 func main() {
-	const n = 46
-	cache := make([]uint64, 2, n)
-	cache[0] = 1
-	cache[1] = 1
-	fmt.Println(fib(n, &cache))
+	fmt.Println(new(fibCache).fib(46))
 }
