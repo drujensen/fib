@@ -1,6 +1,6 @@
 # Usage:
-#   cython3 --embed -o fib.c fib.pyx
-#   g++ -O3 -o fib fib.c -I/usr/include/python3.5m/ -lpython3.5m
+#   cython3 --embed -o fib.pyx.c fib.pyx
+#   g++ -O3 -o fib fib.pyx.c -I/usr/include/python3.5m/ -lpython3.5m
 #   time ./fib
 
 cdef long fib(long n):
