@@ -2,7 +2,7 @@
 
 Top 10: JavaScript, Java, Python, Ruby, Php, C++, C#, C, Go [reference](http://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html)
 
-Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R, Julia, D
+Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R, Julia, D, Nim
 
 This code performs a recursive fibonacci to the 46th position with the result of 2,971,215,073.
 
