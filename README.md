@@ -55,7 +55,7 @@ NOTE: These languages include compilation time which should be taken into consid
 |----------|----------|-----------------------|
 | Ruby     |  195.601 | `time ruby fib.rb`    |
 | Php      |  206.346 | `time php fib.php`    |
-| Guile    |  ??????? | `time guile fib.scm`  |
+| Scheme   |  ??????? | `time guile fib.scm`  |
 | Python   |  502.036 | `time python fib.py`  |
 | Python3  |  758.681 | `time python3 fib.py` |
 | Perl     | 1133.131 | `time perl fib.pl`    |
