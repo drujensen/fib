@@ -7,6 +7,6 @@ uint64_t fib(uint64_t n) {
 }
 
 int main(void) {
-  printf("%lu", fib(46));
+  puts(fib(46));
   return 0;
 }
