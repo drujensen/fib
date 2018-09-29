@@ -49,6 +49,8 @@ Last benchmark was ran on September 29, 2018
 | Swift      |   10.546 | swiftc -O -g fib.swift                        | time ./fib   |
 | Go         |   10.889 | go build fib.go                               | time ./fib   |
 
+NOTE: C and C++ compile to the exact same machine code but the C version is slower because it doesn't run at the same address in the processor.  Thanks @glandium for pointing this out. See [Issue #46](https://github.com/drujensen/fib/issues/46)
+
 ## VM compiled bytecode, statically typed
 
 | Language  | Time, s | Compile                            | Run                         |
@@ -81,6 +83,8 @@ NOTE: These languages include compilation time which should be taken into consid
 | Tcl       |     TODO | `time tclsh fib.tcl`       |
 | R         | 1796.495 | `time r -f fib.r`          |
 
+NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing.
+
 ## Optimized code that breaks the benchmark
 
 The following code examples use techniques that break the benchmark. They do not perform the same internal tasks as the other examples
@@ -97,9 +101,6 @@ so are not a good apples to apples comparisons. It demonstrates that all benchma
 
 **NOTE:**
 The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. It was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).
-The Go (mem) is using memoization.  It was provided by [Alexander F. Rødseth](https://github.com/xyproto).
-The Node (mem) is another example using memoization.  It was provided by [YSTYLE-L.X.Y](https://github.com/ystyle)
-The Nim (mem) version is provided by [PMunch](https://github.com/PMunch)
 
 ## Versions
 
