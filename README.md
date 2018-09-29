@@ -30,7 +30,6 @@ All tests are run on:
  - Processor: 3.2 GHz Intel Core i5
  - Memory: 16 GB 1867 MHz DDR3
 
-Running Python
 Last benchmark was ran on September 29, 2018
 
 ## Natively compiled, statically typed
