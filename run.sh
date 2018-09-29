@@ -29,14 +29,14 @@ languages << Language.new("OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml", "tim
 languages << Language.new("Haskell", :compiled, "ghc -O3 -o fib fib.hs", "time ./fib")
 languages << Language.new("Fortran", :compiled, "gfortran -O3 -o fib fib.f03", "time ./fib")
 
-#languages << Language.new("Java", :vm, "javac Fib.java", "time java Fib")
-#languages << Language.new("C#", :vm, "dotnet build -c Release -o ./bin", "time dotnet ./bin/fib.dll")
-#languages << Language.new("C# (Mono)", :vm, "mcs fib.cs", "time mono fib.exe")
+languages << Language.new("Java", :vm, "javac Fib.java", "time java Fib")
+languages << Language.new("C#", :vm, "dotnet build -c Release -o ./bin", "time dotnet ./bin/fib.dll")
+languages << Language.new("C# (Mono)", :vm, "mcs fib.cs", "time mono fib.exe")
 
-#languages << Language.new("Dart", :mixed, "", "time dart fib.dart")
-#languages << Language.new("Julia", :mixed, "", "time julia -O3 fib.jl")
-#languages << Language.new("Node", :mixed, "", "time node fib.js")
-#languages << Language.new("Elixir", :mixed, "", "time elixir fib.exs")
+languages << Language.new("Dart", :mixed, "", "time dart fib.dart")
+languages << Language.new("Julia", :mixed, "", "time julia -O3 fib.jl")
+languages << Language.new("Node", :mixed, "", "time node fib.js")
+languages << Language.new("Elixir", :mixed, "", "time elixir fib.exs")
 
 #languages << Language.new("Ruby", :interpreted, "", "time ruby fib.rb")
 #languages << Language.new("Php", :interpreted, "", "time php fib.php")
@@ -47,6 +47,7 @@ languages << Language.new("Fortran", :compiled, "gfortran -O3 -o fib fib.f03", "
 #languages << Language.new("R", :interpreted, "", "time r -f fib.r")
 #languages << Language.new("Tcl", :interpreted, "", "time tclsh fib.tcl")
 #languages << Language.new("Bash", :interpreted, "", "time bash fib.sh")
+#languages << Language.new("Lua", :interpreted, "", "time luajit fib.lua")
 
 languages.each do |lang|
   puts "Running #{lang.name}"

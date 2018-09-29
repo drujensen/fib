@@ -54,20 +54,22 @@ NOTE: C and C++ compile to the exact same machine code but the C version is slow
 
 | Language  | Time, s | Compile                            | Run                         |
 |-----------|---------|------------------------------------|-----------------------------|
-| Java      |    7.709 | javac Fib.java                       | time java Fib               |
-| C#        |    7.801 | dotnet build -c Release -o ./bin     | time dotnet ./bin/fib.dll   |
-| C# (Mono) |   12.143 | mcs fib.cs                           | time mono fib.exe           |
+| Java      |    7.556 | javac Fib.java                       | time java Fib               |
+| C#        |   11.387 | dotnet build -c Release -o ./bin     | time dotnet ./bin/fib.dll   |
+| C# (Mono) |   12.310 | mcs fib.cs                           | time mono fib.exe           |
 
 ## VM compiled before execution, mixed/dynamically typed
 
 | Language  | Time, s | Run                         |
 |-----------|---------|-----------------------------|
-| Dart      |    9.449 | time dart fib.dart          |
-| Julia     |   11.148 | time julia -O3 fib.jl       |
-| Node      |   19.351 | time node fib.js            |
-| Elixir    |   73.796 | time elixir fib.exs         |
+| Dart      |    9.651 | time dart fib.dart         |
+| Julia     |   11.461 | time julia -O3 fib.jl      |
+| Elixir*   |   13.955 | time elixir fib.exs        |
+| Node      |   19.161 | time node fib.js           |
 
-NOTE: These languages include compilation time which should be taken into consideration when comparing.
+* Elixir is using ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]'
+
+NOTE: These languages include compilation time that should be taken into consideration when comparing.
 
 ## Interpreted, dynamically typed
 
@@ -80,6 +82,7 @@ NOTE: These languages include compilation time which should be taken into consid
 | Perl      | 1133.131 | `time perl fib.pl`         |
 | Perl 6    |     TODO | `time perl6 fib.p6`        |
 | Tcl       |     TODO | `time tclsh fib.tcl`       |
+| Lua       |     TODO | `time lua fib.lua`         |
 | R         | 1796.495 | `time r -f fib.r`          |
 
 NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing.
