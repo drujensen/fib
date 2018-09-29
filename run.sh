@@ -34,18 +34,19 @@ languages << Language.new("C#", :vm, "dotnet build -c Release -o ./bin", "time d
 languages << Language.new("C# (Mono)", :vm, "mcs fib.cs", "time mono fib.exe")
 
 languages << Language.new("Dart", :mixed, "", "time dart fib.dart")
-languages << Language.new("Julia", :mixed, "", "time julia fib.jl")
+languages << Language.new("Julia", :mixed, "", "time julia -O3 fib.jl")
 languages << Language.new("Node", :mixed, "", "time node fib.js")
 languages << Language.new("Elixir", :mixed, "", "time elixir fib.exs")
 
-#languages << Language.new("Ruby", :interpreted, "", "time ruby fib.rb")
-#languages << Language.new("Php", :interpreted, "", "time php fib.php")
-#languages << Language.new("Python", :interpreted, "", "time python fib.py")
+languages << Language.new("Ruby", :interpreted, "", "time ruby fib.rb")
+languages << Language.new("Php", :interpreted, "", "time php fib.php")
+languages << Language.new("Python", :interpreted, "", "time python fib.py")
 #languages << Language.new("Python3", :interpreted, "", "time python3 fib.py")
 #languages << Language.new("Perl", :interpreted, "", "time perl fib.pl")
 #languages << Language.new("Perl 6", :interpreted, "", "time perl6 fib.p6")
 #languages << Language.new("R", :interpreted, "", "time r -f fib.r")
 #languages << Language.new("Tcl", :interpreted, "", "time tclsh fib.tcl")
+#languages << Language.new("Bash", :interpreted, "", "time bash fib.sh")
 
 languages.each do |lang|
   puts "Running #{lang.name}"

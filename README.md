@@ -12,55 +12,56 @@ All tests are run on:
  - Processor: 3.2 GHz Intel Core i5
  - Memory: 16 GB 1867 MHz DDR3
 
-Last benchmark was ran on September 25th, 2018
+Running Python
+Last benchmark was ran on September 29, 2018
 
 ## Natively compiled, statically typed
 
-| Language | Time, s | Compile                                      | Run          |
-|----------|---------|----------------------------------------------|--------------|
-| Nim      |  4.622  | `nim cpp -d:release fib.nim`                 | `time ./fib` |
-| Crystal  |  5.687  | `crystal build --release fib.cr`             | `time ./fib` |
-| C++      |  5.751  | `g++ -O3 -o fib fib.cpp`                     | `time ./fib` |
-| C        |  6.258  | `gcc -O3 -o fib fib.c`                       | `time ./fib` |
-| Rust     |  6.567  | `rustc -O fib.rs`                            | `time ./fib` |
-| D        |  6.993  | `ldc2 -O3 -release -flto=full -of=fib fib.d` | `time ./fib` |
-| Swift    | 10.307  | `swiftc -O -g fib.swift`                     | `time ./fib` |
-| Go       | 10.600  | `go build fib.go`                            | `time ./fib` |
-| OCaml    |         | `ocamlopt -O3 -o fib fib.ml`                 | `time ./fib` |
-| Haskell  |         | `ghc -O3 -o fib fib.hs`                      | `time ./fib` |
-| Fortran  |  x.xxx  | `gfortran -O3 -o fib fib.f03`                | `time ./fib` |
+| Language   | Time, s   | Compile                                      | Run          |
+|------------|-----------|----------------------------------------------|--------------|
+| Nim        |    4.677 | nim cpp -d:release fib.nim                    | time ./fib   |
+| C          |    5.382 | gcc -O3 -o fib fib.c                          | time ./fib   |
+| Crystal    |    5.803 | crystal build --release fib.cr                | time ./fib   |
+| C++        |    6.099 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
+| Fortran    |    6.136 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
+| Rust       |    6.590 | rustc -O fib.rs                               | time ./fib   |
+| D          |    7.175 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
+| Haskell    |    8.151 | ghc -O3 -o fib fib.hs                         | time ./fib   |
+| OCaml      |    9.607 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
+| Swift      |   10.786 | swiftc -O -g fib.swift                        | time ./fib   |
+| Go         |   10.923 | go build fib.go                               | time ./fib   |
 
 ## VM compiled bytecode, statically typed
 
 | Language  | Time, s | Compile                            | Run                         |
 |-----------|---------|------------------------------------|-----------------------------|
-| Java      |  7.447  | `javac Fib.java`                   | `time java Fib`             |
-| C#        |  7.874  | `dotnet build -c Release -o ./bin` | `time dotnet ./bin/fib.dll` |
-| C# (Mono) | 12.596  | `mcs fib.cs`                       | `time mono fib.exe`         |
+| Java      |    7.709 | javac Fib.java                       | time java Fib               |
+| C#        |    7.801 | dotnet build -c Release -o ./bin     | time dotnet ./bin/fib.dll   |
+| C# (Mono) |   12.143 | mcs fib.cs                           | time mono fib.exe           |
 
 ## VM compiled before execution, mixed/dynamically typed
 
-| Language | Time, s  | Run                  |
-|----------|----------|----------------------|
-| Dart     | 10.467   | `time dart fib.dart` |
-| Julia    | 10.799   | `time julia fib.jl`  |
-| Node     | 18.874   | `time node fib.js`   |
-| Elixir   | 69.101   | `time elixir fib.exs`|
+| Language  | Time, s | Run                         |
+|-----------|---------|-----------------------------|
+| Dart      |    9.449 | time dart fib.dart          |
+| Julia     |   11.148 | time julia -O3 fib.jl       |
+| Node      |   19.351 | time node fib.js            |
+| Elixir    |   73.796 | time elixir fib.exs         |
 
 NOTE: These languages include compilation time which should be taken into consideration when comparing.
 
 ## Interpreted, dynamically typed
 
-| Language | Time, s  | Run                   |
-|----------|----------|-----------------------|
-| Ruby     |  195.601 | `time ruby fib.rb`    |
-| Php      |  206.346 | `time php fib.php`    |
-| Python   |  502.036 | `time python fib.py`  |
-| Python3  |  758.681 | `time python3 fib.py` |
-| Perl     | 1133.131 | `time perl fib.pl`    |
-| Perl 6   | TODO     | `time perl6 fib.p6`   |
-| R        | 1796.495 | `time r -f fib.r`     |
-| Tcl      |     TODO | `time tclsh fib.tcl`  |  
+| Language  | Time, s | Run                         |
+|-----------|---------|-----------------------------|
+| Php       |  198.279 | time php fib.php           |
+| Ruby      |  202.901 | time ruby fib.rb           |
+| Python    |  512.621 | time python fib.py         |
+| Python3   |  758.681 | `time python3 fib.py`      |
+| Perl      | 1133.131 | `time perl fib.pl`         |
+| Perl 6    |     TODO | `time perl6 fib.p6`        |
+| Tcl       |     TODO | `time tclsh fib.tcl`       |
+| R         | 1796.495 | `time r -f fib.r`          |
 
 ## Optimized code that breaks the benchmark
 
@@ -104,8 +105,13 @@ The Nim (mem) version is provided by [PMunch](https://github.com/PMunch)
 - python 2.7.15
 - python3 3.7.0
 - perl 5, version 26, subversion 2 (v5.26.2)
+- perl6 This is Rakudo Star version 2018.06 built on MoarVM version 2018.06
 - r version 3.5.0 (2018-04-23)
 - lcd2 the LLVM D compiler (1.11.0)
+- ocaml The OCaml toplevel, version 4.07.0
+- ghc The Glorious Glasgow Haskell Compilation System, version 8.4.3
+- gfortran GNU Fortran (Homebrew GCC 8.2.0) 8.2.0
+- tchsh 8.5
 
 ## Caveats
 
