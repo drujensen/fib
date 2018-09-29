@@ -1,4 +1,4 @@
-#include <iostream>
+#include <stdio.h>
 #include <stdint.h>
 
 uint64_t fib(uint64_t n) {
@@ -7,5 +7,5 @@ uint64_t fib(uint64_t n) {
 }
 
 int main() {
-  std::cout << fib(46) << std::endl;
+  printf("%lld \n", fib(46));
 }
