@@ -7,5 +7,5 @@ uint64_t fib(uint64_t n) {
 }
 
 int main() {
-  puts(fib(46));
+  printf("%lld \n", fib(46));
 }

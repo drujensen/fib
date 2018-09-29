@@ -36,17 +36,17 @@ Last benchmark was ran on September 29, 2018
 
 | Language   | Time, s   | Compile                                      | Run          |
 |------------|-----------|----------------------------------------------|--------------|
-| Nim        |    4.681 | nim cpp -d:release fib.nim                    | time ./fib   |
-| Crystal    |    5.794 | crystal build --release fib.cr                | time ./fib   |
-| C++        |    5.795 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
-| C          |    6.009 | gcc -O3 -o fib fib.c                          | time ./fib   |
-| Fortran    |    6.550 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
-| Rust       |    6.634 | rustc -O fib.rs                               | time ./fib   |
-| D          |    7.117 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
-| OCaml      |    8.515 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
-| Haskell    |    8.829 | ghc -O3 -o fib fib.hs                         | time ./fib   |
-| Swift      |   10.546 | swiftc -O -g fib.swift                        | time ./fib   |
-| Go         |   10.889 | go build fib.go                               | time ./fib   |
+| Nim        |    4.678 | nim cpp -d:release fib.nim                    | time ./fib   |
+| C          |    5.418 | gcc -O3 -o fib fib.c                          | time ./fib   |
+| C++        |    5.456 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
+| Crystal    |    5.800 | crystal build --release fib.cr                | time ./fib   |
+| Fortran    |    6.139 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
+| Rust       |    6.724 | rustc -O fib.rs                               | time ./fib   |
+| D          |    7.124 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
+| OCaml      |    8.131 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
+| Haskell    |    8.143 | ghc -O3 -o fib fib.hs                         | time ./fib   |
+| Swift      |   10.550 | swiftc -O -g fib.swift                        | time ./fib   |
+| Go         |   10.863 | go build fib.go                               | time ./fib   |
 
 NOTE: C and C++ compile to the exact same machine code but the C version is slower because it doesn't run at the same address in the processor.  Thanks @glandium for pointing this out. See [Issue #46](https://github.com/drujensen/fib/issues/46)
 
