@@ -38,6 +38,12 @@ Last benchmark was ran on September 25th, 2018
 | C#        |  7.874  | `dotnet build -c Release -o ./bin` | `time dotnet ./bin/fib.dll` |
 | C# (Mono) | 12.596  | `mcs fib.cs`                       | `time mono fib.exe`         |
 
+## VM compiled, dynamically typed
+
+| Language  | Time, s | Compile                               | Run                                 |
+|-----------|---------|---------------------------------------|-------------------------------------|
+| Erlang    |         | `erlc +native +'{hipe,[o3]}' fib.erl` | `time erl -noimput -noshell -s fib` |
+
 ## VM compiled before execution, mixed/dynamically typed
 
 | Language | Time, s  | Run                  |
@@ -46,6 +52,7 @@ Last benchmark was ran on September 25th, 2018
 | Julia    | 10.799   | `time julia fib.jl`  |
 | Node     | 18.874   | `time node fib.js`   |
 | Elixir   | 69.101   | `time elixir fib.exs`|
+| Escript(Erlang) |          | `time escript fib.es`|
 
 NOTE: These languages include compilation time which should be taken into consideration when comparing.
 
