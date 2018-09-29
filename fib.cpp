@@ -1,10 +1,11 @@
-#include <iostream>
+#include <stdio.h>
+#include <stdint.h>
 
-long fib(long n) {
+uint64_t fib(uint64_t n) {
   if (n <= 1) return 1;
   return fib(n - 1) + fib(n - 2);
 }
 
 int main() {
-  std::cout << fib(46) << std::endl;
+  printf("%lld \n", fib(46));
 }
