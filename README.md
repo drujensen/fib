@@ -47,6 +47,7 @@ Last benchmark was ran on September 29, 2018
 | Haskell    |    8.143 | ghc -O3 -o fib fib.hs                         | time ./fib   |
 | Swift      |   10.550 | swiftc -O -g fib.swift                        | time ./fib   |
 | Go         |   10.863 | go build fib.go                               | time ./fib   |
+| Cython     |          | `cython3 --embed -o fib.pyx.c fib.pyx &&`<br>`gcc -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python3)` | `time ./fib` |
 
 NOTE: C and C++ compile to the exact same machine code but the C version is slower because it doesn't run at the same address in the processor.  Thanks @glandium for pointing this out. See [Issue #46](https://github.com/drujensen/fib/issues/46)
 
