@@ -85,6 +85,7 @@ NOTE: These languages include compilation time that should be taken into conside
 | Tcl       |     TODO | `time tclsh fib.tcl`       |
 | Lua       |     TODO | `time lua fib.lua`         |
 | R         | 1796.495 | `time r -f fib.r`          |
+| Q         |     TODO | `time q fib.q`             |
 
 NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing.
 
@@ -101,6 +102,7 @@ so are not a good apples to apples comparisons. It demonstrates that all benchma
 | Node (mem)              |  0.112*  |                                      | `time node fib-mem.js`      |
 | Python (lru_cache)      |  TODO    |                                      | `time python3 fib-cache.py` |
 | Lua (mem)               |  TODO    |                                      | `time luajit fib-mem.lua`   |
+| Q (mem)                 |  TODO    |                                      | `time q fib-mem.q`          |
 
 **NOTE:**
 The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. It was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).
