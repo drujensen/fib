@@ -1,3 +1,6 @@
+release
+release.dwarf
+fib.hi
 fib.o
 bin
 obj
@@ -13,3 +16,5 @@ nimcache
 fib-mem
 fib-constexpr
 fib.pyx.c
+fib.cmi
+fib.cmx
