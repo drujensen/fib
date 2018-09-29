@@ -6,6 +6,24 @@ Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R, Julia, D, Nim
 
 This code performs a recursive fibonacci to the 46th position with the result of 2,971,215,073.
 
+Fibonacci can be written many different ways.  The goal of this project is to compare how each language handles the exact same code.
+
+Here is the C version:
+```
+uint64_t fib(uint64_t n) {
+  if (n <= 1) return 1;
+  return fib(n - 1) + fib(n - 2);
+}
+```
+
+Here is the Ruby version:
+```
+def fib(n)
+  return 1 if n <= 1
+  fib(n - 1) + fib(n - 2)
+end
+```
+
 All tests are run on:
  - iMac (Retina 5K, 27-inch, Late 2015)
  - OS: macOS High Sierra 10.13.6
@@ -19,17 +37,17 @@ Last benchmark was ran on September 29, 2018
 
 | Language   | Time, s   | Compile                                      | Run          |
 |------------|-----------|----------------------------------------------|--------------|
-| Nim        |    4.677 | nim cpp -d:release fib.nim                    | time ./fib   |
-| C          |    5.382 | gcc -O3 -o fib fib.c                          | time ./fib   |
-| Crystal    |    5.803 | crystal build --release fib.cr                | time ./fib   |
-| C++        |    6.099 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
-| Fortran    |    6.136 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
-| Rust       |    6.590 | rustc -O fib.rs                               | time ./fib   |
-| D          |    7.175 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
-| Haskell    |    8.151 | ghc -O3 -o fib fib.hs                         | time ./fib   |
-| OCaml      |    9.607 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
-| Swift      |   10.786 | swiftc -O -g fib.swift                        | time ./fib   |
-| Go         |   10.923 | go build fib.go                               | time ./fib   |
+| Nim        |    4.681 | nim cpp -d:release fib.nim                    | time ./fib   |
+| Crystal    |    5.794 | crystal build --release fib.cr                | time ./fib   |
+| C++        |    5.795 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
+| C          |    6.009 | gcc -O3 -o fib fib.c                          | time ./fib   |
+| Fortran    |    6.550 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
+| Rust       |    6.634 | rustc -O fib.rs                               | time ./fib   |
+| D          |    7.117 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
+| OCaml      |    8.515 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
+| Haskell    |    8.829 | ghc -O3 -o fib fib.hs                         | time ./fib   |
+| Swift      |   10.546 | swiftc -O -g fib.swift                        | time ./fib   |
+| Go         |   10.889 | go build fib.go                               | time ./fib   |
 
 ## VM compiled bytecode, statically typed
 
