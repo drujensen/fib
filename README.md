@@ -47,6 +47,7 @@ Last benchmark was ran on September 29, 2018
 | Haskell    |    8.143 | ghc -O3 -o fib fib.hs                         | time ./fib   |
 | Swift      |   10.550 | swiftc -O -g fib.swift                        | time ./fib   |
 | Go         |   10.863 | go build fib.go                               | time ./fib   |
+| Cython     |          | `cython3 --embed -o fib.pyx.c fib.pyx &&`<br>`gcc -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python3)` | `time ./fib` |
 
 NOTE: C and C++ compile to the exact same machine code but the C version is slower because it doesn't run at the same address in the processor.  Thanks @glandium for pointing this out. See [Issue #46](https://github.com/drujensen/fib/issues/46)
 
@@ -77,6 +78,7 @@ NOTE: These languages include compilation time that should be taken into conside
 |-----------|---------|-----------------------------|
 | Php       |  198.279 | time php fib.php           |
 | Ruby      |  202.901 | time ruby fib.rb           |
+| Scheme    |  ??????? | `time guile fib.scm`       |
 | Python    |  512.621 | time python fib.py         |
 | Python3   |  758.681 | `time python3 fib.py`      |
 | Perl      | 1133.131 | `time perl fib.pl`         |
@@ -89,17 +91,14 @@ NOTE: Interpreted languages have a startup time cost that should be taken into c
 
 ## Optimized code that breaks the benchmark
 
-The following code examples use techniques that break the benchmark. They do not perform the same internal tasks as the other examples
-so are not a good apples to apples comparisons. It demonstrates that all benchmarks will have some caveat.
+The code examples provided in the [optimized](optimized) folder use techniques that break the benchmark. The all perform at sub-second response times.  They do not perform the same internal tasks as the other examples
+so are not a good for an apples to apples comparison. It demonstrates that all benchmarks will have some caveat.
 
-| Language                | Time, s  | Compile                              | Run                         |
-|-------------------------|----------|--------------------------------------|-----------------------------|
-| C++ (constexpr)         |  0.086*  | `g++-8 -O3 -o fib fib-constexpr.cpp` | `time ./fib`                |
-| Node (mem)              |  0.112*  |                                      | `time node fib-mem.js`      |
-| Python (lru_cache)      |  TODO    |                                      | `time python3 fib-cache.pu` |
+Several of these examples add very little changes to the original code:
+ - The [C++ constexpr](optimized/fib-constexpr.cpp) is using a `constexpr` which optimizes the recursive call to a constant.
+ - The [Python lru_cache](optimized/fib-cache.py) is using `lru_cache` directive with no code changes.
+ - The [Ruby mem](optimized/fib_mem.rb) and [JS mem](optimized/fib_mem.js) are maintaining a simple cache in an array.
 
-**NOTE:**
-The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. It was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).
 
 ## Versions
 

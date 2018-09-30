@@ -1,19 +1,8 @@
-const fib = function (n, cache) {
-  if (n <= 1) {
-    return 1
-  }
-  let a = cache[n - 1]
-  let b = cache[n - 2]
-  if (!a) {
-    a = fib(n - 1, cache)
-    cache[n - 1] = a
-  }
-  if (!b) {
-    b = fib(n - 2, cache)
-    cache[n - 2] = b
-  }
-  return a + b
-}
+m = {0: 1, 1: 1}
 
-const cache = new Array(46)
-console.log(fib(46, cache))
+var fib = function(n) {
+  if (n in m) return m[n];
+  return m[n] = fib(n - 1) + fib(n - 2);
+};
+
+console.log(fib(46));
