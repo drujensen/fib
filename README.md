@@ -90,7 +90,7 @@ NOTE: These languages include compilation time that should be taken into conside
 | Tcl       |     TODO | `time tclsh fib.tcl`       |
 | Lua       |     TODO | `time lua fib.lua`         |
 | R         | 1796.495 | `time r -f fib.r`          |
-| Q         |     TODO | `time q fib.q`             |
+| K         |     TODO | `time k fib.k`             |
 
 NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing.
 
