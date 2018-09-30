@@ -95,8 +95,7 @@ NOTE: Interpreted languages have a startup time cost that should be taken into c
 
 ## Optimized code that breaks the benchmark
 
-The code examples provided in the [optimized](optimized) folder use techniques that break the benchmark. The all perform at sub-second response times.  They do not perform the same internal tasks as the other examples
-so are not a good for an apples to apples comparison. It demonstrates that all benchmarks will have some caveat.
+The code examples provided in the [optimized](optimized) folder use techniques that break the benchmark. They do not perform the same internal tasks as the other examples so are not a good for an apples to apples comparison. They all perform at sub-second response times. It demonstrates that all benchmarks will have some caveat. 
 
 Several of these examples add very little changes to the original code:
  - The [C++ constexpr](optimized/fib-constexpr.cpp) is using a `constexpr` which optimizes the recursive call to a constant.
