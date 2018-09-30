@@ -10,7 +10,7 @@ class Language
   end
 
   def run
-    @compile_results = `{ time #{compile_cmd} ; } 2>&1`
+    raise "compile failed" unless system(compile_cmd)
     times = `{ time #{run_cmd} ; } 2>&1`.split("\n")[3].split("\t")[1].split(/[m,s]/)
     @run_time = (times[0].to_i * 60) + times[1].to_f
   end
@@ -28,15 +28,17 @@ languages << Language.new("Swift", :compiled, "swiftc -O -g fib.swift", "time ./
 languages << Language.new("OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml", "time ./fib")
 languages << Language.new("Haskell", :compiled, "ghc -O3 -o fib fib.hs", "time ./fib")
 languages << Language.new("Fortran", :compiled, "gfortran -O3 -o fib fib.f03", "time ./fib")
+languages << Language.new("Lisp (naive)", :compiled, "sbcl --load fib.lisp", "time ./fib")
+languages << Language.new("Lisp (GCC-like optimization)", :compiled, "sbcl --load fib-local.lisp", "time ./fib-local")
 
-languages << Language.new("Java", :vm, "javac Fib.java", "time java Fib")
-languages << Language.new("C#", :vm, "dotnet build -c Release -o ./bin", "time dotnet ./bin/fib.dll")
-languages << Language.new("C# (Mono)", :vm, "mcs fib.cs", "time mono fib.exe")
+#languages << Language.new("Java", :vm, "javac Fib.java", "time java Fib")
+#languages << Language.new("C#", :vm, "dotnet build -c Release -o ./bin", "time dotnet ./bin/fib.dll")
+#languages << Language.new("C# (Mono)", :vm, "mcs fib.cs", "time mono fib.exe")
 
-languages << Language.new("Dart", :mixed, "", "time dart fib.dart")
-languages << Language.new("Julia", :mixed, "", "time julia fib.jl")
-languages << Language.new("Node", :mixed, "", "time node fib.js")
-languages << Language.new("Elixir", :mixed, "", "time elixir fib.exs")
+#languages << Language.new("Dart", :mixed, "", "time dart fib.dart")
+#languages << Language.new("Julia", :mixed, "", "time julia -O3 fib.jl")
+#languages << Language.new("Node", :mixed, "", "time node fib.js")
+#languages << Language.new("Elixir", :mixed, "", "time elixir fib.exs")
 
 #languages << Language.new("Ruby", :interpreted, "", "time ruby fib.rb")
 #languages << Language.new("Php", :interpreted, "", "time php fib.php")
@@ -46,6 +48,8 @@ languages << Language.new("Elixir", :mixed, "", "time elixir fib.exs")
 #languages << Language.new("Perl 6", :interpreted, "", "time perl6 fib.p6")
 #languages << Language.new("R", :interpreted, "", "time r -f fib.r")
 #languages << Language.new("Tcl", :interpreted, "", "time tclsh fib.tcl")
+#languages << Language.new("Bash", :interpreted, "", "time bash fib.sh")
+#languages << Language.new("Lua", :interpreted, "", "time luajit fib.lua")
 
 languages.each do |lang|
   puts "Running #{lang.name}"
