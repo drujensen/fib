@@ -28,6 +28,8 @@ languages << Language.new("Swift", :compiled, "swiftc -O -g fib.swift", "time ./
 languages << Language.new("OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml", "time ./fib")
 languages << Language.new("Haskell", :compiled, "ghc -O3 -o fib fib.hs", "time ./fib")
 languages << Language.new("Fortran", :compiled, "gfortran -O3 -o fib fib.f03", "time ./fib")
+languages << Language.new("Lisp (naive)", :compiled, "sbcl --load fib.lisp", "time ./fib")
+languages << Language.new("Lisp (GCC-like optimization)", :compiled, "sbcl --load fib-local.lisp", "time ./fib-local")
 
 #languages << Language.new("Java", :vm, "javac Fib.java", "time java Fib")
 #languages << Language.new("C#", :vm, "dotnet build -c Release -o ./bin", "time dotnet ./bin/fib.dll")

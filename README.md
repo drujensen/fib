@@ -8,12 +8,14 @@ This code performs a recursive fibonacci to the 46th position with the result of
 
 Fibonacci can be written many different ways.  The goal of this project is to compare how each language handles the exact same code.
 
-Here is the C version:
+Here is the Crystal version:
 ```
-uint64_t fib(uint64_t n) {
-  if (n <= 1) return 1;
-  return fib(n - 1) + fib(n - 2);
-}
+def fib(n : UInt64)
+  return 1_u64 if n <= 1
+  fib(n - 1) + fib(n - 2)
+end
+
+puts fib(46)
 ```
 
 Here is the Ruby version:
@@ -22,6 +24,8 @@ def fib(n)
   return 1 if n <= 1
   fib(n - 1) + fib(n - 2)
 end
+
+puts fib(46)
 ```
 
 All tests are run on:
@@ -47,6 +51,7 @@ Last benchmark was ran on September 29, 2018
 | Haskell    |    8.143 | ghc -O3 -o fib fib.hs                         | time ./fib   |
 | Swift      |   10.550 | swiftc -O -g fib.swift                        | time ./fib   |
 | Go         |   10.863 | go build fib.go                               | time ./fib   |
+| Cython     |          | `cython3 --embed -o fib.pyx.c fib.pyx &&`<br>`gcc -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python3)` | `time ./fib` |
 
 NOTE: C and C++ compile to the exact same machine code but the C version is slower because it doesn't run at the same address in the processor.  Thanks @glandium for pointing this out. See [Issue #46](https://github.com/drujensen/fib/issues/46)
 
@@ -91,21 +96,13 @@ NOTE: Interpreted languages have a startup time cost that should be taken into c
 
 ## Optimized code that breaks the benchmark
 
-The following code examples use techniques that break the benchmark. They do not perform the same internal tasks as the other examples
-so are not a good apples to apples comparisons. It demonstrates that all benchmarks will have some caveat.
+The code examples provided in the [optimized](optimized) folder use techniques that break the benchmark. They do not perform the same internal tasks as the other examples so are not a good for an apples to apples comparison. They all perform at sub-second response times. It demonstrates that all benchmarks will have some caveat.
 
-| Language                | Time, s  | Compile                              | Run                         |
-|-------------------------|----------|--------------------------------------|-----------------------------|
-| Go (mem)                |  0.005*  | `go build -o fib fib-mem.go`         | `time ./fib`                |
-| Nim (mem)               |  0.006*  | `nim cpp -d:release fib_mem.nim`     | `time ./fib_mem`            |
-| C++ (constexpr)         |  0.086*  | `g++-8 -O3 -o fib fib-constexpr.cpp` | `time ./fib`                |
-| Node (mem)              |  0.112*  |                                      | `time node fib-mem.js`      |
-| Python (lru_cache)      |  TODO    |                                      | `time python3 fib-cache.py` |
-| Lua (mem)               |  TODO    |                                      | `time luajit fib-mem.lua`   |
-| Q (mem)                 |  TODO    |                                      | `time q fib-mem.q`          |
+Several of these examples add very little changes to the original code:
+ - The [C++ constexpr](optimized/fib-constexpr.cpp) is using a `constexpr` which optimizes the recursive call to a constant.
+ - The [Python lru_cache](optimized/fib-cache.py) is using `lru_cache` directive with no code changes.
+ - The [Ruby mem](optimized/fib-mem.rb) and [JS mem](optimized/fib-mem.js) are maintaining a simple cache in an array.
 
-**NOTE:**
-The C++ (constexpr) is using a `constexpr` which optimizes the recursive call to a constant. It was provided by [Ole Christian Eidheim](https://gitlab.com/eidheim).
 
 ## Versions
 
