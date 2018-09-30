@@ -97,7 +97,7 @@ so are not a good for an apples to apples comparison. It demonstrates that all b
 Several of these examples add very little changes to the original code:
  - The [C++ constexpr](optimized/fib-constexpr.cpp) is using a `constexpr` which optimizes the recursive call to a constant.
  - The [Python lru_cache](optimized/fib-cache.py) is using `lru_cache` directive with no code changes.
- - The [Ruby mem](optimized/fib_mem.rb) and [JS mem](optimized/fib_mem.js) are maintaining a simple cache in an array.
+ - The [Ruby mem](optimized/fib-mem.rb) and [JS mem](optimized/fib-mem.js) are maintaining a simple cache in an array.
 
 
 ## Versions
