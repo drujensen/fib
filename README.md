@@ -8,12 +8,14 @@ This code performs a recursive fibonacci to the 46th position with the result of
 
 Fibonacci can be written many different ways.  The goal of this project is to compare how each language handles the exact same code.
 
-Here is the C version:
+Here is the Crystal version:
 ```
-uint64_t fib(uint64_t n) {
-  if (n <= 1) return 1;
-  return fib(n - 1) + fib(n - 2);
-}
+def fib(n : UInt64)
+  return 1_u64 if n <= 1
+  fib(n - 1) + fib(n - 2)
+end
+
+puts fib(46)
 ```
 
 Here is the Ruby version:
@@ -22,6 +24,8 @@ def fib(n)
   return 1 if n <= 1
   fib(n - 1) + fib(n - 2)
 end
+
+puts fib(46)
 ```
 
 All tests are run on:
