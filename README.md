@@ -58,12 +58,12 @@ Last benchmark was ran on September 30, 2018
 
 ## VM compiled bytecode, statically/dynamically type
 
-| Language  | Time, s  | Compile                             | Run                               |
-|-----------|----------|-------------------------------------|-----------------------------------|
-| Java      |    7.556 | javac Fib.java                      | time java Fib                     |
-| C#        |   11.387 | dotnet build -c Release -o ./bin    | time dotnet ./bin/fib.dll         |
-| C# (Mono) |   12.310 | mcs fib.cs                          | time mono fib.exe                 |
-| Erlang    |   13.522 | erlc +native +'{hipe,[o3]}' fib.erl | time erl -noinput -noshell -s fib |
+| Language  | Time, s  | Compile                             | Run                       |
+|-----------|----------|-------------------------------------|---------------------------|
+| Java      |    7.556 | javac Fib.java                      | time java Fib             |
+| C#        |   11.387 | dotnet build -c Release -o ./bin    | time dotnet ./bin/fib.dll |
+| C# (Mono) |   12.310 | mcs fib.cs                          | time mono fib.exe         |
+| Erlang    |   13.522 | erlc +native +'{hipe,[o3]}' fib.erl | time erl -noinput -s fib  |
 
 ## VM compiled before execution, mixed/dynamically typed
 
@@ -71,7 +71,7 @@ Last benchmark was ran on September 30, 2018
 |-----------|---------|-----------------------------|
 | Dart      |    9.651 | time dart fib.dart         |
 | Julia     |   11.461 | time julia -O3 fib.jl      |
-| Escript   |   13.706 | `time escript fib.es`      |
+| Escript   |   13.706 | time escript fib.es        |
 | Elixir*   |   13.955 | time elixir fib.exs        |
 | Node      |   19.161 | time node fib.js           |
 
@@ -94,6 +94,7 @@ NOTE: These languages include compilation time that should be taken into conside
 | Tcl       |     TODO | time tclsh fib.tcl       |
 | R         | 1796.495 | time r -f fib.r          |
 | K         |     TODO | time k fib.k             |
+| Bash      |     TODO | time bash fib.sh         |
 
 NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing.
 
