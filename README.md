@@ -63,6 +63,12 @@ NOTE: C and C++ compile to the exact same machine code but the C version is slow
 | C#        |   11.387 | dotnet build -c Release -o ./bin     | time dotnet ./bin/fib.dll   |
 | C# (Mono) |   12.310 | mcs fib.cs                           | time mono fib.exe           |
 
+## VM compiled, dynamically typed
+
+| Language  | Time, s | Compile                               | Run                                 |
+|-----------|---------|---------------------------------------|-------------------------------------|
+| Erlang    |         | `erlc +native +'{hipe,[o3]}' fib.erl` | `time erl -noimput -noshell -s fib` |
+
 ## VM compiled before execution, mixed/dynamically typed
 
 | Language  | Time, s | Run                         |
@@ -71,6 +77,7 @@ NOTE: C and C++ compile to the exact same machine code but the C version is slow
 | Julia     |   11.461 | time julia -O3 fib.jl      |
 | Elixir*   |   13.955 | time elixir fib.exs        |
 | Node      |   19.161 | time node fib.js           |
+| Escript(Erlang) |          | `time escript fib.es`|
 
 * Elixir is using ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]'
 
