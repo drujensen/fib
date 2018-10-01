@@ -109,6 +109,7 @@ Several of these examples add very little changes to the original code:
  - The [C++ constexpr](optimized/fib-constexpr.cpp) is using a `constexpr` which optimizes the recursive call to a constant.
  - The [Python lru_cache](optimized/fib-cache.py) is using `lru_cache` directive with no code changes.
  - The [Ruby mem](optimized/fib-mem.rb) and [JS mem](optimized/fib-mem.js) are maintaining a simple cache in an array.
+| D (mem)         |          | `dmd -O -release fibmem.d`           | `time ./fib`           |
 
 
 ## Versions
@@ -136,6 +137,7 @@ Several of these examples add very little changes to the original code:
 - perl6 This is Rakudo Star version 2018.06 built on MoarVM version 2018.06
 - r version 3.5.0 (2018-04-23)
 - lcd2 the LLVM D compiler (1.11.0)
+- dmd the reference D compiler (2.082.0)
 - ocaml The OCaml toplevel, version 4.07.0
 - ghc The Glorious Glasgow Haskell Compilation System, version 8.4.3
 - gfortran GNU Fortran (Homebrew GCC 8.2.0) 8.2.0
