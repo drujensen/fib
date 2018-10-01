@@ -1,24 +1,19 @@
 package main
 
-import (
-	"fmt"
-)
-
-func fib(n uint64, cache []uint64) uint64 {
-	if n <= 1 {
-		return 1
+func fib(n int, cache *[]uint64) uint64 {
+	if (*cache)[n] == 0 {
+		a := fib(n-2, cache)
+		b := fib(n-1, cache)
+		(*cache)[n] = a+b
 	}
-	a, b := &cache[n-1], &cache[n-2]
-	if *a == 0 {
-		*a = fib(n-1, cache)
-	}
-	if *b == 0 {
-		*b = fib(n-2, cache)
-	}
-	return *a + *b
+	return (*cache)[n]
 }
 
 func main() {
-	cache := make([]uint64, 46)
-	fmt.Println(fib(46, cache))
+	const n = 46
+	cache := make([]uint64, n+1, n+1)
+	cache[0] = 1
+	cache[1] = 1
+	println(fib(n, &cache))
 }
+
