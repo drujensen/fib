@@ -65,9 +65,9 @@ NOTE: C and C++ compile to the exact same machine code but the C version is slow
 
 ## VM compiled, dynamically typed
 
-| Language  | Time, s | Compile                               | Run                                 |
-|-----------|---------|---------------------------------------|-------------------------------------|
-| Erlang    |         | `erlc +native +'{hipe,[o3]}' fib.erl` | `time erl -noimput -noshell -s fib` |
+| Language  | Time, s | Compile                               | Run                        |
+|-----------|---------|---------------------------------------|----------------------------|
+| Erlang    |         | `erlc +native +'{hipe,[o3]}' fib.erl` | `time erl -noinput -s fib` |
 
 ## VM compiled before execution, mixed/dynamically typed
 
