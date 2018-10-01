@@ -63,6 +63,12 @@ NOTE: C and C++ compile to the exact same machine code but the C version is slow
 | C#        |   11.387 | dotnet build -c Release -o ./bin     | time dotnet ./bin/fib.dll   |
 | C# (Mono) |   12.310 | mcs fib.cs                           | time mono fib.exe           |
 
+## VM compiled, dynamically typed
+
+| Language  | Time, s | Compile                               | Run                                 |
+|-----------|---------|---------------------------------------|-------------------------------------|
+| Erlang    |         | `erlc +native +'{hipe,[o3]}' fib.erl` | `time erl -noimput -noshell -s fib` |
+
 ## VM compiled before execution, mixed/dynamically typed
 
 | Language  | Time, s | Run                         |
@@ -71,6 +77,7 @@ NOTE: C and C++ compile to the exact same machine code but the C version is slow
 | Julia     |   11.461 | time julia -O3 fib.jl      |
 | Elixir*   |   13.955 | time elixir fib.exs        |
 | Node      |   19.161 | time node fib.js           |
+| Escript(Erlang) |          | `time escript fib.es`|
 
 * Elixir is using ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]'
 
@@ -90,12 +97,13 @@ NOTE: These languages include compilation time that should be taken into conside
 | Tcl       |     TODO | `time tclsh fib.tcl`       |
 | Lua       |     TODO | `time lua fib.lua`         |
 | R         | 1796.495 | `time r -f fib.r`          |
+| K         |     TODO | `time k fib.k`             |
 
 NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing.
 
 ## Optimized code that breaks the benchmark
 
-The code examples provided in the [optimized](optimized) folder use techniques that break the benchmark. They do not perform the same internal tasks as the other examples so are not a good for an apples to apples comparison. They all perform at sub-second response times. It demonstrates that all benchmarks will have some caveat. 
+The code examples provided in the [optimized](optimized) folder use techniques that break the benchmark. They do not perform the same internal tasks as the other examples so are not a good for an apples to apples comparison. They all perform at sub-second response times. It demonstrates that all benchmarks will have some caveat.
 
 Several of these examples add very little changes to the original code:
  - The [C++ constexpr](optimized/fib-constexpr.cpp) is using a `constexpr` which optimizes the recursive call to a constant.
