@@ -34,29 +34,29 @@ All tests are run on:
  - Processor: 3.2 GHz Intel Core i5
  - Memory: 16 GB 1867 MHz DDR3
 
-Last benchmark was ran on September 30, 2018
+Last benchmark was ran on October 1st, 2018
 
 ## Natively compiled, statically typed
 
-| Language   | Time, s   | Compile                                      | Run          |
-|------------|-----------|----------------------------------------------|--------------|
-| Nim        |    4.696 | nim cpp -d:release fib.nim                    | time ./fib   |
-| C          |    4.697 | gcc -O3 -o fib fib.c                          | time ./fib   |
-| C++        |    4.700 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
-| Crystal    |    5.843 | crystal build --release fib.cr                | time ./fib   |
-| Cython     |    6.013 | cython --embed -o fib.pyx.c fib.pyx && \      |              |
-|            |          |        gcc -O3 -o fib fib.pyx.c \             |              |
-|            |          |        $(pkg-config --cflags --libs python3)  | time ./fib   |
-| Fortran    |    6.191 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
-| Rust       |    6.677 | rustc -O fib.rs                               | time ./fib   |
-| D          |    7.264 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
-| Haskell    |    8.207 | ghc -O3 -o fib fib.hs                         | time ./fib   |
-| OCaml      |    8.241 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
-| Swift      |   10.742 | swiftc -O -g fib.swift                        | time ./fib   |
-| Go         |   11.055 | go build fib.go                               | time ./fib   |
-| Lisp       |   13.463 | sbcl --load fib.lisp                          | time ./fib   |
+| Language  | Time, s   | Compile                                      | Run          |
+|-----------|-----------|----------------------------------------------|--------------|
+| Nim       |    4.696 | nim cpp -d:release fib.nim                    | time ./fib   |
+| C         |    4.697 | gcc -O3 -o fib fib.c                          | time ./fib   |
+| C++       |    4.700 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
+| Crystal   |    5.843 | crystal build --release fib.cr                | time ./fib   |
+| Cython    |    6.013 | cython --embed -o fib.pyx.c fib.pyx && \      |              |
+|           |          |        gcc -O3 -o fib fib.pyx.c \             |              |
+|           |          |        $(pkg-config --cflags --libs python3)  | time ./fib   |
+| Fortran   |    6.191 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
+| Rust      |    6.677 | rustc -O fib.rs                               | time ./fib   |
+| D         |    7.264 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
+| Swift     |    7.319 | swiftc -O -g fib.swift                        | time ./fib   |
+| Haskell   |    8.207 | ghc -O3 -o fib fib.hs                         | time ./fib   |
+| OCaml     |    8.241 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
+| Go        |   11.055 | go build fib.go                               | time ./fib   |
+| Lisp      |   13.463 | sbcl --load fib.lisp                          | time ./fib   |
 
-## VM compiled bytecode, statically/dynamically type
+## VM compiled bytecode, statically/dynamically typed
 
 | Language  | Time, s  | Compile                             | Run                       |
 |-----------|----------|-------------------------------------|---------------------------|
@@ -67,13 +67,14 @@ Last benchmark was ran on September 30, 2018
 
 ## VM compiled before execution, mixed/dynamically typed
 
-| Language  | Time, s | Run                         |
-|-----------|---------|-----------------------------|
-| Dart      |    9.651 | time dart fib.dart         |
-| Julia     |   11.461 | time julia -O3 fib.jl      |
-| Escript   |   13.706 | time escript fib.es        |
-| Elixir*   |   13.955 | time elixir fib.exs        |
-| Node      |   19.161 | time node fib.js           |
+| Language  | Time, s  | Run                      |
+|-----------|----------|--------------------------|
+| Dart      |    9.651 | time dart fib.dart       |
+| Julia     |   11.461 | time julia -O3 fib.jl    |
+| Escript   |   13.706 | time escript fib.es      |
+| Elixir*   |   13.955 | time elixir fib.exs      |
+| Node      |   19.161 | time node fib.js         |
+| Clojure   |   27.233 | time clojure fib.cljc    |
 
 * Elixir is using ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]'
 
@@ -86,15 +87,15 @@ NOTE: These languages include compilation time that should be taken into conside
 | Scheme    |  150.454 | time guile fib.scm       |
 | Php       |  198.279 | time php fib.php         |
 | Ruby      |  200.168 | time ruby fib.rb         |
-| Lua       |  280.999 | time lua fib.lua         |
+| Lua       |  351.117 | time lua fib.lua         |
 | Python    |  515.008 | time python fib.py       |
 | Python3   |  770.082 | time python3 fib.py      |
 | Perl      | 1039.727 | time perl fib.pl         |
-| Perl 6    | 2851.994 | time perl6 fib.p6        |
-| Tcl       |     TODO | time tclsh fib.tcl       |
 | R         | 1796.495 | time r -f fib.r          |
+| Tcl       | 2040.860 | time tclsh fib.tcl       |
+| Perl6     | 2851.994 | time perl6 fib.p6        |
 | K         |     TODO | time k fib.k             |
-| Bash      |     TODO | time bash fib.sh         |
+| Bash      |      DNF | time bash fib.sh         |
 
 NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing.
 
@@ -110,32 +111,37 @@ Several of these examples add very little changes to the original code that are 
 
 ## Versions
 
-- go version go1.11 darwin/amd64
-- g++-8 (Homebrew GCC 8.2.0) 8.2.0
-- crystal Crystal 0.26.1 (2018-08-27) LLVM: 6.0.1
 - g++ Apple LLVM version 10.0.0 (clang-1000.11.45.2)
 - gcc Apple LLVM version 10.0.0 (clang-1000.11.45.2)
 - nim Nim Compiler Version 0.18.0 [MacOSX: amd64]
-- swiftc Apple Swift version 4.2 (swiftlang-1000.11.37.1 clang-1000.11.45.1)
+- crystal Crystal 0.26.1 (2018-08-27) LLVM: 6.0.1
+- cython Cython version 0.28.5
+- gfortan GNU Fortran (Homebrew GCC 8.2.0) 8.2.0
 - rustc 1.29.0
+- lcd2 the LLVM D compiler (1.11.0)
+- swiftc Apple Swift version 4.2 (swiftlang-1000.11.37.1 clang-1000.11.45.1)
+- ghc The Glorious Glasgow Haskell Compilation System, version 8.4.3
+- ocaml The OCaml toplevel, version 4.07.0
+- go version go1.11 darwin/amd64
+- lisp SBCL 1.4.11
 - javac 10.0.1
-- mcs Mono C# compiler version 5.12.0.226
 - dotnet 2.1.4
+- mcs Mono C# compiler version 5.12.0.226
+- erlc 21.1
 - dart Dart VM version: 2.0.0 (Fri Aug 3 10:53:23 2018 +0200)
 - julia version 0.6.3
-- node v9.4.0
 - elixir Elixir 1.7.3 (compiled with Erlang/OTP 21)
-- ruby 2.5.1p57 (2018-03-29 revision 63029)
+- node v9.4.0
+- clojure 1.9.0
+- guile (GNU Guile) 2.2.4
 - php 7.1.16 (cli) (built: Apr  1 2018 13:14:42)
+- ruby 2.5.1p57 (2018-03-29 revision 63029)
 - python 2.7.15
 - python3 3.7.0
 - perl 5, version 26, subversion 2 (v5.26.2)
-- perl6 This is Rakudo Star version 2018.06 built on MoarVM version 2018.06
+- perl 6 This is Rakudo Star version 2018.06 built on MoarVM version 2018.06
+- lua Lua 5.3.5  Copyright (C) 1994-2018 Lua.org, PUC-Rio
 - r version 3.5.0 (2018-04-23)
-- lcd2 the LLVM D compiler (1.11.0)
-- ocaml The OCaml toplevel, version 4.07.0
-- ghc The Glorious Glasgow Haskell Compilation System, version 8.4.3
-- gfortran GNU Fortran (Homebrew GCC 8.2.0) 8.2.0
 - tchsh 8.5
 
 ## Caveats
