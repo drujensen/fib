@@ -68,11 +68,11 @@ puts "Last benchmark was ran on #{Time.now.strftime("%B %d, %Y")}"
 puts ""
 puts "## Natively compiled, statically typed"
 puts ""
-puts "| Language   | Time, s   | Compile                                      | Run          |"
-puts "|------------|-----------|----------------------------------------------|--------------|"
+puts "| Language | Time, s  | Compile                                       | Run          |"
+puts "|----------|----------|-----------------------------------------------|--------------|"
 languages.select {|l| l.type == :compiled}.sort_by {|l| l.run_time}.each do |lang|
     results = []
-    results << lang.name.ljust(10, " ")
+    results << lang.name.ljust(8, " ")
     results << ("%.3f" % lang.run_time).rjust(8, " ")
     results << lang.compile_cmd.ljust(45, " ")
     results << lang.run_cmd.ljust(12, " ")
@@ -82,27 +82,27 @@ end
 puts ""
 puts "## VM compiled bytecode, statically typed"
 puts ""
-puts "| Language  | Time, s | Compile                            | Run                         |"
-puts "|-----------|---------|------------------------------------|-----------------------------|"
+puts "| Language | Time, s  | Compile                              | Run                       |"
+puts "|----------|----------|--------------------------------------|---------------------------|"
 languages.select {|l| l.type == :vm}.sort_by {|l| l.run_time}.each do |lang|
     results = []
-    results << lang.name.ljust(9, " ")
+    results << lang.name.ljust(8, " ")
     results << ("%.3f" % lang.run_time).rjust(8, " ")
     results << lang.compile_cmd.ljust(36, " ")
-    results << lang.run_cmd.ljust(27, " ")
+    results << lang.run_cmd.ljust(25, " ")
     puts "| #{results.join(" | ")} |"
 end
 
 puts ""
 puts "## VM compiled before execution, mixed/dynamically typed"
 puts ""
-puts "| Language  | Time, s | Run                         |"
-puts "|-----------|---------|-----------------------------|"
+puts "| Language | Time, s  | Run                       |"
+puts "|----------|----------|---------------------------|"
 languages.select {|l| l.type == :mixed}.sort_by {|l| l.run_time}.each do |lang|
     results = []
-    results << lang.name.ljust(9, " ")
+    results << lang.name.ljust(8, " ")
     results << ("%.3f" % lang.run_time).rjust(8, " ")
-    results << lang.run_cmd.ljust(27, " ")
+    results << lang.run_cmd.ljust(25, " ")
     puts "| #{results.join(" | ")} |"
 end
 puts ""
@@ -110,12 +110,14 @@ puts "NOTE: These languages include compilation time which should be taken into 
 puts ""
 puts "## Interpreted, dynamically typed"
 puts ""
-puts "| Language  | Time, s | Run                         |"
-puts "|-----------|---------|-----------------------------|"
+puts "| Language | Time, s  | Run                       |"
+puts "|----------|----------|---------------------------|"
 languages.select {|l| l.type == :interpreted}.sort_by {|l| l.run_time}.each do |lang|
     results = []
-    results << lang.name.ljust(9, " ")
+    results << lang.name.ljust(8, " ")
     results << ("%.3f" % lang.run_time).rjust(8, " ")
-    results << lang.run_cmd.ljust(27, " ")
+    results << lang.run_cmd.ljust(25, " ")
     puts "| #{results.join(" | ")} |"
 end
+puts ""
+puts "NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing."

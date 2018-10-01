@@ -38,8 +38,8 @@ Last benchmark was ran on October 1st, 2018
 
 ## Natively compiled, statically typed
 
-| Language  | Time, s   | Compile                                      | Run          |
-|-----------|-----------|----------------------------------------------|--------------|
+| Language  | Time, s  | Compile                                       | Run          |
+|-----------|----------|-----------------------------------------------|--------------|
 | Nim       |    4.696 | nim cpp -d:release fib.nim                    | time ./fib   |
 | C         |    4.697 | gcc -O3 -o fib fib.c                          | time ./fib   |
 | C++       |    4.700 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
