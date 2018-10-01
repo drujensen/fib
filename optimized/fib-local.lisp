@@ -1,16 +1,3 @@
-
-#|
-
-compile (sbcl):   sbcl --load fib-local.lisp
-compile (ccl):    ccl  --load fib-local.lisp
-
-
-run:
-
-time ./fib-local
-
-|#
-
 #+sbcl
 (progn
   ;; In C, compiler optimizes the code...

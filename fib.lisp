@@ -1,17 +1,3 @@
-
-#|
-
-compile (sbcl):   sbcl --load fib.lisp
-compile (ccl):    ccl  --load fib.lisp
-
-
-run:
-
-time ./fib
-
-|#
-
-
 (declaim (optimize (speed 3) (debug 0) (safety 0)))
 (declaim (ftype    (function (fixnum) fixnum) fib))
 (defun fib (n)
@@ -28,4 +14,3 @@ time ./fib
 
 #+ccl
 (ccl:save-application "fib" :toplevel-function #'main :prepend-kernel t)
-
