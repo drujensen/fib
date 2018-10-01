@@ -1,4 +1,4 @@
-#!/opt/nlytiq/bin/perl
+#!/usr/bin/env perl
 
 use Inline C => <<'...';
  
