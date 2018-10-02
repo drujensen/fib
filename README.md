@@ -40,41 +40,41 @@ Last benchmark was ran on October 1st, 2018
 
 | Language  | Time, s  | Compile                                       | Run          |
 |-----------|----------|-----------------------------------------------|--------------|
-| Nim       |    4.696 | nim cpp -d:release fib.nim                    | time ./fib   |
-| C         |    4.697 | gcc -O3 -o fib fib.c                          | time ./fib   |
-| C++       |    4.700 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
-| Crystal   |    5.843 | crystal build --release fib.cr                | time ./fib   |
-| Cython    |    6.013 | cython --embed -o fib.pyx.c fib.pyx && \      |              |
+| C         |    4.528 | gcc -O3 -o fib fib.c                          | time ./fib   |
+| Nim       |    4.538 | nim cpp -d:release fib.nim                    | time ./fib   |
+| C++       |    4.540 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
+| Crystal   |    5.616 | crystal build --release fib.cr                | time ./fib   |
+| Cython    |    5.790 | cython --embed -o fib.pyx.c fib.pyx && \      |              |
 |           |          |        gcc -O3 -o fib fib.pyx.c \             |              |
 |           |          |        $(pkg-config --cflags --libs python3)  | time ./fib   |
-| Fortran   |    6.191 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
-| Rust      |    6.677 | rustc -O fib.rs                               | time ./fib   |
-| D         |    7.264 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
-| Swift     |    7.319 | swiftc -O -g fib.swift                        | time ./fib   |
-| Haskell   |    8.207 | ghc -O3 -o fib fib.hs                         | time ./fib   |
-| OCaml     |    8.241 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
-| Go        |   11.055 | go build fib.go                               | time ./fib   |
-| Lisp      |   13.463 | sbcl --load fib.lisp                          | time ./fib   |
+| Fortran   |    6.000 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
+| Rust      |    6.401 | rustc -O fib.rs                               | time ./fib   |
+| D         |    6.900 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
+| Swift     |    6.843 | swiftc -O -g fib.swift                        | time ./fib   |
+| Haskell   |    7.864 | ghc -O3 -o fib fib.hs                         | time ./fib   |
+| OCaml     |    7.889 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
+| Go        |   10.481 | go build fib.go                               | time ./fib   |
+| Lisp      |   13.116 | sbcl --load fib.lisp                          | time ./fib   |
 
 ## VM compiled bytecode, statically/dynamically typed
 
 | Language  | Time, s  | Compile                             | Run                       |
 |-----------|----------|-------------------------------------|---------------------------|
-| Java      |    7.556 | javac Fib.java                      | time java Fib             |
-| C#        |   11.387 | dotnet build -c Release -o ./bin    | time dotnet ./bin/fib.dll |
-| C# (Mono) |   12.310 | mcs fib.cs                          | time mono fib.exe         |
-| Erlang    |   13.522 | erlc +native +'{hipe,[o3]}' fib.erl | time erl -noinput -s fib  |
+| Java      |    7.311 | javac Fib.java                      | time java Fib             |
+| C#        |   11.176 | dotnet build -c Release -o ./bin    | time dotnet ./bin/fib.dll |
+| C# (Mono) |   11.955 | mcs fib.cs                          | time mono fib.exe         |
+| Erlang    |   13.170 | erlc +native +'{hipe,[o3]}' fib.erl | time erl -noinput -s fib  |
 
 ## VM compiled before execution, mixed/dynamically typed
 
 | Language  | Time, s  | Run                      |
 |-----------|----------|--------------------------|
-| Dart      |    9.651 | time dart fib.dart       |
-| Julia     |   11.461 | time julia -O3 fib.jl    |
-| Escript   |   13.706 | time escript fib.es      |
-| Elixir*   |   13.955 | time elixir fib.exs      |
-| Node      |   19.161 | time node fib.js         |
-| Clojure   |   27.233 | time clojure fib.cljc    |
+| Dart      |   10.193 | time dart fib.dart       |
+| Escript   |   12.652 | time escript fib.es      |
+| Julia     |   13.348 | time julia -O3 fib.jl    |
+| Elixir*   |   13.853 | time elixir fib.exs      |
+| Node      |   19.277 | time node fib.js         |
+| Clojure   |   24.008 | time clojure fib.cljc    |
 
 * Elixir is using ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]'
 
@@ -94,7 +94,7 @@ NOTE: These languages include compilation time that should be taken into conside
 | R         | 1796.495 | time r -f fib.r          |
 | Tcl       | 2040.860 | time tclsh fib.tcl       |
 | Perl6     | 2851.994 | time perl6 fib.p6        |
-| K         |     TODO | time k fib.k             |
+| K         |      DNF | time k fib.k             |
 | Bash      |      DNF | time bash fib.sh         |
 
 NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing.
