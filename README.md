@@ -142,6 +142,11 @@ Several of these examples add very little changes to the original code that are 
 - perl 6 This is Rakudo Star version 2018.06 built on MoarVM version 2018.06
 - lua Lua 5.3.5  Copyright (C) 1994-2018 Lua.org, PUC-Rio
 - r version 3.5.0 (2018-04-23)
+- lcd2 the LLVM D compiler (1.11.0)
+- dmd the reference D compiler (2.082.0)
+- ocaml The OCaml toplevel, version 4.07.0
+- ghc The Glorious Glasgow Haskell Compilation System, version 8.4.3
+- gfortran GNU Fortran (Homebrew GCC 8.2.0) 8.2.0
 - tchsh 8.5
 
 ## Caveats
