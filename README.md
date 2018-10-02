@@ -56,6 +56,10 @@ Last benchmark was ran on October 1st, 2018
 | Go        |   10.481 | go build fib.go                               | time ./fib   |
 | Lisp      |   13.116 | sbcl --load fib.lisp                          | time ./fib   |
 
+NOTE: 
+- Some of these languages perform runtime safety checks while others do not.
+- Interesting observation about [code alignment and benchmarks](https://github.com/drujensen/fib/issues/46)
+
 ## VM compiled bytecode, statically/dynamically typed
 
 | Language  | Time, s  | Compile                             | Run                       |
@@ -64,6 +68,8 @@ Last benchmark was ran on October 1st, 2018
 | C#        |   11.176 | dotnet build -c Release -o ./bin    | time dotnet ./bin/fib.dll |
 | C# (Mono) |   11.955 | mcs fib.cs                          | time mono fib.exe         |
 | Erlang    |   13.170 | erlc +native +'{hipe,[o3]}' fib.erl | time erl -noinput -s fib  |
+
+NOTE: These languages incur a cost for loading the VM that should be taken into consideration when comparing.
 
 ## VM compiled before execution, mixed/dynamically typed
 
@@ -108,6 +114,36 @@ Several of these examples add very little changes to the original code that are 
  - The [Lisp compiletime](optimized/fib-compiletime.lisp) shows how you can perform the calculation at compile time. simply add `#.` before outputing the results.
  - The [Python lru_cache](optimized/fib-cache.py) is using `lru_cache` directive with no code changes.
  - The [Ruby mem](optimized/fib-mem.rb) and [JS mem](optimized/fib-mem.js) are maintaining a simple cache to avoid recalculating the results for that value.
+
+For the fun of it, here are the benchmarks for the optimized versions
+
+Last benchmark was ran on October 02, 2018
+
+## Optimized
+
+| Language | Time, s | Compile | Run |
+|----------|---------|---------|-----|
+| Nim Constant |    0.003 | nim cpp -d:release fib_const.nim | time ./fib_cont |
+| OCaml TCO |    0.005 | ocamlopt -O3 -o fib_tail fib_tail.ml | time ./fib_tail |
+| Lua Memoized |    0.005 |  | time lua fib-mem.lua |
+| Perl Memoized 2 |    0.005 |  | time perl fib-mem2.pl |
+| Swift Memoized |    0.005 | swiftc -O -g fib-mem.swift | time ./fib-mem |
+| Haskell Memoized |    0.005 | ghc -O3 -o fib_mem fib_mem.hs | time ./fib_mem |
+| K Memoized |    0.006 |  | time k fib-mem.k |
+| Go Memoized |    0.006 | go build fib-mem.go | time ./fib-mem |
+| Nim Memoized |    0.006 | nim cpp -d:release fib_mem.nim | time ./fib_mem |
+| C++ Constant |    0.007 | g++-8 -O3 -o fib-const fib-constexpr.cpp | time ./fib-const |
+| Lisp Compile Time |    0.007 | sbcl --load fib-compiletime.lisp | time ./fib-compiletime |
+| Perl Inline |    0.008 |  | time perl fib-inline.py |
+| Perl Memoized |    0.012 |  | time perl fib-mem.pl |
+| D Memoized |    0.021 | ldc2 -O3 -release -flto=full -of=fib-mem fib-mem.d | time ./fib-mem |
+| Python Cached |    0.030 |  | time python3 fib-cache.py |
+| Node Memoized |    0.068 |  | time node fib-mem.js |
+| Ruby Memoized |    0.078 |  | time ruby fib-mem.rb |
+| Erlang Memoized |    0.089 | erlc +native +'{hipe,[o3]}' fib_mem.erl | time erl -noinput -noshell -s fib_mem |
+| Escript Memoized |    0.130 |  | time escript fib_mem.es |
+| Perl6 Memoized |    0.232 |  | time perl6 fib-mem.p6 |
+| Lisp Local |    7.272 | sbcl --load fib-local.lisp | time ./fib-local |
 
 ## Versions
 
