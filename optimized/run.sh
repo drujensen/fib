@@ -42,7 +42,7 @@ languages << Language.new("Haskell Memoized", :optimized, "ghc -O3 -o fib_mem fi
 #languages << Language.new("Haskell TCO", :optimized, "ghc -O3 -o fib_tail fib_tail.hs", "time ./fib_tail")
 #languages << Language.new("Rust Memoized", :optimized, "rustc -O fib_mem.rs", "time ./fib_mem")
 languages << Language.new("OCaml TCO", :optimized, "ocamlopt -O3 -o fib_tail fib_tail.ml", "time ./fib_tail")
-languages << Language.new("Elixir Iterative", :optimized, "time elixir fib-iterative.exs")
+languages << Language.new("Elixir Iterative", :optimized, "", "time elixir fib-iterative.exs")
 
 languages.each do |lang|
   puts "Running #{lang.name}"
