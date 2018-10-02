@@ -56,6 +56,10 @@ Last benchmark was ran on October 1st, 2018
 | Go        |   10.481 | go build fib.go                               | time ./fib   |
 | Lisp      |   13.116 | sbcl --load fib.lisp                          | time ./fib   |
 
+NOTE: 
+- Some of these languages perform runtime safety checks while others do not.
+- Interesting observation about [code alignment and benchmarks](https://github.com/drujensen/fib/issues/46)
+
 ## VM compiled bytecode, statically/dynamically typed
 
 | Language  | Time, s  | Compile                             | Run                       |
@@ -64,6 +68,8 @@ Last benchmark was ran on October 1st, 2018
 | C#        |   11.176 | dotnet build -c Release -o ./bin    | time dotnet ./bin/fib.dll |
 | C# (Mono) |   11.955 | mcs fib.cs                          | time mono fib.exe         |
 | Erlang    |   13.170 | erlc +native +'{hipe,[o3]}' fib.erl | time erl -noinput -s fib  |
+
+NOTE: These languages incur a cost for loading the VM that should be taken into consideration when comparing.
 
 ## VM compiled before execution, mixed/dynamically typed
 
