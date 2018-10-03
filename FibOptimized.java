@@ -5,14 +5,13 @@ import java.time.*;
  * This class tries to compute a fibonacci number without using recursion
  */
 public class FibOptimized{
-    // It is initialized to the first fibonacci number in the series
-    private static BigInteger fibOne = new BigInteger("1");
-    // It is initialized to the second fibonacci number in the series
-    private static BigInteger fibTwo = new BigInteger("1");
-    // This is a counter used as a cursor over the fibonacci series
-    private static long count = 0;
-
     private static BigInteger fibonacci(long i){
+        // It is initialized to the first fibonacci number in the series
+        BigInteger fibOne = new BigInteger("1");
+        // It is initialized to the second fibonacci number in the series
+        BigInteger fibTwo = new BigInteger("1");
+        // This is a counter used as a cursor over the fibonacci series
+        long count = 0;
         // We will loop over all numbers until we reach "i"
         for(int s = 0; s <= i; s++){
             // For the first two fibonacci numbers, we can return with a no ops since fibOne and fibTwo are already set with the correct answer
