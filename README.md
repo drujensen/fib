@@ -117,10 +117,6 @@ Several of these examples add very little changes to the original code that are 
 
 For the fun of it, here are the benchmarks for the optimized versions
 
-Last benchmark was ran on October 02, 2018
-
-## Optimized
-
 Last benchmark was ran on October 05, 2018
 
 ## Optimized
