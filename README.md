@@ -121,29 +121,35 @@ Last benchmark was ran on October 02, 2018
 
 ## Optimized
 
+Last benchmark was ran on October 05, 2018
+
+## Optimized
+
 | Language | Time, s | Compile | Run |
 |----------|---------|---------|-----|
-| Nim Constant |    0.003 | nim cpp -d:release fib_const.nim | time ./fib_cont |
-| OCaml TCO |    0.005 | ocamlopt -O3 -o fib_tail fib_tail.ml | time ./fib_tail |
-| Lua Memoized |    0.005 |  | time lua fib-mem.lua |
+| Nim Constant |    0.002 | nim cpp -d:release fib_const.nim | time ./fib_cont |
 | Perl Memoized 2 |    0.005 |  | time perl fib-mem2.pl |
-| Swift Memoized |    0.005 | swiftc -O -g fib-mem.swift | time ./fib-mem |
-| Haskell Memoized |    0.005 | ghc -O3 -o fib_mem fib_mem.hs | time ./fib_mem |
-| K Memoized |    0.006 |  | time k fib-mem.k |
+| OCaml TCO |    0.005 | ocamlopt -O3 -o fib_tail fib_tail.ml | time ./fib_tail |
+| Perl Inline |    0.006 |  | time perl fib-inline.py |
 | Go Memoized |    0.006 | go build fib-mem.go | time ./fib-mem |
+| Haskell Memoized |    0.006 | ghc -O3 -o fib_mem fib_mem.hs | time ./fib_mem |
 | Nim Memoized |    0.006 | nim cpp -d:release fib_mem.nim | time ./fib_mem |
+| Swift Memoized |    0.006 | swiftc -O -g fib-mem.swift | time ./fib-mem |
 | C++ Constant |    0.007 | g++-8 -O3 -o fib-const fib-constexpr.cpp | time ./fib-const |
-| Lisp Compile Time |    0.007 | sbcl --load fib-compiletime.lisp | time ./fib-compiletime |
-| Perl Inline |    0.008 |  | time perl fib-inline.py |
-| Perl Memoized |    0.012 |  | time perl fib-mem.pl |
-| D Memoized |    0.021 | ldc2 -O3 -release -flto=full -of=fib-mem fib-mem.d | time ./fib-mem |
-| Python Cached |    0.030 |  | time python3 fib-cache.py |
-| Node Memoized |    0.068 |  | time node fib-mem.js |
-| Ruby Memoized |    0.078 |  | time ruby fib-mem.rb |
-| Erlang Memoized |    0.089 | erlc +native +'{hipe,[o3]}' fib_mem.erl | time erl -noinput -noshell -s fib_mem |
-| Escript Memoized |    0.130 |  | time escript fib_mem.es |
-| Perl6 Memoized |    0.232 |  | time perl6 fib-mem.p6 |
-| Lisp Local |    7.272 | sbcl --load fib-local.lisp | time ./fib-local |
+| D Memoized |    0.007 | ldc2 -O3 -release -flto=full -of=fib-mem fib-mem.d | time ./fib-mem |
+| Lisp Compile Time |    0.008 | sbcl --load fib-compiletime.lisp | time ./fib-compiletime |
+| Perl Memoized |    0.014 |  | time perl fib-mem.pl |
+| K Memoized |    0.055 |  | time k fib-mem.k |
+| Erlang Memoized |    0.113 | erlc +native +'{hipe,[o3]}' fib_mem.erl | time erl -noinput -noshell -s fib_mem |
+| Python Cached |    0.116 |  | time python3 fib-cache.py |
+| Lua Memoized |    0.121 |  | time lua fib-mem.lua |
+| Escript Memoized |    0.136 |  | time escript fib_mem.es |
+| Ruby Memoized |    0.183 |  | time ruby fib-mem.rb |
+| Java Iterative |    0.199 | javac FibOptimized.java | time java FibOptimized |
+| Elixir Iterative |    0.700 |  | time elixir fib-iterative.exs |
+| Node Memoized |    0.835 |  | time node fib-mem.js |
+| Perl6 Memoized |    1.005 |  | time perl6 fib-mem.p6 |
+| Lisp Local |    7.550 | sbcl --load fib-local.lisp | time ./fib-local |
 
 ## Versions
 

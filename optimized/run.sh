@@ -22,7 +22,7 @@ languages = []
 languages << Language.new("Python Cached", :optimized, "", "time python3 fib-cache.py")
 languages << Language.new("Lisp Compile Time", :optimized, "sbcl --load fib-compiletime.lisp", "time ./fib-compiletime")
 languages << Language.new("Lisp Local", :optimized, "sbcl --load fib-local.lisp", "time ./fib-local")
-languages << Language.new("C++ Constant", :optimized, "g++-8 -O3 -o fib-const fib-constexpr.cpp", "time ./fib-const")
+#languages << Language.new("C++ Constant", :optimized, "g++-8 -O3 -o fib-const fib-constexpr.cpp", "time ./fib-const")
 languages << Language.new("D Memoized", :optimized, "ldc2 -O3 -release -flto=full -of=fib-mem fib-mem.d", "time ./fib-mem")
 languages << Language.new("Go Memoized", :optimized, "go build fib-mem.go", "time ./fib-mem")
 languages << Language.new("Node Memoized", :optimized, "", "time node fib-mem.js")
@@ -39,10 +39,11 @@ languages << Language.new("Swift Memoized", :optimized, "swiftc -O -g fib-mem.sw
 languages << Language.new("Erlang Memoized", :optimized, "erlc +native +'{hipe,[o3]}' fib_mem.erl", "time erl -noinput -noshell -s fib_mem")
 languages << Language.new("Escript Memoized", :optimized, "", "time escript fib_mem.es")
 languages << Language.new("Haskell Memoized", :optimized, "ghc -O3 -o fib_mem fib_mem.hs", "time ./fib_mem")
-#languages << Language.new("Haskell TCO", :optimized, "ghc -O3 -o fib_tail fib_tail.hs", "time ./fib_tail")
-#languages << Language.new("Rust Memoized", :optimized, "rustc -O fib_mem.rs", "time ./fib_mem")
 languages << Language.new("OCaml TCO", :optimized, "ocamlopt -O3 -o fib_tail fib_tail.ml", "time ./fib_tail")
 languages << Language.new("Elixir Iterative", :optimized, "", "time elixir fib-iterative.exs")
+languages << Language.new("Java Iterative", :optimized, "javac FibOptimized.java", "time java FibOptimized")
+#languages << Language.new("Haskell TCO", :optimized, "ghc -O3 -o fib_tail fib_tail.hs", "time ./fib_tail")
+#languages << Language.new("Rust Memoized", :optimized, "rustc -O fib_mem.rs", "time ./fib_mem")
 
 languages.each do |lang|
   puts "Running #{lang.name}"
