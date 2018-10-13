@@ -12,8 +12,8 @@
               cached
               (setf (aref cache n)
                     (the fixnum
-                         (+ (fib (1- n))
-                            (fib (- n 2))))))))))
+                         (+ (fib (- n 2))
+                            (fib (1- n))))))))))
 
 (defun main ()
   (write (fib 46)))
