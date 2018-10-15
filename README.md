@@ -34,27 +34,26 @@ All tests are run on:
  - Processor: 3.2 GHz Intel Core i5
  - Memory: 16 GB 1867 MHz DDR3
 
-Last benchmark was ran on October 1st, 2018
+Last benchmark was ran on October 15, 2018
 
 ## Natively compiled, statically typed
 
-| Language  | Time, s  | Compile                                       | Run          |
-|-----------|----------|-----------------------------------------------|--------------|
-| C         |    4.528 | gcc -O3 -o fib fib.c                          | time ./fib   |
-| Nim       |    4.538 | nim cpp -d:release fib.nim                    | time ./fib   |
-| C++       |    4.540 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
-| Crystal   |    5.616 | crystal build --release fib.cr                | time ./fib   |
-| Cython    |    5.790 | cython --embed -o fib.pyx.c fib.pyx && \      |              |
-|           |          |        gcc -O3 -o fib fib.pyx.c \             |              |
-|           |          |        $(pkg-config --cflags --libs python3)  | time ./fib   |
-| Fortran   |    6.000 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
-| Rust      |    6.401 | rustc -O fib.rs                               | time ./fib   |
-| D         |    6.900 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
-| Swift     |    6.843 | swiftc -O -g fib.swift                        | time ./fib   |
-| Haskell   |    7.864 | ghc -O3 -o fib fib.hs                         | time ./fib   |
-| OCaml     |    7.889 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
-| Go        |   10.481 | go build fib.go                               | time ./fib   |
-| Lisp      |   13.116 | sbcl --load fib.lisp                          | time ./fib   |
+| Language | Time, s  | Compile                                       | Run          |
+|----------|----------|-----------------------------------------------|--------------|
+| C        |    4.655 | gcc -O3 -o fib fib.c                          | time ./fib   |
+| C++      |    4.657 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
+| Pony     |    5.577 | ponyc -s -b fib -p ./pony.fib                 | time ./fib   |
+| Cython   |    5.903 | cython --embed -o fib.pyx.c fib.pyx && gcc -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python3) | time ./fib   |
+| D        |    6.011 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
+| Nim      |    6.022 | nim cpp -d:release fib.nim                    | time ./fib   |
+| Rust     |    6.100 | rustc -O fib.rs                               | time ./fib   |
+| Fortran  |    6.178 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
+| Crystal  |    6.595 | crystal build --release fib.cr                | time ./fib   |
+| Swift    |    6.954 | swiftc -O -g fib.swift                        | time ./fib   |
+| Haskell  |    8.072 | ghc -O3 -o fib fib.hs                         | time ./fib   |
+| OCaml    |    8.097 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
+| Go       |   10.945 | go build fib.go                               | time ./fib   |
+| Lisp     |   13.380 | sbcl --load fib.lisp                          | time ./fib   |
 
 NOTE: 
 - Some of these languages perform runtime safety checks while others do not.
@@ -185,6 +184,7 @@ Last benchmark was ran on October 05, 2018
 - ocaml The OCaml toplevel, version 4.07.0
 - ghc The Glorious Glasgow Haskell Compilation System, version 8.4.3
 - gfortran GNU Fortran (Homebrew GCC 8.2.0) 8.2.0
+- ponyc 0.25.0 compiled with: llvm 3.9.1
 - tchsh 8.5
 
 ## Caveats
