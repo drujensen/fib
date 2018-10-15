@@ -43,7 +43,7 @@ Last benchmark was ran on October 15, 2018
 | C        |    4.655 | gcc -O3 -o fib fib.c                          | time ./fib   |
 | C++      |    4.657 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
 | Pony     |    5.577 | ponyc -s -b fib -p ./pony.fib                 | time ./fib   |
-| Cython   |    5.903 | cython --embed -o fib.pyx.c fib.pyx && gcc -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python3) | time ./fib   |
+| Cython   |    5.903 | cython --embed -o fib.pyx.c fib.pyx && \<br/> gcc -O3 -o fib fib.pyx.c  | time ./fib   |
 | D        |    6.011 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
 | Nim      |    6.022 | nim cpp -d:release fib.nim                    | time ./fib   |
 | Rust     |    6.100 | rustc -O fib.rs                               | time ./fib   |
