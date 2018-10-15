@@ -30,9 +30,9 @@ puts fib(46)
 
 All tests are run on:
  - iMac (Retina 5K, 27-inch, Late 2015)
- - OS: macOS High Sierra 10.13.6
  - Processor: 3.2 GHz Intel Core i5
  - Memory: 16 GB 1867 MHz DDR3
+ - OS: macOS Mojave 10.14
 
 Last benchmark was ran on October 15, 2018
 
