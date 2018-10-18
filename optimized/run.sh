@@ -11,7 +11,7 @@ class Language
 
   def run
     unless compile_cmd.empty?
-      raise "compile failed" unless system("#{compile_cmd} 2>&1")
+      raise "compile failed" unless system("#{compile_cmd} 2>/dev/null")
     end
     times = `{ time #{run_cmd} ; } 2>&1`.split("\n")[3].split("\t")[1].split(/[m,s]/)
     @run_time = (times[0].to_i * 60) + times[1].to_f
@@ -21,8 +21,7 @@ end
 languages = []
 languages << Language.new("Python Cached", :optimized, "", "time python3 fib-cache.py")
 languages << Language.new("Lisp Compile Time", :optimized, "sbcl --load fib-compiletime.lisp", "time ./fib-compiletime")
-languages << Language.new("Lisp Local", :optimized, "sbcl --load fib-local.lisp", "time ./fib-local")
-#languages << Language.new("C++ Constant", :optimized, "g++-8 -O3 -o fib-const fib-constexpr.cpp", "time ./fib-const")
+languages << Language.new("C++ Constant", :optimized, "g++-8 -O3 -o fib-const fib-constexpr.cpp", "time ./fib-const")
 languages << Language.new("D Memoized", :optimized, "ldc2 -O3 -release -flto=full -of=fib-mem fib-mem.d", "time ./fib-mem")
 languages << Language.new("Go Memoized", :optimized, "go build fib-mem.go", "time ./fib-mem")
 languages << Language.new("Node Memoized", :optimized, "", "time node fib-mem.js")

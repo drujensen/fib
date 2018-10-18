@@ -34,26 +34,26 @@ All tests are run on:
  - Memory: 16 GB 1867 MHz DDR3
  - OS: macOS Mojave 10.14
 
-Last benchmark was ran on October 15, 2018
+Last benchmark was ran on October 17, 2018
 
 ## Natively compiled, statically typed
 
-| Language | Time, s  | Compile                                       | Run          |
-|----------|----------|-----------------------------------------------|--------------|
-| C        |    4.655 | gcc -O3 -o fib fib.c                          | time ./fib   |
-| C++      |    4.657 | g++ -O3 -o fib fib.cpp                        | time ./fib   |
-| Pony     |    5.577 | ponyc -s -b fib -p ./pony.fib                 | time ./fib   |
-| Cython   |    5.903 | cython --embed -o fib.pyx.c fib.pyx && gcc -O3 -o fib fib.pyx.c  | time ./fib   |
-| D        |    6.011 | ldc2 -O3 -release -flto=full -of=fib fib.d    | time ./fib   |
-| Nim      |    6.022 | nim cpp -d:release fib.nim                    | time ./fib   |
-| Rust     |    6.100 | rustc -O fib.rs                               | time ./fib   |
-| Fortran  |    6.178 | gfortran -O3 -o fib fib.f03                   | time ./fib   |
-| Crystal  |    6.595 | crystal build --release fib.cr                | time ./fib   |
-| Swift    |    6.954 | swiftc -O -g fib.swift                        | time ./fib   |
-| Haskell  |    8.072 | ghc -O3 -o fib fib.hs                         | time ./fib   |
-| OCaml    |    8.097 | ocamlopt -O3 -o fib fib.ml                    | time ./fib   |
-| Go       |   10.945 | go build fib.go                               | time ./fib   |
-| Lisp     |   13.380 | sbcl --load fib.lisp                          | time ./fib   |
+| Language | Time, s | Compile | Run |
+|----------|---------|---------|-----|
+| C++ |    4.559 | g++ -O3 -o fib fib.cpp | time ./fib |
+| C |    4.582 | gcc -O3 -o fib fib.c | time ./fib |
+| Nim |    5.868 | nim cpp -d:release fib.nim | time ./fib |
+| D |    5.908 | ldc2 -O3 -release -flto=full -of=fib fib.d | time ./fib |
+| Cython |    5.921 | cython --embed -o fib.pyx.c fib.pyx && gcc -O3 -o fib fib.pyx.c | time ./fib |
+| Fortran |    5.983 | gfortran -O3 -o fib fib.f03 | time ./fib |
+| Pony |    6.034 | ponyc -s -b fib -p ./pony.fib | time ./fib |
+| Crystal |    6.486 | crystal build --release fib.cr | time ./fib |
+| Rust |    6.509 | rustc -C opt-level=s fib.rs | time ./fib |
+| Swift |    6.783 | swiftc -O -g fib.swift | time ./fib |
+| OCaml |    7.916 | ocamlopt -O3 -o fib fib.ml | time ./fib |
+| Haskell |    7.921 | ghc -O3 -o fib fib.hs | time ./fib |
+| Go |   10.635 | go build fib.go | time ./fib |
+| Lisp |   13.178 | sbcl --load fib.lisp | time ./fib |
 
 NOTE: 
 - Some of these languages perform runtime safety checks while others do not.
@@ -61,25 +61,25 @@ NOTE:
 
 ## VM compiled bytecode, statically/dynamically typed
 
-| Language  | Time, s  | Compile                             | Run                       |
-|-----------|----------|-------------------------------------|---------------------------|
-| Java      |    7.311 | javac Fib.java                      | time java Fib             |
-| C#        |   11.176 | dotnet build -c Release -o ./bin    | time dotnet ./bin/fib.dll |
-| C# (Mono) |   11.955 | mcs fib.cs                          | time mono fib.exe         |
-| Erlang    |   13.170 | erlc +native +'{hipe,[o3]}' fib.erl | time erl -noinput -s fib  |
+| Language | Time, s | Compile | Run |
+|----------|---------|---------|-----|
+| Java |    7.383 | javac Fib.java | time java Fib |
+| C# (Mono) |   11.124 | mcs fib.cs | time mono fib.exe |
+| C# |   11.234 | dotnet build -c Release -o ./bin | time dotnet ./bin/fib.dll |
+| Erlang |   13.183 | erlc +native +'{hipe,[o3]}' fib.erl | time erl -noinput -noshell -s fib |
 
 NOTE: These languages incur a cost for loading the VM that should be taken into consideration when comparing.
 
 ## VM compiled before execution, mixed/dynamically typed
 
-| Language  | Time, s  | Run                      |
-|-----------|----------|--------------------------|
-| Dart      |   10.193 | time dart fib.dart       |
-| Escript   |   12.652 | time escript fib.es      |
-| Julia     |   13.348 | time julia -O3 fib.jl    |
-| Elixir*   |   13.853 | time elixir fib.exs      |
-| Node      |   19.277 | time node fib.js         |
-| Clojure   |   24.008 | time clojure fib.cljc    |
+| Language | Time, s | Run |
+|----------|---------|-----|
+| Julia |    8.530 | time julia -O3 fib.jl |
+| Dart |    9.209 | time dart fib.dart |
+| Escript |   12.792 | time escript fib.es |
+| Node |   19.124 | time node fib.js |
+| Elixir |   21.642 | time elixir fib.exs |
+| Clojure |   24.835 | time clojure fib.cljc |
 
 * Elixir is using ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]'
 
@@ -87,18 +87,17 @@ NOTE: These languages include compilation time that should be taken into conside
 
 ## Interpreted, dynamically typed
 
-| Language  | Time, s  | Run                      |
-|-----------|----------|--------------------------|
-| Scheme    |  150.454 | time guile fib.scm       |
-| Php       |  198.279 | time php fib.php         |
-| Ruby      |  200.168 | time ruby fib.rb         |
-| Lua       |  351.117 | time lua fib.lua         |
-| Python    |  515.008 | time python fib.py       |
-| Python3   |  770.082 | time python3 fib.py      |
-| Perl      | 1039.727 | time perl fib.pl         |
-| R         | 1796.495 | time r -f fib.r          |
-| Tcl       | 2040.860 | time tclsh fib.tcl       |
-| Perl6     | 2851.994 | time perl6 fib.p6        |
+| Language | Time, s | Run |
+|----------|---------|-----|
+| Scheme |  147.859 | time guile fib.scm |
+| Ruby |  192.207 | time ruby fib.rb |
+| Php |  195.468 | time php fib.php |
+| Lua |  276.998 | time lua fib.lua |
+| Python |  502.276 | time python fib.py |
+| Python3 |  751.082 | time python3 fib.py |
+| Perl | 1014.648 | time perl fib.pl |
+| Tcl | 1517.857 | time tclsh fib.tcl |
+| Perl 6 | 2894.135 | time perl6 fib.p6 |
 | K         |      DNF | time k fib.k             |
 | Bash      |      DNF | time bash fib.sh         |
 
@@ -116,54 +115,53 @@ Several of these examples add very little changes to the original code that are 
 
 For the fun of it, here are the benchmarks for the optimized versions
 
-Last benchmark was ran on October 05, 2018
+Last benchmark was ran on October 15, 2018
 
 ## Optimized
 
 | Language | Time, s | Compile | Run |
 |----------|---------|---------|-----|
-| Nim Constant |    0.002 | nim cpp -d:release fib_const.nim | time ./fib_cont |
+| Nim Constant |    0.003 | nim cpp -d:release fib_const.nim | time ./fib_cont |
 | Perl Memoized 2 |    0.005 |  | time perl fib-mem2.pl |
 | OCaml TCO |    0.005 | ocamlopt -O3 -o fib_tail fib_tail.ml | time ./fib_tail |
-| Perl Inline |    0.006 |  | time perl fib-inline.py |
-| Go Memoized |    0.006 | go build fib-mem.go | time ./fib-mem |
-| Haskell Memoized |    0.006 | ghc -O3 -o fib_mem fib_mem.hs | time ./fib_mem |
-| Nim Memoized |    0.006 | nim cpp -d:release fib_mem.nim | time ./fib_mem |
+| Haskell Memoized |    0.005 | ghc -O3 -o fib_mem fib_mem.hs | time ./fib_mem |
+| Nim Memoized |    0.005 | nim cpp -d:release fib_mem.nim | time ./fib_mem |
 | Swift Memoized |    0.006 | swiftc -O -g fib-mem.swift | time ./fib-mem |
-| C++ Constant |    0.007 | g++-8 -O3 -o fib-const fib-constexpr.cpp | time ./fib-const |
+| C++ Constant |    0.006 | g++-8 -O3 -o fib-const fib-constexpr.cpp | time ./fib-const |
+| Go Memoized |    0.006 | go build fib-mem.go | time ./fib-mem |
+| Perl Inline |    0.007 |  | time perl fib-inline.py |
 | D Memoized |    0.007 | ldc2 -O3 -release -flto=full -of=fib-mem fib-mem.d | time ./fib-mem |
 | Lisp Compile Time |    0.008 | sbcl --load fib-compiletime.lisp | time ./fib-compiletime |
-| Perl Memoized |    0.014 |  | time perl fib-mem.pl |
-| K Memoized |    0.055 |  | time k fib-mem.k |
-| Erlang Memoized |    0.113 | erlc +native +'{hipe,[o3]}' fib_mem.erl | time erl -noinput -noshell -s fib_mem |
-| Python Cached |    0.116 |  | time python3 fib-cache.py |
-| Lua Memoized |    0.121 |  | time lua fib-mem.lua |
-| Escript Memoized |    0.136 |  | time escript fib_mem.es |
-| Ruby Memoized |    0.183 |  | time ruby fib-mem.rb |
-| Java Iterative |    0.199 | javac FibOptimized.java | time java FibOptimized |
-| Elixir Iterative |    0.700 |  | time elixir fib-iterative.exs |
-| Node Memoized |    0.835 |  | time node fib-mem.js |
-| Perl6 Memoized |    1.005 |  | time perl6 fib-mem.p6 |
-| Lisp Local |    7.550 | sbcl --load fib-local.lisp | time ./fib-local |
+| Perl Memoized |    0.015 |  | time perl fib-mem.pl |
+| Python Cached |    0.034 |  | time python3 fib-cache.py |
+| Lua Memoized |    0.040 |  | time lua fib-mem.lua |
+| Node Memoized |    0.065 |  | time node fib-mem.js |
+| Ruby Memoized |    0.081 |  | time ruby fib-mem.rb |
+| Erlang Memoized |    0.104 | erlc +native +'{hipe,[o3]}' fib_mem.erl | time erl -noinput -noshell -s fib_mem |
+| Escript Memoized |    0.139 |  | time escript fib_mem.es |
+| K Memoized |    0.220 |  | time k fib-mem.k |
+| Java Iterative |    0.233 | javac FibOptimized.java | time java FibOptimized |
+| Elixir Iterative |    0.461 |  | time elixir fib-iterative.exs |
+| Perl6 Memoized |    0.915 |  | time perl6 fib-mem.p6 |
 
 ## Versions
 
 - g++ Apple LLVM version 10.0.0 (clang-1000.11.45.2)
 - gcc Apple LLVM version 10.0.0 (clang-1000.11.45.2)
-- nim Nim Compiler Version 0.18.0 [MacOSX: amd64]
-- crystal Crystal 0.26.1 (2018-08-27) LLVM: 6.0.1
+- nim Nim Compiler Version 0.19.0 [MacOSX: amd64]
+- crystal Crystal 0.26.1 (2018-09-26) LLVM: 6.0.1
 - cython Cython version 0.28.5
 - gfortan GNU Fortran (Homebrew GCC 8.2.0) 8.2.0
-- rustc 1.29.0
-- lcd2 the LLVM D compiler (1.11.0)
+- rustc 1.29.2
+- ldc2 the LLVM D compiler (1.11.0)
 - swiftc Apple Swift version 4.2 (swiftlang-1000.11.37.1 clang-1000.11.45.1)
 - ghc The Glorious Glasgow Haskell Compilation System, version 8.4.3
 - ocaml The OCaml toplevel, version 4.07.0
-- go version go1.11 darwin/amd64
-- lisp SBCL 1.4.11
+- go version go1.11.1 darwin/amd64
+- sbcl Lisp SBCL 1.4.12
 - javac 10.0.1
 - dotnet 2.1.4
-- mcs Mono C# compiler version 5.12.0.226
+- mcs Mono JIT compiler version 5.14.0.177
 - erlc 21.1
 - dart Dart VM version: 2.0.0 (Fri Aug 3 10:53:23 2018 +0200)
 - julia version 0.6.3
