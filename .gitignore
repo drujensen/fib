@@ -26,3 +26,4 @@ optimized/fib-local
 optimized/fib_const
 optimized/main
 optimized/main.dSYM/
+.vscode/
