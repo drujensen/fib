@@ -6,7 +6,6 @@ function fib {
     }
     $a = fib($num - 1)
     $a += fib($num - 2)
-    Write-Host $a
     $a
 }
 fib(46);
