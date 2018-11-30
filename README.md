@@ -111,17 +111,18 @@ Several of these examples add very little changes to the original code that are 
  - The [C++ constexpr](optimized/fib-constexpr.cpp) is using a `constexpr` which optimizes the recursive call to a constant.
  - The [Lisp compiletime](optimized/fib-compiletime.lisp) shows how you can perform the calculation at compile time. simply add `#.` before outputing the results.
  - The [Python lru_cache](optimized/fib-cache.py) is using `lru_cache` directive with no code changes.
- - The [Ruby mem](optimized/fib-mem.rb) and [JS mem](optimized/fib-mem.js) are maintaining a simple cache to avoid recalculating the results for that value.
+ - The [Ruby mem](optimized/fib-mem.rb), [Crystal mem](optimized/fib-mem.cr) and [JS mem](optimized/fib-mem.js) are maintaining a simple cache to avoid recalculating the results for that value.
 
 For the fun of it, here are the benchmarks for the optimized versions
 
-Last benchmark was ran on October 15, 2018
+Last benchmark was ran on November 30, 2018
 
 ## Optimized
 
 | Language | Time, s | Compile | Run |
 |----------|---------|---------|-----|
 | Nim Constant |    0.003 | nim cpp -d:release fib_const.nim | time ./fib_cont |
+| Crystal Memoized |    0.004 | crystal build --release fib-mem.cr | time ./fib-mem |
 | Perl Memoized 2 |    0.005 |  | time perl fib-mem2.pl |
 | OCaml TCO |    0.005 | ocamlopt -O3 -o fib_tail fib_tail.ml | time ./fib_tail |
 | Haskell Memoized |    0.005 | ghc -O3 -o fib_mem fib_mem.hs | time ./fib_mem |
