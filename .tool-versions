@@ -1,0 +1,37 @@
+java        openjdk-11.0.1
+ruby        2.6.3
+clojure     1.10.0
+crystal     0.29.0
+dart        2.2.0
+dotnet-core 2.2.105
+erlang      22.0.2
+elixir      1.8.2
+elm         0.19.0
+golang      1.12.5
+haskell     8.6.5
+julia       1.1.1
+lua         5.3.5
+nim         v0.20.0
+nodejs      8.12.0
+pascal      
+perl        5.28.1
+php         7.3.6
+python      2.7.16
+python      3.7.3
+rust        1.35.0
+R           3.6.0
+
+#dmd         2.086.0
+#ponyc       1.0.0
+#swift       5.0.1
+
+#cython      
+#gfortran     
+#ocaml       4.07.1
+#perl6       2018.06
+#lisp (sbcl) 
+#tcl         8.6
+
+#emojic      
+#scheme
+#K

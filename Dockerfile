@@ -2,23 +2,24 @@ FROM ubuntu:latest
 
 USER root
 ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin"
-RUN mkdir -p /app
-WORKDIR /app
+RUN mkdir -p /root/app
+WORKDIR /root/app
 
+# prerequisite packages
 RUN apt-get update -qq && \
     apt-get upgrade -qq -y && \
     apt-get install -qq -y \
+            automake \
+            autoconf \
+            pkg-config \
             gcc-6 \
+            build-essential \
             bison \
             libedit-dev \
             libreadline-dev \
             zlib1g-dev \ 
             libgdbm-dev \
-            build-essential \
-            automake \
-            autoconf \
             libcurl4-openssl-dev \
-            pkg-config \
             libpng-dev \
             libssl-dev \
             libyaml-dev \
@@ -26,11 +27,22 @@ RUN apt-get update -qq && \
             libffi-dev \
             libgmp3-dev \
             libtool \
-            libncurses5-dev \
+            libncurses-dev \
             libssh-dev \
             unixodbc-dev \
+            libzip-dev \
+            libevent-dev \
+            libicu-dev \
+            apt-transport-https \
+            ca-certificates \
+            gnupg2 \
+            software-properties-common \
+            bubblewrap \
+            vim \
             git \
             curl \
+            wget \
+            time \
             unzip && \
     apt-get clean -qq -y && \
     apt-get autoclean -qq -y && \
@@ -39,39 +51,60 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /usr/share/doc/*
 
-RUN git clone https://github.com/asdf-vm/asdf.git /root/.asdf
+# D
+RUN curl -fsS https://dlang.org/install.sh | bash -s ldc
 
-RUN asdf plugin-add php         && asdf install php         7.2.10
-RUN asdf plugin-add crystal     && asdf install crystal     0.26.1
-RUN asdf plugin-add dart https://github.com/baysao/asdf-dart.git \
-                                && asdf install dart        2.0.0
-RUN asdf plugin-add dotnet-core && asdf install dotnet-core 2.1.4
-RUN asdf plugin-add dmd         && asdf install dmd         2.082.0
-RUN asdf plugin-add erlang      && asdf install erlang      21.1
-RUN asdf plugin-add elixir      && asdf install elixir      1.7.3
-RUN asdf plugin-add elm         && asdf install elm         0.19.0
-RUN asdf plugin-add golang      && asdf install golang      1.11
-RUN asdf plugin-add haskell     && asdf install haskell     7.10.3
-RUN asdf plugin-add java        && asdf install java        10.0.1
-RUN asdf plugin-add julia       && asdf install julia       1.0.0
-RUN asdf plugin-add ruby        && asdf install ruby        2.5.1
+# Pony
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E04F0923 B3B48BDA
+RUN add-apt-repository "deb https://dl.bintray.com/pony-language/ponylang-debian  $(lsb_release -cs) main"
+RUN apt-get install -qq -y ponyc
+
+#Swift
+RUN wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import -
+RUN wget https://swift.org/builds/swift-5.0.1-release/ubuntu1804/swift-5.0.1-RELEASE/swift-5.0.1-RELEASE-ubuntu18.04.tar.gz
+RUN tar xzf swift-5.0.1-RELEASE-ubuntu18.04.tar.gz
+RUN mv swift-5.0.1-RELEASE-ubuntu18.04 /usr/share/swift
+RUN echo "export PATH=/usr/share/swift/usr/bin:$PATH" >> ~/.bashrc
+
+# asdf languages
+RUN git clone https://github.com/asdf-vm/asdf.git /root/.asdf --branch v0.7.2
+RUN echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+RUN asdf update
+
+RUN asdf plugin-add java
+RUN asdf plugin-add ruby
+RUN asdf plugin-add clojure
+RUN asdf plugin-add crystal
+RUN asdf plugin-add dart https://github.com/baysao/asdf-dart.git
+RUN asdf plugin-add dotnet-core
+RUN asdf plugin-add erlang
+RUN asdf plugin-add elixir
+RUN asdf plugin-add elm
+RUN asdf plugin-add golang
+RUN asdf plugin-add haskell
+RUN asdf plugin-add julia
+RUN asdf plugin-add lua
+RUN asdf plugin-add nim
 RUN asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git \
-&& bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring \
-                                && asdf install nodejs      8.12.0
-RUN asdf plugin-add ocaml       && asdf install ocaml       4.07.0
-RUN asdf plugin-add perl https://github.com/BeijingPM/asdf-perl.git \
-                                && asdf install perl        5.28.0
-RUN asdf plugin-add python      && asdf install python      2.7.15
-RUN asdf plugin-add rust        && asdf install rust        1.29.1
-RUN asdf plugin-add swift       && asdf install swift       4.1.2
-RUN asdf plugin-add nim         && asdf install nim         v0.19.0
-RUN asdf plugin-add clojure     && asdf install clojure     1.9.0
+&& bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+RUN asdf plugin-add perl https://github.com/BeijingPM/asdf-perl.git
+RUN asdf plugin-add php
+RUN asdf plugin-add python
+RUN asdf plugin-add rust
+RUN asdf plugin-add R
 
-#RUN asdf plugin-add lua         && asdf install lua         5.4.0
-#RUN asdf plugin-add R           && asdf install R           3.5.1
-#RUN asdf plugin-add perl6       && asdf install perl6       2018.06
-#RUN asdf plugin-add python3     && asdf install python3     3.5.6
-#RUN asdf plugin-add tcl         && asdf install tcl         8.6
+COPY .tool-versions /root/.
+RUN asdf install
 
-COPY . /app
+# apt languages
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
+            cython \
+            fp-compiler \
+            gfortran \
+            ocaml \
+            perl6 \
+            sbcl \
+            tcl
+
+COPY . /root/app
 CMD ./run.sh
