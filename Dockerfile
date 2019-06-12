@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 
 USER root
 ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin"
@@ -17,7 +17,7 @@ RUN apt-get update -qq && \
             bison \
             libedit-dev \
             libreadline-dev \
-            zlib1g-dev \ 
+            zlib1g-dev \
             libgdbm-dev \
             libcurl4-openssl-dev \
             libpng-dev \
@@ -31,6 +31,7 @@ RUN apt-get update -qq && \
             libssh-dev \
             unixodbc-dev \
             libzip-dev \
+            libbz2-dev \
             libevent-dev \
             libicu-dev \
             apt-transport-https \
@@ -38,6 +39,7 @@ RUN apt-get update -qq && \
             gnupg2 \
             software-properties-common \
             bubblewrap \
+            xorg-dev \
             vim \
             git \
             curl \
@@ -54,6 +56,12 @@ RUN apt-get update -qq && \
 # D
 RUN curl -fsS https://dlang.org/install.sh | bash -s ldc
 
+# Mono
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list
+sudo apt update
+RUN apt-get install -qq -y mono-devel
+
 # Pony
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E04F0923 B3B48BDA
 RUN add-apt-repository "deb https://dl.bintray.com/pony-language/ponylang-debian  $(lsb_release -cs) main"
@@ -65,6 +73,17 @@ RUN wget https://swift.org/builds/swift-5.0.1-release/ubuntu1804/swift-5.0.1-REL
 RUN tar xzf swift-5.0.1-RELEASE-ubuntu18.04.tar.gz
 RUN mv swift-5.0.1-RELEASE-ubuntu18.04 /usr/share/swift
 RUN echo "export PATH=/usr/share/swift/usr/bin:$PATH" >> ~/.bashrc
+
+# apt languages
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
+            cython \
+            fp-compiler \
+            gfortran \
+            ocaml \
+            perl6 \
+            sbcl \
+            tcl \
+            guile-2.2
 
 # asdf languages
 RUN git clone https://github.com/asdf-vm/asdf.git /root/.asdf --branch v0.7.2
@@ -95,16 +114,6 @@ RUN asdf plugin-add R
 
 COPY .tool-versions /root/.
 RUN asdf install
-
-# apt languages
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
-            cython \
-            fp-compiler \
-            gfortran \
-            ocaml \
-            perl6 \
-            sbcl \
-            tcl
 
 COPY . /root/app
 CMD ./run.sh

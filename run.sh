@@ -16,7 +16,7 @@ class Language
     end
     times = `{ bash -c "time #{run_cmd}" ; } 2>&1`.split("\n")[2].split("\t")[1].split(/[m,s]/)
     @run_time = (times[0].to_i * 60) + times[1].to_f
-    `rm ./fib ./fib.o` if run_cmd == "./fib"
+    `rm ./fib` if run_cmd == "./fib"
   rescue StandardError  => ex
     puts ex.message
     puts ex.backtrace.inspect
@@ -24,16 +24,16 @@ class Language
 end
 
 languages = []
+languages << Language.new("Nim", :compiled, "nim cpp -d:release fib.nim", "./fib")
 languages << Language.new("C", :compiled, "gcc -O3 -o fib fib.c", "./fib")
 languages << Language.new("C++", :compiled, "g++ -O3 -o fib fib.cpp", "./fib")
 languages << Language.new("Crystal", :compiled, "crystal build --release fib.cr", "./fib")
 languages << Language.new("Rust", :compiled, "rustc -C opt-level=s fib.rs", "./fib")
 languages << Language.new("Go", :compiled, "go build fib.go", "./fib")
 languages << Language.new("Swift", :compiled, "swiftc -O -g fib.swift", "./fib")
-languages << Language.new("Nim", :compiled, "nim cpp -d:release fib.nim", "./fib")
 languages << Language.new("D", :compiled, 'bash -c "ldc2 -O3 -release -flto=full -of=fib fib.d"', "./fib")
 languages << Language.new("OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml", "./fib")
-languages << Language.new("Haskell", :compiled, "ghc -O3 -o fib fib.hs", "./fib")
+languages << Language.new("Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fib.hs", "./fib")
 languages << Language.new("Fortran", :compiled, "gfortran -O3 -o fib fib.f03", "./fib")
 languages << Language.new("Lisp", :compiled, "sbcl --load fib.lisp", "./fib")
 languages << Language.new("Cython", :compiled, "cython --embed -o fib.pyx.c fib.pyx && gcc -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python)", "./fib")
@@ -55,14 +55,15 @@ languages << Language.new("Clojure", :mixed, "", "clojure fib.cljc")
 languages << Language.new("Ruby", :interpreted, "", "ruby fib.rb")
 languages << Language.new("Php", :interpreted, "", "php fib.php")
 languages << Language.new("Python", :interpreted, "", "python fib.py")
+languages << Language.new("Python3", :interpreted, "", "python3 fib.py")
 languages << Language.new("Perl", :interpreted, "", "perl fib.pl")
 languages << Language.new("Perl 6", :interpreted, "", "perl6 fib.p6")
 languages << Language.new("Tcl", :interpreted, "", "tclsh fib.tcl")
 languages << Language.new("Lua", :interpreted, "", "lua fib.lua")
-#languages << Language.new("Scheme", :interpreted, "", "guile fib.scm")
+languages << Language.new("Scheme", :interpreted, "", "guile fib.scm")
 #languages << Language.new("K", :interpreted, "", "k fib.k")
-#languages << Language.new("Bash", :interpreted, "", "bash fib.sh")
 #languages << Language.new("R", :interpreted, "", "r -f fib.r")
+#languages << Language.new("Bash", :interpreted, "", "bash fib.sh")
 
 begin
   languages.each do |lang|

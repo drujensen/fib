@@ -29,77 +29,76 @@ puts fib(46)
 ```
 
 All tests are run on:
- - iMac (Retina 5K, 27-inch, Late 2015)
- - Processor: 3.2 GHz Intel Core i5
- - Memory: 16 GB 1867 MHz DDR3
- - OS: macOS Mojave 10.14
+ - MacBook Pro (Retina, 15-inch, Mid 2015)
+ - Processor: 2.5 GHz Intel Core i7
+ - Memory: 16 GB 1600 MHz DDR3
+ - OS: macOS Mojave 10.14.5
+ - Docker Container: 2.0.0.3
+ - Docker Image: ubuntu:18.04
 
-Last benchmark was ran on October 17, 2018
+Last benchmark was ran on June 12, 2019
 
 ## Natively compiled, statically typed
 
 | Language | Time, s | Compile | Run |
 |----------|---------|---------|-----|
-| C++ |    4.559 | g++ -O3 -o fib fib.cpp | time ./fib |
-| C |    4.582 | gcc -O3 -o fib fib.c | time ./fib |
-| Nim |    5.868 | nim cpp -d:release fib.nim | time ./fib |
-| D |    5.908 | ldc2 -O3 -release -flto=full -of=fib fib.d | time ./fib |
-| Cython |    5.921 | cython --embed -o fib.pyx.c fib.pyx && gcc -O3 -o fib fib.pyx.c | time ./fib |
-| Fortran |    5.983 | gfortran -O3 -o fib fib.f03 | time ./fib |
-| Pony |    6.034 | ponyc -s -b fib -p ./pony.fib | time ./fib |
-| Crystal |    6.486 | crystal build --release fib.cr | time ./fib |
-| Rust |    6.509 | rustc -C opt-level=s fib.rs | time ./fib |
-| Swift |    6.783 | swiftc -O -g fib.swift | time ./fib |
-| OCaml |    7.916 | ocamlopt -O3 -o fib fib.ml | time ./fib |
-| Haskell |    7.921 | ghc -O3 -o fib fib.hs | time ./fib |
-| Go |   10.635 | go build fib.go | time ./fib |
-| Lisp |   13.178 | sbcl --load fib.lisp | time ./fib |
+| Nim |    0.429 | nim cpp -d:release fib.nim | time ./fib |
+| C++ |    3.856 | g++ -O3 -o fib fib.cpp | time ./fib |
+| C |    3.881 | gcc -O3 -o fib fib.c | time ./fib |
+| Fortran |    3.889 | gfortran -O3 -o fib fib.f03 | time ./fib |
+| Cython |    4.147 | cython --embed -o fib.pyx.c fib.pyx && gcc -O3 -o fib fib.pyx.c | time ./fib |
+| D |    5.274 | ldc2 -O3 -release -flto=full -of=fib fib.d | time ./fib |
+| Pony |    5.806 | ponyc -s -b fib -p ./fib.pony | time ./fib |
+| Rust |    5.812 | rustc -C opt-level=s fib.rs | time ./fib |
+| Crystal |    5.817 | crystal build --release fib.cr | time ./fib |
+| Swift |    6.483 | swiftc -O -g fib.swift | time ./fib |
+| OCaml |    7.831 | ocamlopt -O3 -o fib fib.ml | time ./fib |
+| Pascal |    9.269 | fpc -O3 ./fib.pas | time ./fib |
+| Go |   11.390 | go build fib.go | time ./fib |
+| Lisp |   13.290 | sbcl --load fib.lisp | time ./fib |
+| Haskell |   23.700 | ghc -O3 -o fib fib.hs | time ./fib |
 
-NOTE: 
-- Some of these languages perform runtime safety checks while others do not.
-- Interesting observation about [code alignment and benchmarks](https://github.com/drujensen/fib/issues/46)
+- Why is Nim is so fast? [https://forum.nim-lang.org/t/4253](https://forum.nim-lang.org/t/4253)
 
-## VM compiled bytecode, statically/dynamically typed
+## VM compiled bytecode, statically typed
 
 | Language | Time, s | Compile | Run |
 |----------|---------|---------|-----|
-| Java |    7.383 | javac Fib.java | time java Fib |
-| C# (Mono) |   11.124 | mcs fib.cs | time mono fib.exe |
-| C# |   11.234 | dotnet build -c Release -o ./bin | time dotnet ./bin/fib.dll |
-| Erlang |   13.183 | erlc +native +'{hipe,[o3]}' fib.erl | time erl -noinput -noshell -s fib |
-
-NOTE: These languages incur a cost for loading the VM that should be taken into consideration when comparing.
+| Java |    7.070 | javac Fib.java | time java Fib |
+| C# |   10.628 | dotnet build -c Release -o ./bin | time dotnet ./bin/fib.dll |
+| C# (Mono) |   13.809 | mcs Fib.cs | time mono Fib.exe |
+| Erlang |   14.213 | erlc +native +'{hipe,[o3]}' fib.erl | time erl -noinput -noshell -s fib |
 
 ## VM compiled before execution, mixed/dynamically typed
 
 | Language | Time, s | Run |
 |----------|---------|-----|
-| Julia |    8.530 | time julia -O3 fib.jl |
-| Dart |    9.209 | time dart fib.dart |
-| Escript |   12.792 | time escript fib.es |
-| Node |   19.124 | time node fib.js |
-| Elixir |   21.642 | time elixir fib.exs |
-| Clojure |   24.835 | time clojure fib.cljc |
+| Dart |    9.716 | time dart fib.dart |
+| Julia |   10.716 | time julia -O3 fib.jl |
+| Escript |   14.647 | time escript fib.es |
+| Node |   22.036 | time node fib.js |
+| Elixir |    23.190 | time elixir fib.exs |
+| Clojure |    27.719 | time clojure fib.cljc |
 
-* Elixir is using ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]'
+- Elixir is using ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]'
 
-NOTE: These languages include compilation time that should be taken into consideration when comparing.
+NOTE: These languages include compilation time which should be taken into consideration when comparing.
 
 ## Interpreted, dynamically typed
 
 | Language | Time, s | Run |
 |----------|---------|-----|
-| Scheme |  147.859 | time guile fib.scm |
-| Ruby |  192.207 | time ruby fib.rb |
-| Php |  195.468 | time php fib.php |
-| Lua |  276.998 | time lua fib.lua |
-| Python |  502.276 | time python fib.py |
-| Python3 |  751.082 | time python3 fib.py |
-| Perl | 1014.648 | time perl fib.pl |
-| Tcl | 1517.857 | time tclsh fib.tcl |
-| Perl 6 | 2894.135 | time perl6 fib.p6 |
-| K         |      DNF | time k fib.k             |
-| Bash      |      DNF | time bash fib.sh         |
+| Php |  161.610 | time php fib.php |
+| Scheme | 221.163 | time guile fib.scm |
+| Ruby |  260.350 | time ruby fib.rb |
+| Lua |  460.107 | time lua fib.lua |
+| Python3 |  657.607 | time python3 fib.py |
+| Python |  675.068 | time python fib.py |
+| Perl | 1663.980 | time perl fib.pl |
+| Tcl | 1957.335 | time tclsh fib.tcl |
+| Perl 6 | 5419.500 | time perl6 fib.p6 |
+| R         |      DNF | time r -f fib.r |
+| Bash      |      DNF | time bash fib.sh |
 
 NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing.
 
@@ -147,44 +146,41 @@ Last benchmark was ran on November 30, 2018
 
 ## Versions
 
-- g++ Apple LLVM version 10.0.0 (clang-1000.11.45.2)
-- gcc Apple LLVM version 10.0.0 (clang-1000.11.45.2)
-- nim Nim Compiler Version 0.19.0 [MacOSX: amd64]
-- crystal Crystal 0.26.1 (2018-09-26) LLVM: 6.0.1
-- cython Cython version 0.28.5
-- gfortan GNU Fortran (Homebrew GCC 8.2.0) 8.2.0
-- rustc 1.29.2
-- ldc2 the LLVM D compiler (1.11.0)
-- swiftc Apple Swift version 4.2 (swiftlang-1000.11.37.1 clang-1000.11.45.1)
-- ghc The Glorious Glasgow Haskell Compilation System, version 8.4.3
-- ocaml The OCaml toplevel, version 4.07.0
-- go version go1.11.1 darwin/amd64
-- sbcl Lisp SBCL 1.4.12
-- javac 10.0.1
-- dotnet 2.1.4
-- mcs Mono JIT compiler version 5.14.0.177
-- erlc 21.1
-- dart Dart VM version: 2.0.0 (Fri Aug 3 10:53:23 2018 +0200)
-- julia version 0.6.3
-- elixir Elixir 1.7.3 (compiled with Erlang/OTP 21)
-- node v9.4.0
-- clojure 1.9.0
-- guile (GNU Guile) 2.2.4
-- php 7.1.16 (cli) (built: Apr  1 2018 13:14:42)
-- ruby 2.5.1p57 (2018-03-29 revision 63029)
-- python 2.7.15
-- python3 3.7.0
-- perl 5, version 26, subversion 2 (v5.26.2)
-- perl 6 This is Rakudo Star version 2018.06 built on MoarVM version 2018.06
-- lua Lua 5.3.5  Copyright (C) 1994-2018 Lua.org, PUC-Rio
-- r version 3.5.0 (2018-04-23)
-- lcd2 the LLVM D compiler (1.11.0)
-- dmd the reference D compiler (2.082.0)
-- ocaml The OCaml toplevel, version 4.07.0
-- ghc The Glorious Glasgow Haskell Compilation System, version 8.4.3
-- gfortran GNU Fortran (Homebrew GCC 8.2.0) 8.2.0
-- ponyc 0.25.0 compiled with: llvm 3.9.1
-- tchsh 8.5
+All compilers are installed using `asdf` or `apt` on Ubuntu 18.04 docker image:
+gcc         7.4.0
+g++         7.4.0
+java        openjdk-11.0.1
+ruby        2.6.3
+clojure     1.10.0
+crystal     0.29.0
+dart        2.2.0
+dotnet-core 2.2.105
+erlang      22.0.2
+elixir      1.8.2
+elm         0.19.0
+golang      1.12.5
+haskell     8.6.5
+julia       1.1.1
+lua         5.3.5
+nim         v0.20.0
+nodejs      8.12.0
+pascal      3.0.4
+perl        5.28.1
+php         7.3.6
+python      2.7.16
+python3     3.7.3
+rust        1.35.0
+R           3.6.0
+D (lcd2)    1.15.1
+ponyc       0.28.1
+swift       5.0.1
+cython      0.26.1
+gfortran    7.4.0 
+ocaml       4.07.1
+perl6       2018.06
+lisp (sbcl) 1.4.5
+tcl         8.6
+scheme      2.2
 
 ## Caveats
 
