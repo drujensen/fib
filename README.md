@@ -78,6 +78,7 @@ Last benchmark was ran on June 12, 2019
 | Dart |    9.716 | time dart fib.dart |
 | Julia |   10.716 | time julia -O3 fib.jl |
 | Escript |   14.647 | time escript fib.es |
+| Lua Jit |   15.470 | time luajit fib.lua |
 | Node |   22.036 | time node fib.js |
 | Elixir |    23.190 | time elixir fib.exs |
 | Clojure |    27.719 | time clojure fib.cljc |
@@ -166,6 +167,7 @@ All compilers are installed using `asdf` or `apt` on Ubuntu 18.04 docker image:
 - haskell     8.6.5
 - julia       1.1.1
 - lua         5.3.5
+- luajit      2.1.0-beta3
 - nim         v0.20.0
 - nodejs      8.12.0
 - pascal      3.0.4
