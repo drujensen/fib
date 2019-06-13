@@ -1,5 +1,3 @@
-gcc         7.4.0
-g++         7.4.0
 java        openjdk-11.0.1
 ruby        2.6.3
 clojure     1.10.0
@@ -13,24 +11,27 @@ golang      1.12.5
 haskell     8.6.5
 julia       1.1.1
 lua         5.3.5
-mono        5.20.1
 nim         v0.20.0
 nodejs      8.12.0
-pascal      3.0.4
 perl        5.28.1
 php         7.3.6
 python      2.7.16
-python3     3.7.3
 rust        1.35.0
 R           3.6.0
-D (lcd2)    1.15.1
-ponyc       0.28.1
-swift       5.0.1
-cython       0.26.1
-gfortran    7.4.0 
-ocaml       4.07.1
-perl6       2018.06
-lisp (sbcl) 1.4.5
-tcl         8.6
-scheme      2.2
-K
+
+#D (lcd2)    1.15.1
+#ponyc       0.28.1
+#swift       5.0.1
+#cython       0.26.1
+#gfortran    7.4.0
+#ocaml       4.07.1
+#perl6       2018.06
+#lisp (sbcl) 1.4.5
+#tcl         8.6
+#scheme      2.2
+#gcc         7.4.0
+#g++         7.4.0
+#mono        5.20.1
+#pascal      3.0.4
+#python3     3.7.3
+#K           1.0.0

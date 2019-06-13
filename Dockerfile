@@ -34,6 +34,7 @@ RUN apt-get update -qq && \
             libbz2-dev \
             libevent-dev \
             libicu-dev \
+            liblzma-dev \
             apt-transport-https \
             ca-certificates \
             gnupg2 \
@@ -57,9 +58,9 @@ RUN apt-get update -qq && \
 RUN curl -fsS https://dlang.org/install.sh | bash -s ldc
 
 # Mono
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list
-sudo apt update
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+RUN echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list
+RUN apt update
 RUN apt-get install -qq -y mono-devel
 
 # Pony
@@ -72,7 +73,15 @@ RUN wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import -
 RUN wget https://swift.org/builds/swift-5.0.1-release/ubuntu1804/swift-5.0.1-RELEASE/swift-5.0.1-RELEASE-ubuntu18.04.tar.gz
 RUN tar xzf swift-5.0.1-RELEASE-ubuntu18.04.tar.gz
 RUN mv swift-5.0.1-RELEASE-ubuntu18.04 /usr/share/swift
+RUN rm swift-5.0.1-RELEASE-ubuntu18.04.tar.gz
 RUN echo "export PATH=/usr/share/swift/usr/bin:$PATH" >> ~/.bashrc
+
+#Powershell
+RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+RUN dpkg -i packages-microsoft-prod.deb
+RUN apt-get update
+RUN add-apt-repository universe
+RUN apt-get install -y powershell
 
 # apt languages
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
@@ -87,7 +96,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
 
 # asdf languages
 RUN git clone https://github.com/asdf-vm/asdf.git /root/.asdf --branch v0.7.2
-RUN echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+RUN chmod 755 $HOME/.asdf/asdf.sh
+RUN echo "$HOME/.asdf/asdf.sh" >> ~/.bashrc
 RUN asdf update
 
 RUN asdf plugin-add java
@@ -113,6 +123,8 @@ RUN asdf plugin-add rust
 RUN asdf plugin-add R
 
 COPY .tool-versions /root/.
+RUN asdf install
+RUN asdf install
 RUN asdf install
 
 COPY . /root/app

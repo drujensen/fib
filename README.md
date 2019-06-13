@@ -2,7 +2,7 @@
 
 Top 10: JavaScript, Java, Python, Ruby, Php, C++, C#, C, Go [reference](http://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html)
 
-Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R, Julia, D, Nim
+Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R, Julia, D, Nim, Pascal, Fortran, Cython, Pony, OCaml, Lisp, Haskell, Erlang, Escript, Dart, Clojure, Scheme, Lua, Python3, Perl, Perl6, Bash, Emoji
 
 This code performs a recursive fibonacci to the 46th position with the result of 2,971,215,073.
 
@@ -35,6 +35,8 @@ All tests are run on:
  - OS: macOS Mojave 10.14.5
  - Docker Container: 2.0.0.3
  - Docker Image: ubuntu:18.04
+
+You can run the tests using Docker: `docker run -it drujensen/fib`
 
 Last benchmark was ran on June 12, 2019
 
@@ -97,8 +99,10 @@ NOTE: These languages include compilation time which should be taken into consid
 | Perl | 1663.980 | time perl fib.pl |
 | Tcl | 1957.335 | time tclsh fib.tcl |
 | Perl 6 | 5419.500 | time perl6 fib.p6 |
+| K         |      DNF | time k fib.k |
 | R         |      DNF | time r -f fib.r |
 | Bash      |      DNF | time bash fib.sh |
+| PowerShell |     DNF | time pwsh fib.ps1 |
 
 NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing.
 
@@ -147,40 +151,40 @@ Last benchmark was ran on November 30, 2018
 ## Versions
 
 All compilers are installed using `asdf` or `apt` on Ubuntu 18.04 docker image:
-gcc         7.4.0
-g++         7.4.0
-java        openjdk-11.0.1
-ruby        2.6.3
-clojure     1.10.0
-crystal     0.29.0
-dart        2.2.0
-dotnet-core 2.2.105
-erlang      22.0.2
-elixir      1.8.2
-elm         0.19.0
-golang      1.12.5
-haskell     8.6.5
-julia       1.1.1
-lua         5.3.5
-nim         v0.20.0
-nodejs      8.12.0
-pascal      3.0.4
-perl        5.28.1
-php         7.3.6
-python      2.7.16
-python3     3.7.3
-rust        1.35.0
-R           3.6.0
-D (lcd2)    1.15.1
-ponyc       0.28.1
-swift       5.0.1
-cython      0.26.1
-gfortran    7.4.0 
-ocaml       4.07.1
-perl6       2018.06
-lisp (sbcl) 1.4.5
-tcl         8.6
-scheme      2.2
+- gcc         7.4.0
+- g++         7.4.0
+- java        openjdk-11.0.1
+- ruby        2.6.3
+- clojure     1.10.0
+- crystal     0.29.0
+- dart        2.2.0
+- dotnet-core 2.2.105
+- erlang      22.0.2
+- elixir      1.8.2
+- elm         0.19.0
+- golang      1.12.5
+- haskell     8.6.5
+- julia       1.1.1
+- lua         5.3.5
+- nim         v0.20.0
+- nodejs      8.12.0
+- pascal      3.0.4
+- perl        5.28.1
+- php         7.3.6
+- python      2.7.16
+- python3     3.7.3
+- rust        1.35.0
+- R           3.6.0
+- D (lcd2)    1.15.1
+- ponyc       0.28.1
+- swift       5.0.1
+- cython      0.26.1
+- gfortran    7.4.0
+- ocaml       4.07.1
+- perl6       2018.06
+- lisp (sbcl) 1.4.5
+- tcl         8.6
+- scheme      2.2
 
 ## Caveats
 
