@@ -42,7 +42,7 @@ languages << Language.new("Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fi
 
 languages << Language.new("Java", :vm, "javac Fib.java", "java Fib")
 languages << Language.new("C#", :vm, "dotnet build -c Release -o ./bin", "dotnet ./bin/fib.dll")
-#languages << Language.new("C# (Mono)", :vm, "mcs fib.cs", "mono fib.exe")
+languages << Language.new("C# (Mono)", :vm, "mcs fib.cs", "mono fib.exe")
 languages << Language.new("Erlang", :vm, "erlc +native +'{hipe,[o3]}' fib.erl", "erl -noinput -noshell -s fib")
 
 languages << Language.new("Dart", :mixed, "", "dart fib.dart")
