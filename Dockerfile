@@ -92,7 +92,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             perl6 \
             sbcl \
             tcl \
-            guile-2.2
+            guile-2.2 \
+            luajit
 
 # asdf languages
 RUN git clone https://github.com/asdf-vm/asdf.git /root/.asdf --branch v0.7.2
