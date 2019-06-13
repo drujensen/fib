@@ -4,7 +4,7 @@ Top 10: JavaScript, Java, Python, Ruby, Php, C++, C#, C, Go [reference](http://w
 
 Others: Crystal, Rust, Swift, Mono, Elixir, Perl, R, Julia, D, Nim, Pascal, Fortran, Cython, Pony, OCaml, Lisp, Haskell, Erlang, Escript, Dart, Clojure, Scheme, Lua, Python3, Perl, Perl6, Bash, Emoji
 
-This code performs a recursive fibonacci to the 46th position with the result of 2,971,215,073.
+The code performs a recursive fibonacci to the 46th position with the result of 2,971,215,073.  This is the original version where the sequence starts at 1 instead of 0. 1,1,2,3,5,8...
 
 Fibonacci can be written many different ways.  The goal of this project is to compare how each language handles the exact same code.
 
