@@ -35,6 +35,7 @@ languages << Language.new("Perl Memoized 2", :optimized, "", "time perl fib-mem2
 languages << Language.new("Perl Inline", :optimized, "", "time perl fib-inline.py")
 languages << Language.new("Ruby Memoized", :optimized, "", "time ruby fib-mem.rb")
 languages << Language.new("Swift Memoized", :optimized, "swiftc -O -g fib-mem.swift", "time ./fib-mem")
+languages << Language.new("Tcl Memoized", :optimized, "", "time tclsh fib-mem.tcl")
 languages << Language.new("Erlang Memoized", :optimized, "erlc +native +'{hipe,[o3]}' fib_mem.erl", "time erl -noinput -noshell -s fib_mem")
 languages << Language.new("Escript Memoized", :optimized, "", "time escript fib_mem.es")
 languages << Language.new("Haskell Memoized", :optimized, "ghc -O3 -o fib_mem fib_mem.hs", "time ./fib_mem")
