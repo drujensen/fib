@@ -31,7 +31,7 @@ languages << Language.new("Fortran", :compiled, "gfortran -O3 -o fib fib.f03", "
 languages << Language.new("Cython", :compiled, "cython --embed -o fib.pyx.c fib.pyx && gcc -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python)", "./fib")
 languages << Language.new("D", :compiled, 'bash -c "ldc2 -O3 -release -flto=full -of=fib fib.d"', "./fib")
 languages << Language.new("Pony", :compiled, "ponyc -s -b fib -p ./fib.pony", "./fib")
-languages << Language.new("Rust", :compiled, "rustc -C opt-level=s fib.rs", "./fib")
+languages << Language.new("Rust", :compiled, "rustc -C opt-level=3 -C lto=fat fib.rs", "./fib")
 languages << Language.new("Crystal", :compiled, "crystal build --release fib.cr", "./fib")
 languages << Language.new("Swift", :compiled, "swiftc -O -g fib.swift", "./fib")
 languages << Language.new("OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml", "./fib")
