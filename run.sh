@@ -41,6 +41,7 @@ languages << Language.new("Lisp", :compiled, "sbcl --load fib.lisp", "./fib")
 languages << Language.new("Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fib.hs", "./fib")
 
 languages << Language.new("Java", :vm, "javac Fib.java", "java Fib")
+languages << Language.new("Kotlin", :vm, "kotlinc Fib.kt -include-runtime -d Fib.jar && javac -jar Fib.jar", "kotlin Fib")
 languages << Language.new("C#", :vm, "dotnet build -c Release -o ./bin", "dotnet ./bin/fib.dll")
 languages << Language.new("C# (Mono)", :vm, "mcs fib.cs", "mono fib.exe")
 languages << Language.new("Erlang", :vm, "erlc +native +'{hipe,[o3]}' fib.erl", "erl -noinput -noshell -s fib")
