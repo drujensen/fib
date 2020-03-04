@@ -1,6 +1,9 @@
 program Fib;
 
+// Allows for `Result` instead of the function name.
 {$mode ObjFPC}
+// Disables "IO checking" for `WriteLn`.
+{$I-}
 
 function Fib(const N: UInt64): UInt64; inline;
 begin
