@@ -1,11 +1,18 @@
 program Fib;
-function fib(n: int64): int64;
+
+// Allows for `Result` instead of the function name.
+{$mode ObjFPC}
+// Disables "IO checking" for `WriteLn`.
+{$I-}
+
+function Fib(const N: UInt64): UInt64; inline;
 begin
-	if n > 1 then
-		fib := (fib(n-1) + fib(n-2))
-	else
-		fib := 1;
+  case N of
+    0, 1: Result := 1;
+    otherwise Result := Fib(N - 1) + Fib(N - 2);
+  end;
 end;
+
 begin
-    writeln(fib(46))
+  WriteLn(Fib(46));
 end.

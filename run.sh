@@ -36,7 +36,7 @@ languages << Language.new("Crystal", :compiled, "crystal build --release fib.cr"
 languages << Language.new("Swift", :compiled, "swiftc -O -g fib.swift", "./fib")
 languages << Language.new("Kotlin/Native", :vm, "kotlinc-native Fib.kt -o Fib", "./Fib.kexe")
 languages << Language.new("OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml", "./fib")
-languages << Language.new("Pascal", :compiled, "fpc -O3 ./fib.pas", "./fib")
+languages << Language.new("Pascal", :compiled, "fpc -O3 -Si ./fib.pas", "./fib")
 languages << Language.new("Go", :compiled, "go build fib.go", "./fib")
 languages << Language.new("Lisp", :compiled, "sbcl --load fib.lisp", "./fib")
 languages << Language.new("Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fib.hs", "./fib")
