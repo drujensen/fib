@@ -24,6 +24,7 @@ class Language
 end
 
 languages = []
+languages << Language.new("Assembly", :compiled, "gcc -no-pie -o fib fib-gcc-x64.s", "./fib")
 languages << Language.new("Nim", :compiled, "nim cpp -d:release fib.nim", "./fib")
 languages << Language.new("C", :compiled, "gcc -O3 -o fib fib.c", "./fib")
 languages << Language.new("C++", :compiled, "g++ -O3 -o fib fib.cpp", "./fib")
