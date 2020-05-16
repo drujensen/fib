@@ -40,6 +40,7 @@ languages << Language.new("Pascal", :compiled, "fpc -O3 -Si ./fib.pas", "./fib")
 languages << Language.new("Go", :compiled, "go build fib.go", "./fib")
 languages << Language.new("Lisp", :compiled, "sbcl --load fib.lisp", "./fib")
 languages << Language.new("Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fib.hs", "./fib")
+languages << Language.new("Janet", :compiled, "", "janet ./fib.janet")
 
 languages << Language.new("Java", :vm, "javac Fib.java", "java Fib")
 languages << Language.new("Kotlin", :vm, "kotlinc Fib.kt -include-runtime -d Fib.jar", "javac -jar Fib.jar")
