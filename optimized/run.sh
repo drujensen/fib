@@ -40,6 +40,8 @@ languages << Language.new("Tcl Memoized", :optimized, "", "time tclsh fib-mem.tc
 languages << Language.new("Erlang Memoized", :optimized, "erlc +native +'{hipe,[o3]}' fib_mem.erl", "time erl -noinput -noshell -s fib_mem")
 languages << Language.new("Escript Memoized", :optimized, "", "time escript fib_mem.es")
 languages << Language.new("Haskell Memoized", :optimized, "ghc -O3 -o fib_mem fib_mem.hs", "time ./fib_mem")
+languages << Language.new("Janet Memoized", :optimized, "", "time janet ./fib-mem.janet")
+languages << Language.new("Janet TCO", :optimized, "", "time janet ./fib-tco.janet")
 languages << Language.new("OCaml TCO", :optimized, "ocamlopt -O3 -o fib_tail fib_tail.ml", "time ./fib_tail")
 languages << Language.new("Elixir Iterative", :optimized, "", "time elixir fib-iterative.exs")
 languages << Language.new("Java Iterative", :optimized, "javac FibOptimized.java", "time java FibOptimized")
@@ -66,4 +68,3 @@ languages.select {|l| l.type == :optimized}.sort_by {|l| l.run_time}.each do |la
     results << lang.run_cmd
     puts "| #{results.join(" | ")} |"
 end
-
