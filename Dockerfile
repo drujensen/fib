@@ -84,6 +84,13 @@ RUN apt-get update
 RUN add-apt-repository universe
 RUN apt-get install -y powershell
 
+# V
+RUN wget -q https://github.com/vlang/v/releases/latest/download/v_linux.zip
+RUN mkdir /usr/share/v_linux
+RUN mv v_linux.zip /usr/share/v_linux/.
+RUN cd /usr/share/v_linux && unzip v_linux.zip && rm v_linux.zip
+RUN echo "export PATH=/user/share/v_linux:$PATH" >> ~/.bashrc
+
 # apt languages
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             cython \
