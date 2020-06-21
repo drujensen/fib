@@ -93,7 +93,7 @@ NOTE: These languages include compilation time which should be taken into consid
 | Php |  111.203 | php fib.php |
 | Scheme |  250.139 | guile fib.scm |
 | Ruby |  283.398 | ruby fib.rb |
-| Lua |    495.116 | lua5.3 fib.lua |
+| Lua |    495.116 | lua fib.lua |
 | Python3 |  598.509 | python3 fib.py |
 | Janet |  607.709 | janet ./fib.janet |
 | Python |  797.384 | python fib.py |

@@ -201,13 +201,13 @@ RUN asdf plugin-add kotlin https://github.com/missingcharacter/asdf-kotlin.git
 RUN asdf install kotlin 1.3.70
 RUN asdf global kotlin 1.3.70
 
+RUN asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git
+RUN asdf install lua 5.3.0
+RUN asdf global lua 5.3.0
+
 RUN asdf plugin-add julia https://github.com/rkyleg/asdf-julia.git
 #RUN asdf install julia 1.4.0
 #RUN asdf global julia 1.4.0
-
-RUN asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git
-#RUN asdf install lua 5.4.0
-#RUN asdf global lua 5.4.0
 
 COPY . /root/app
 CMD ./run.sh
