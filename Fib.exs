@@ -3,4 +3,4 @@ defmodule Fib do
   def fib(n), do: fib(n-1) + fib(n-2)
 end
 
-IO.puts Fib.fib(47)
+IO.puts Fib.fib(46)

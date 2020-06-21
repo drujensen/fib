@@ -1,6 +1,6 @@
 assembly (gcc) 7.4.0
 bash           5.0.0
-crystal        0.34.0
+crystal        0.35.0
 clojure        1.10.1
 cython         0.29.15
 D (lcd2)       v1.20.1
