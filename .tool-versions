@@ -1,37 +1,38 @@
-java        openjdk-11.0.1
-ruby        2.6.3
-clojure     1.10.0
-crystal     0.29.0
-dart        2.2.0
-dotnet-core 2.2.105
-erlang      22.0.2
-elixir      1.8.2
-elm         0.19.0
-golang      1.12.5
-haskell     8.6.5
-julia       1.1.1
-lua         5.3.5
-nim         v0.20.0
-nodejs      8.12.0
-perl        5.28.1
-php         7.3.6
-python      2.7.16
-rust        1.35.0
-R           3.6.0
-
-#D (lcd2)    1.15.1
-#ponyc       0.28.1
-#swift       5.0.1
-#cython       0.26.1
-#gfortran    7.4.0
-#ocaml       4.07.1
-#perl6       2018.06
-#lisp (sbcl) 1.4.5
-#tcl         8.6
-#scheme      2.2
-#gcc         7.4.0
-#g++         7.4.0
-#mono        5.20.1
-#pascal      3.0.4
-#python3     3.7.3
-#K           1.0.0
+assembly (gcc) 7.4.0
+bash           5.0.0
+crystal        0.35.0
+clojure        1.10.1
+cython         0.29.15
+D (lcd2)       v1.20.1
+dart           2.7.2
+dotnet-core    3.1.201
+elixir         1.10.0
+elm            0.19.1
+erlang         22.3.1
+g++            7.4.0
+gcc            7.4.0
+gfortran       9.3.0
+golang         1.14.1
+haskell        8.10.1
+java           adopt-openjdk-14+36
+julia          1.4.0
+K              3.6
+lisp (sbcl)    2.0.3
+lua            5.3.0
+mono           6.8.0
+nim            v1.2.0
+nodejs         12.16.1
+ocaml          4.10.0
+pascal         3.0.4
+perl           5.30.2
+php            7.4.4
+ponyc          0.33.2
+powershell     v7.0.0
+python         3.8.2
+R              3.6.3
+rakudo         2020.01
+ruby           2.7.1
+rust           1.42.0
+scheme (guile) 2.2
+swift          5.2.1
+tcl            8.6.10
