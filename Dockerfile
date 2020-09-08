@@ -116,7 +116,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             sbcl \
             tcl \
             guile-2.2 \
-            luajit
+            luajit \
+            gnat
 
 # asdf languages
 RUN git clone https://github.com/asdf-vm/asdf.git /root/.asdf --branch v0.7.8
