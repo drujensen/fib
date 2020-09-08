@@ -24,7 +24,7 @@ class Language
 end
 
 languages = []
-languages << Language.new("Ada", :compiled, "gnat make -O2 -o fib fib.adb", "./fib")
+languages << Language.new("Ada", :compiled, "gnat make -O2 -gnatp -o fib fib.adb", "./fib")
 languages << Language.new("Assembly", :compiled, "gcc -no-pie -o fib fib-gcc-x64.s", "./fib")
 languages << Language.new("C", :compiled, "gcc -fno-inline-small-functions -O3 -o fib fib.c", "./fib")
 languages << Language.new("C++", :compiled, "g++ -fno-inline-small-functions -O3 -o fib fib.cpp", "./fib")
