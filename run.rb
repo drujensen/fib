@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 class Language
   attr_accessor :name, :type, :compile_cmd, :run_cmd, :compile_time, :run_time
   def initialize(name, type, compile_cmd, run_cmd)
