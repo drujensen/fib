@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 USER root
 ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin"
@@ -8,15 +8,17 @@ WORKDIR /root/app
 # prerequisite packages
 RUN apt-get update -qq && \
     apt-get upgrade -qq -y && \
-    apt-get install -qq -y \
+    DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             automake \
             autoconf \
             pkg-config \
-            gcc-6 \
+            gcc-10 \
             build-essential \
             bison \
             file \
             re2c \
+            libgd-dev \
+            libpcre3-dev \
             libonig-dev \
             libsqlite3-dev \
             libpq-dev \
@@ -62,8 +64,8 @@ RUN apt-get update -qq && \
 
 # D
 RUN curl -fsS https://dlang.org/install.sh | bash -s ldc
-RUN echo "export LIBRARY_PATH=/root/dlang/ldc-1.22.0/lib:$LIBRARY_PATH" >> ~/.bashrc
-RUN echo "export LD_LIBRARY_PATH=/root/dlang/ldc-1.22.0/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
+RUN echo "export LIBRARY_PATH=/root/dlang/ldc-1.24.0/lib:$LIBRARY_PATH" >> ~/.bashrc
+RUN echo "export LD_LIBRARY_PATH=/root/dlang/ldc-1.24.0/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
 
 # Mono
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
@@ -72,19 +74,18 @@ RUN apt update
 RUN apt-get install -qq -y mono-devel
 
 # Pony
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E04F0923 B3B48BDA
-RUN add-apt-repository "deb https://dl.bintray.com/pony-language/ponylang-debian  $(lsb_release -cs) main"
-RUN apt-get install -qq -y ponyc
+RUN SHELL=/bin/sh sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ponylang/ponyup/latest-release/ponyup-init.sh)"
+RUN export PATH=/root/.local/share/ponyup/bin:$PATH ; ponyup update ponyc release
 
 #Swift
 RUN wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import -
-RUN wget https://swift.org/builds/swift-5.2.1-release/ubuntu1804/swift-5.2.1-RELEASE/swift-5.2.1-RELEASE-ubuntu18.04.tar.gz
-RUN tar xzf swift-5.2.1-RELEASE-ubuntu18.04.tar.gz
-RUN mv swift-5.2.1-RELEASE-ubuntu18.04 /usr/share/swift
-RUN rm swift-5.2.1-RELEASE-ubuntu18.04.tar.gz
+RUN wget https://swift.org/builds/swift-5.3.2-release/ubuntu2004/swift-5.3.2-RELEASE/swift-5.3.2-RELEASE-ubuntu20.04.tar.gz
+RUN tar xzf swift-5.3.2-RELEASE-ubuntu20.04.tar.gz
+RUN mv swift-5.3.2-RELEASE-ubuntu20.04 /usr/share/swift
+RUN rm swift-5.3.2-RELEASE-ubuntu20.04.tar.gz
 
 #Powershell
-RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+RUN wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
 RUN apt-get update
 RUN add-apt-repository universe
@@ -111,13 +112,16 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             cython \
             fp-compiler \
             gfortran \
-            ocaml \
+            opam \
             perl6 \
             sbcl \
             tcl \
             guile-2.2 \
             luajit \
             gnat
+
+# OCaml
+RUN opam init --auto-setup --disable-sandboxing --dot-profile ~/.bashrc --compiler 4.11.1+flambda
 
 # asdf languages
 RUN git clone https://github.com/asdf-vm/asdf.git /root/.asdf --branch v0.7.8
@@ -126,8 +130,8 @@ RUN echo "/root/.asdf/asdf.sh" >> ~/.bashrc
 RUN asdf update
 
 RUN asdf plugin-add java
-RUN asdf install java adopt-openjdk-14+36
-RUN asdf global java adopt-openjdk-14+36
+RUN asdf install java adoptopenjdk-15.0.1+9
+RUN asdf global java adoptopenjdk-15.0.1+9
 
 RUN asdf plugin-add crystal
 RUN asdf install crystal 0.35.0
@@ -166,8 +170,8 @@ RUN asdf install haskell 8.10.1
 RUN asdf global haskell 8.10.1
 
 RUN asdf plugin-add nim
-RUN asdf install nim v1.2.0
-RUN asdf global nim v1.2.0
+RUN asdf install nim 1.4.2
+RUN asdf global nim 1.4.2
 
 RUN asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git \
 && bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
@@ -211,4 +215,4 @@ RUN asdf plugin-add julia https://github.com/rkyleg/asdf-julia.git
 #RUN asdf global julia 1.4.0
 
 COPY . /root/app
-CMD ./run.sh
+CMD /bin/bash -c 'ruby ./run.rb'
