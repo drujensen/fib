@@ -53,7 +53,7 @@ Last benchmark was ran on June 21, 2020
 | D |    5.078 | bash -c "ldc2 -O3 -release -flto=full -of=fib fib.d" | ./fib |
 | Nim |    5.087 | nim cpp -d:release --passC:-fno-inline-small-functions fib.nim | ./fib |
 | Cython |    5.289 | cython --embed -o fib.pyx.c fib.pyx && gcc -fno-inline-small-functions -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python) | ./fib |
-| Rust |    5.450 | rustc -C opt-level=3 -C lto=fat fib.rs | ./fib |
+| Rust |    5.450 | rustc -C opt-level=3 fib.rs | ./fib |
 | Pascal |    6.544 | fpc -O3 -Si ./fib.pas | ./fib |
 | Assembly |    7.993 | gcc -no-pie -o fib fib-gcc-x64.s | ./fib |
 | OCaml |    8.607 | ocamlopt -O3 -o fib fib.ml | ./fib |
