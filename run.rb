@@ -52,7 +52,7 @@ languages << Language.new("Julia", :mixed, "", "julia -O3 fib.jl")
 languages << Language.new("Escript", :mixed, "", "escript fib.es")
 languages << Language.new("Lua Jit", :mixed, "", "luajit fib.lua")
 languages << Language.new("Node", :mixed, "", "node fib.js")
-languages << Language.new("Elixir", :mixed, "", "ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]' && elixir fib.exs")
+languages << Language.new("Elixir", :mixed, "", "ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]' elixir fib.exs")
 languages << Language.new("Clojure", :mixed, "", "clojure fib.cljc")
 languages << Language.new("Python3 (PyPy)", :mixed, "", "pypy3 fib.py")
 

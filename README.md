@@ -154,7 +154,7 @@ Last benchmark was ran on June 21, 2020
 
 ## Versions
 
-All compilers are installed using `asdf` or `apt` on Ubuntu 18.04 docker image:
+All compilers are installed using `asdf` or `apt` on Ubuntu 20.04 docker image:
 assembly (gcc) 7.4.0
 bash           5.0.0
 crystal        0.35.0

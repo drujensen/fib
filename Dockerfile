@@ -27,6 +27,7 @@ RUN apt-get update -qq && \
             zlib1g-dev \
             libgdbm-dev \
             libcurl4-openssl-dev \
+            libncurses5-dev \
             libpng-dev \
             libssl-dev \
             libyaml-dev \
@@ -57,10 +58,7 @@ RUN apt-get update -qq && \
             unzip && \
     apt-get clean -qq -y && \
     apt-get autoclean -qq -y && \
-    apt-get autoremove -qq -y && \
-    rm -rf /var/cache/debconf/*-old && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /usr/share/doc/*
+    apt-get autoremove -qq -y
 
 # D
 RUN curl -fsS https://dlang.org/install.sh | bash -s ldc
@@ -93,16 +91,10 @@ RUN apt-get install -y powershell
 RUN rm packages-microsoft-prod.deb
 
 # Janet
-RUN wget -q https://github.com/janet-lang/janet/releases/download/v1.10.1/janet-v1.10.1-linux.tar.gz
-RUN tar xzf janet-v1.10.1-linux.tar.gz
-RUN mv janet-v1.10.1-linux /usr/share/janet
-RUN rm janet-v1.10.1-linux.tar.gz
-
-# V
-RUN wget -q https://github.com/vlang/v/releases/latest/download/v_linux.zip
-RUN mkdir /usr/share/v_linux
-RUN mv v_linux.zip /usr/share/v_linux/.
-RUN cd /usr/share/v_linux && unzip v_linux.zip && rm v_linux.zip
+RUN wget -q https://github.com/janet-lang/janet/releases/download/v1.12.2/janet-v1.12.2-linux.tar.gz
+RUN tar xzf janet-v1.12.2-linux.tar.gz
+RUN mv janet-v1.12.2-linux /usr/share/janet
+RUN rm janet-v1.12.2-linux.tar.gz
 
 # Add several languages to PATH
 RUN echo "export PATH=/root/dlang/ldc-1.22.0/bin:/usr/share/v_linux/v:/usr/share/janet:/usr/share/swift/usr/bin:$PATH" >> ~/.bashrc
@@ -125,42 +117,74 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
 RUN opam init --auto-setup --disable-sandboxing --dot-profile ~/.bashrc --compiler 4.11.1+flambda
 
 # asdf languages
-RUN git clone https://github.com/asdf-vm/asdf.git /root/.asdf --branch v0.7.8
+RUN git clone https://github.com/asdf-vm/asdf.git /root/.asdf --branch v0.8.0
 RUN chmod 755 /root/.asdf/asdf.sh
-RUN echo "/root/.asdf/asdf.sh" >> ~/.bashrc
+RUN echo "/root/.asdf/asdf.sh" >> /etc/bash.bashrc
 RUN asdf update
+
+#RUN asdf plugin-add swift https://github.com/fcrespo82/asdf-swift.git
+#RUN asdf install swift 5.3
+#RUN asdf global swift 5.3
 
 RUN asdf plugin-add java
 RUN asdf install java adoptopenjdk-15.0.1+9
 RUN asdf global java adoptopenjdk-15.0.1+9
 
+RUN asdf plugin-add pony https://github.com/enilsen16/asdf-pony.git
+RUN asdf install pony 0.38.1
+#RUN asdf global pony 0.38.1
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
+              libunistring-dev \
+              libgc-dev
+
+RUN asdf plugin-add guile
+RUN asdf install guile 3.0.4
+RUN asdf global guile 3.0.4
+
+#RUN asdf plugin-add luaJIT
+#RUN asdf install luaJIT 2.4.4
+#RUN asdf global luaJIT 2.4.4
+
+RUN asdf plugin-add ocaml
+RUN asdf install ocaml 4.11.1
+RUN asdf global ocaml 4.11.1
+
+RUN asdf plugin-add v
+RUN asdf install v 0.1.29
+RUN asdf global v 0.1.29
+
 RUN asdf plugin-add crystal
-RUN asdf install crystal 0.35.0
-RUN asdf global crystal 0.35.0
+RUN asdf install crystal 0.35.1
+RUN asdf global crystal 0.35.1
 
 RUN asdf plugin-add clojure
 RUN asdf install clojure 1.10.1
 RUN asdf global clojure 1.10.1
 
-RUN asdf plugin-add dart https://github.com/baysao/asdf-dart.git
-RUN asdf install dart 2.7.2
-RUN asdf global dart 2.7.2
+RUN asdf plugin-add dart
+RUN asdf install dart 2.9.3
+RUN asdf global dart 2.9.3
+
+#RUN asdf plugin-add dmd
+#RUN asdf install dmd 1.20.1
+#RUN asdf global dmd 1.20.1
 
 RUN asdf plugin-add dotnet-core
-RUN asdf install dotnet-core 3.1.201
-RUN asdf global dotnet-core 3.1.201
+RUN asdf install dotnet-core 3.1.403
+RUN asdf global dotnet-core 3.1.403
 
 RUN asdf plugin-add elixir
-RUN asdf install elixir 1.10.0
-RUN asdf global elixir 1.10.0
+RUN asdf install elixir 1.11.2
+RUN asdf global elixir 1.11.2
 
 RUN asdf plugin-add elm
 RUN asdf install elm 0.19.1
 RUN asdf global elm 0.19.1
 
 RUN asdf plugin-add erlang
-RUN asdf install erlang 22.3.1
-RUN asdf global erlang 22.3.1
+RUN asdf install erlang 23.1.2
+RUN asdf global erlang 23.1.2
 
 RUN asdf plugin-add golang
 RUN asdf install golang 1.14.1
@@ -212,8 +236,8 @@ RUN asdf install lua 5.3.0
 RUN asdf global lua 5.3.0
 
 RUN asdf plugin-add julia https://github.com/rkyleg/asdf-julia.git
-#RUN asdf install julia 1.4.0
-#RUN asdf global julia 1.4.0
+RUN asdf install julia 1.5.0
+RUN asdf global julia 1.5.0
 
 COPY . /root/app
 CMD /bin/bash -c 'ruby ./run.rb'
