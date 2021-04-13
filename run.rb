@@ -28,7 +28,7 @@ languages << Language.new("C", :compiled, "gcc -fno-inline-small-functions -O3 -
 languages << Language.new("C++", :compiled, "g++ -fno-inline-small-functions -O3 -o fib fib.cpp", "./fib")
 languages << Language.new("Fortran", :compiled, "gfortran -fno-inline-small-functions -O3 -o fib fib.f03", "./fib")
 languages << Language.new("Pascal", :compiled, "fpc -O3 -Si ./fib.pas", "./fib")
-languages << Language.new("Nim", :compiled, "nim cpp -d:release --passC:-fno-inline-small-functions fib.nim", "./fib")
+languages << Language.new("Nim", :compiled, "nim c -d:danger --passC:-fno-inline-small-functions fib.nim", "./fib")
 languages << Language.new("Cython", :compiled, "cython --embed -o fib.pyx.c fib.pyx && gcc -fno-inline-small-functions -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python)", "./fib")
 languages << Language.new("D", :compiled, 'bash -c "ldc2 -O3 -release -flto=full -of=fib fib.d"', "./fib")
 languages << Language.new("V", :compiled, "v -cflags -fno-inline-small-functions -prod -o fib fib.v", "./fib")
