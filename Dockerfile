@@ -118,7 +118,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             tcl \
             guile-2.2 \
             luajit \
-            gnat
+            gnat \
+            pypy3
 
 # OCaml
 RUN opam init --auto-setup --disable-sandboxing --dot-profile ~/.bashrc --compiler 4.11.1+flambda
