@@ -118,6 +118,9 @@ RUN rm janet-v1.12.2-linux.tar.gz
 # Add languages to PATH
 ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin:/usr/share/janet:/usr/share/dlang/ldc-1.25.1/bin:/usr/share/swift/usr/bin:/root/.local/share/ponyup/bin:/usr/share/v"
 
+# Cython requires python.pc
+RUN ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/python-2.7.pc /usr/lib/x86_64-linux-gnu/pkgconfig/python.pc
+
 # apt languages
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             cython \
@@ -190,6 +193,13 @@ RUN asdf install elm
 
 RUN asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 RUN asdf install erlang
+
+# locale required for Elixir
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y locales
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 RUN asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 RUN asdf install elixir
