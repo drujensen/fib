@@ -12,7 +12,7 @@ class Language
     unless compile_cmd.empty?
       raise "compile failed" unless system("#{compile_cmd} 2>/dev/null")
     end
-    times = `{ bash -c "time #{run_cmd}" ; } 2>&1`.split("\n")[2].split("\t")[1].split(/[m,s]/)
+    times = `{ bash -c "time #{run_cmd}" ; } 2>&1`.split("\n").find{|s| s.include? "real"}.split("\t")[1].split(/[m,s]/)
     @run_time = (times[0].to_i * 60) + times[1].to_f
     `rm ./fib` if run_cmd == "./fib"
   rescue StandardError  => ex
