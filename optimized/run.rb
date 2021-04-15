@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 class Language
   attr_accessor :name, :type, :compile_cmd, :run_cmd, :compile_time, :run_time
   def initialize(name, type, compile_cmd, run_cmd)
@@ -14,7 +12,7 @@ class Language
     unless compile_cmd.empty?
       raise "compile failed" unless system("#{compile_cmd} 2>/dev/null")
     end
-    times = `{ bash -c "time #{run_cmd}" ; } 2>&1`.split("\n")[2].split("\t")[1].split(/[m,s]/)
+    times = `{ bash -c "time #{run_cmd}" ; } 2>&1`.split("\n").find{|s| s.include? "real"}.split("\t")[1].split(/[m,s]/)
     @run_time = (times[0].to_i * 60) + times[1].to_f
     `rm ./fib` if run_cmd == "./fib"
   rescue StandardError  => ex
@@ -50,8 +48,8 @@ languages << Language.new("Janet TCO", :optimized, "", "janet ./fib-tco.janet")
 languages << Language.new("OCaml TCO", :optimized, "ocamlopt -O3 -o fib_tail fib_tail.ml", "./fib_tail")
 languages << Language.new("Elixir Iterative", :optimized, "", "elixir fib-iterative.exs")
 languages << Language.new("Java Iterative", :optimized, "javac FibOptimized.java", "java FibOptimized")
-#languages << Language.new("Haskell TCO", :optimized, "ghc -O3 -o fib_tail fib_tail.hs", "./fib_tail")
-#languages << Language.new("Rust Memoized", :optimized, "rustc -O fib_mem.rs", "./fib_mem")
+languages << Language.new("Haskell TCO", :optimized, "ghc -O3 -o fib_tail fib_tail.hs", "./fib_tail")
+languages << Language.new("Rust Memoized", :optimized, "rustc -O fib_mem.rs", "./fib_mem")
 
 languages.each do |lang|
   puts "Running #{lang.name}"

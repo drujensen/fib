@@ -12,7 +12,7 @@ class Language
     unless compile_cmd.empty?
       raise "compile failed" unless system("#{compile_cmd} 2>/dev/null")
     end
-    times = `{ bash -c "time #{run_cmd}" ; } 2>&1`.split("\n")[2].split("\t")[1].split(/[m,s]/)
+    times = `{ bash -c "time #{run_cmd}" ; } 2>&1`.split("\n").find{|s| s.include? "real"}.split("\t")[1].split(/[m,s]/)
     @run_time = (times[0].to_i * 60) + times[1].to_f
     `rm ./fib` if run_cmd == "./fib"
   rescue StandardError  => ex
@@ -29,7 +29,7 @@ languages << Language.new("C++", :compiled, "g++ -fno-inline-small-functions -O3
 languages << Language.new("Fortran", :compiled, "gfortran -fno-inline-small-functions -O3 -o fib fib.f03", "./fib")
 languages << Language.new("Pascal", :compiled, "fpc -O3 -Si ./fib.pas", "./fib")
 languages << Language.new("Nim", :compiled, "nim c -d:danger --passC:-fno-inline-small-functions fib.nim", "./fib")
-languages << Language.new("Cython", :compiled, "cython --embed -o fib.pyx.c fib.pyx && gcc -fno-inline-small-functions -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python)", "./fib")
+languages << Language.new("Cython", :compiled, "cython -3 --embed -o fib.pyx.c fib.pyx && gcc -fno-inline-small-functions -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python)", "./fib")
 languages << Language.new("D", :compiled, 'bash -c "ldc2 -O3 -release -flto=full -of=fib fib.d"', "./fib")
 languages << Language.new("V", :compiled, "v -cflags -fno-inline-small-functions -prod -o fib fib.v", "./fib")
 languages << Language.new("Pony", :compiled, "ponyc -s -b fib -p ./fib.pony", "./fib")
@@ -52,9 +52,10 @@ languages << Language.new("Julia", :mixed, "", "julia -O3 fib.jl")
 languages << Language.new("Escript", :mixed, "", "escript fib.es")
 languages << Language.new("Lua Jit", :mixed, "", "luajit fib.lua")
 languages << Language.new("Node", :mixed, "", "node fib.js")
-languages << Language.new("Elixir", :mixed, "", "ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]' && elixir fib.exs")
-languages << Language.new("Clojure", :mixed, "", "clojure fib.cljc")
+languages << Language.new("Elixir", :mixed, "", "ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]' elixir Fib.exs")
+languages << Language.new("Clojure", :mixed, "", "clojure -M fib.cljc")
 languages << Language.new("Python3 (PyPy)", :mixed, "", "pypy3 fib.py")
+languages << Language.new("Ruby (jit)", :mixed, "", "ruby --jit fib.rb")
 
 languages << Language.new("Php", :interpreted, "", "php fib.php")
 languages << Language.new("Scheme", :interpreted, "", "guile fib.scm")
@@ -66,10 +67,10 @@ languages << Language.new("Janet", :interpreted, "", "janet ./fib.janet")
 languages << Language.new("Perl", :interpreted, "", "perl fib.pl")
 languages << Language.new("Tcl", :interpreted, "", "tclsh fib.tcl")
 languages << Language.new("Perl 6", :interpreted, "", "perl6 fib.p6")
-#languages << Language.new("K", :interpreted, "", "k fib.k")
-#languages << Language.new("R", :interpreted, "", "r -f fib.r")
-#languages << Language.new("Bash", :interpreted, "", "bash fib.sh")
-#languages << Language.new("Powershell", :interpreted, "", "pwsh fib.ps1")
+languages << Language.new("R", :interpreted, "", "r -f fib.r")
+languages << Language.new("Bash", :interpreted, "", "bash fib.sh")
+languages << Language.new("Powershell", :interpreted, "", "pwsh fib.ps1")
+languages << Language.new("K", :interpreted, "", "k fib.k")
 
 begin
   languages.each do |lang|
@@ -108,7 +109,8 @@ languages.select {|l| l.type == :vm}.sort_by {|l| l.run_time}.each do |lang|
     results << lang.run_cmd
     puts "| #{results.join(" | ")} |"
 end
-
+    puts ""
+    puts "NOTE: DSB Boundary 64 byte alignment may affect results.  See [issue #129](https://github.com/drujensen/fib/issues/129) for details."
 puts ""
 puts "## VM compiled before execution, mixed/dynamically typed"
 puts ""
