@@ -70,7 +70,7 @@ languages << Language.new("Perl 6", :interpreted, "", "perl6 fib.p6")
 languages << Language.new("R", :interpreted, "", "r -f fib.r")
 languages << Language.new("Bash", :interpreted, "", "bash fib.sh")
 languages << Language.new("Powershell", :interpreted, "", "pwsh fib.ps1")
-#languages << Language.new("K", :interpreted, "", "k fib.k")
+languages << Language.new("K", :interpreted, "", "k fib.k")
 
 begin
   languages.each do |lang|
@@ -109,7 +109,8 @@ languages.select {|l| l.type == :vm}.sort_by {|l| l.run_time}.each do |lang|
     results << lang.run_cmd
     puts "| #{results.join(" | ")} |"
 end
-
+    puts ""
+    puts "NOTE: DSB Boundary 64 byte alignment may affect results.  See [issue #129](https://github.com/drujensen/fib/issues/129) for details."
 puts ""
 puts "## VM compiled before execution, mixed/dynamically typed"
 puts ""
