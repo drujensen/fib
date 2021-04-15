@@ -1,9 +1,9 @@
 assembly (gcc) 7.4.0
 bash           5.0.0
-crystal        0.35.1
-clojure        1.10.1
+crystal        1.0.0
+clojure        1.10.2.774
 cython         0.29.15
-D (lcd2)       v1.20.1
+D (ldc2)       v1.20.1
 dart           2.9.3
 dmd            1.20.1
 dotnet-core    3.1.403
@@ -16,7 +16,7 @@ gfortran       9.3.0
 golang         1.14.1
 guile          3.0.4
 haskell        8.10.1
-java           adopt-openjdk-15.0.1+9
+java           openjdk-16
 julia          1.5.0
 K              3.6
 kotlin         1.3.70
@@ -35,9 +35,9 @@ powershell     v7.0.0
 python         3.8.2
 R              3.6.3
 rakudo         2020.01
-ruby           2.7.1
+ruby           3.0.1
 rust           1.42.0
 scheme (guile) 2.2
-swift          5.3
+swift          5.3.3
 tcl            8.6.10
-v              0.1.29
+v              0.2.2
