@@ -73,6 +73,12 @@ RUN apt-get update -qq && \
     apt-get autoclean -qq -y && \
     apt-get autoremove -qq -y
 
+# Emojicode - interactive install.sh
+#RUN wget https://github.com/emojicode/emojicode/releases/download/v1.0-beta.2/Emojicode-1.0-beta.2-Linux-x86_64.tar.gz -O emojicode.tar.gz \
+#    && tar -xzf emojicode.tar.gz && rm emojicode.tar.gz \
+#    && cd Emojicode-1.0-beta.2-Linux-x86_64 && ./install.sh \
+#    && cd .. && rm -r Emojicode-1.0-beta.2-Linux-x86_64
+
 #Powershell
 RUN wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
@@ -242,4 +248,4 @@ RUN asdf plugin-add julia https://github.com/rkyleg/asdf-julia.git
 RUN asdf install julia
 
 COPY . /root/app
-CMD ["/bin/bash", "-c", "ruby", "run.rb"]
+CMD ["/bin/bash", "-c", "./run.rb"]

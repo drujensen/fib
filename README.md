@@ -39,132 +39,80 @@ All tests are run on:
 
 You can run the tests using Docker: `docker run -it drujensen/fib`
 
-By default, it will run all languages 5 times.
-
-This will generate markdown with an average compile time, average run time, and combined total time.
+By default, it will compile and run all languages 5 times. Totals are calculated by adding the average compile and run times.
 
 To only run a subset of the languages, provide a list of extensions and optionally the count
 
 `docker run -it drujensen/fib ./run.rb cr,kt,pypy,rbjit 5`
 
-Last benchmark was ran on April 15, 2021
+Last benchmark was ran on April 17, 2021
 
 ## Natively compiled, statically typed
 
-| Language | Time, s | Compile | Run |
-|----------|---------|---------|-----|
-| V |    5.709 | v -cflags -fno-inline-small-functions -prod -o fib fib.v | ./fib |
-| Pony |    5.820 | ponyc -s -b fib -p ./fib.pony | ./fib |
-| C++ |    5.876 | g++ -fno-inline-small-functions -O3 -o fib fib.cpp | ./fib |
-| C |    5.878 | gcc -fno-inline-small-functions -O3 -o fib fib.c | ./fib |
-| D |    5.901 | bash -c "ldc2 -O3 -release -flto=full -of=fib fib.d" | ./fib |
-| Fortran |    6.027 | gfortran -fno-inline-small-functions -O3 -o fib fib.f03 | ./fib |
-| Crystal |    6.136 | crystal build --release fib.cr | ./fib |
-| Rust |    6.376 | rustc -C opt-level=3 fib.rs | ./fib |
-| Nim |    6.424 | nim c -d:danger --passC:-fno-inline-small-functions fib.nim | ./fib |
-| Ada |    6.978 | gnat make -O2 -gnatp -o fib fib.adb | ./fib |
-| Cython |    6.984 | cython -3 --embed -o fib.pyx.c fib.pyx && gcc -fno-inline-small-functions -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python) | ./fib |
-| Swift |    7.524 | swiftc -O -g fib.swift | ./fib |
-| Pascal |    8.353 | fpc -O3 -Si ./fib.pas | ./fib |
-| OCaml |    9.865 | ocamlopt -O3 -o fib fib.ml | ./fib |
-| Assembly |    9.981 | gcc -no-pie -o fib fib-gcc-x64.s | ./fib |
-| Go |   12.469 | go build fib.go | ./fib |
-| Haskell |   13.277 | rm ./fib.o && ghc -O3 -o fib fib.hs | ./fib |
-| Lisp |   15.516 | sbcl --load fib.lisp | ./fib |
-
-NOTE: DSB Boundary 64 byte alignment may affect results.  See [issue #129](https://github.com/drujensen/fib/issues/129) for details.
+| Ext | Language | Total | Compile | Time, s | Run | Time, s |
+|-----|----------|-------|---------|---------|-----|---------|
+| c | C |    5.805 | gcc -fno-inline-small-functions -O3 -o fib fib.c |    0.042 | ./fib |    5.763 |
+| f03 | Fortran |    5.818 | gfortran -fno-inline-small-functions -O3 -o fib fib.f03 |    0.058 | ./fib |    5.760 |
+| cpp | C++ |    5.823 | g++ -fno-inline-small-functions -O3 -o fib fib.cpp |    0.059 | ./fib |    5.764 |
+| d | D |    5.973 | ldc2 -O3 -release -flto=full -of=fib fib.d |    0.373 | ./fib |    5.600 |
+| pony | Pony |    6.399 | ponyc -s -b fib -p ./fib.pony |    0.825 | ./fib |    5.574 |
+| rs | Rust |    6.535 | rustc -C opt-level=3 fib.rs |    0.363 | ./fib |    6.171 |
+| nim | Nim |    6.671 | nim c -d:danger --passC:-fno-inline-small-functions fib.nim |    0.508 | ./fib |    6.163 |
+| adb | Ada |    6.963 | gnat make -O2 -gnatp -o fib fib.adb |    0.113 | ./fib |    6.850 |
+| pyx | Cython |    7.073 | cython -3 --embed -o fib.pyx.c fib.pyx && gcc -fno-inline-small-functions -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python) |    0.199 | ./fib |    6.874 |
+| swift | Swift |    7.268 | swiftc -O -g fib.swift |    0.182 | ./fib |    7.087 |
+| v | V |    7.541 | v -cflags -fno-inline-small-functions -prod -o fib fib.v |    2.015 | ./fib |    5.526 |
+| pas | Pascal |    8.065 | fpc -O3 -Si ./fib.pas |    0.052 | ./fib |    8.012 |
+| cr | Crystal |    9.093 | crystal build --release fib.cr |    3.242 | ./fib |    5.851 |
+| s | Assembly |    9.678 | gcc -no-pie -o fib fib-gcc-x64.s |    0.021 | ./fib |    9.657 |
+| ml | OCaml |    9.738 | ocamlopt -O3 -o fib fib.ml |    0.074 | ./fib |    9.664 |
+| go | Go |   12.454 | go build fib.go |    0.525 | ./fib |   11.929 |
+| hs | Haskell |   12.726 | rm ./fib.o && ghc -O3 -o fib fib.hs |    0.001 | ./fib |   12.725 |
+| lisp | Lisp |   16.873 | sbcl --load fib.lisp |    1.771 | ./fib |   15.101 |
 
 ## VM compiled bytecode, statically typed
 
-| Language | Time, s | Compile | Run |
-|----------|---------|---------|-----|
-| Kotlin |    8.168 | kotlinc Fib.kt -include-runtime -d Fib.jar | java -jar Fib.jar |
-| Java |    8.303 | javac Fib.java | java Fib |
-| C# |   13.181 | dotnet build -c Release -o ./bin | dotnet ./bin/fib.dll |
-| C# (Mono) |   15.706 | mcs Fib.cs | mono Fib.exe |
-| Erlang |   16.502 | erlc +native +'{hipe,[o3]}' fib.erl | erl -noinput -noshell -s fib |
+| Ext | Language | Total | Compile | Time, s | Run | Time, s |
+|-----|----------|-------|---------|---------|-----|---------|
+| java | Java |    8.683 | javac Fib.java |    0.941 | java Fib |    7.741 |
+| kt | Kotlin |   11.794 | kotlinc Fib.kt -include-runtime -d Fib.jar |    4.198 | java -jar Fib.jar |    7.596 |
+| cs | C# |   14.024 | dotnet build -c Release -o ./bin |    1.949 | dotnet ./bin/fib.dll |   12.075 |
+| mono | C# (Mono) |   15.804 | mcs Fib.cs |    0.462 | mono Fib.exe |   15.342 |
+| erl | Erlang |   16.107 | erlc +native +'{hipe,[o3]}' fib.erl |    0.509 | erl -noinput -noshell -s fib |   15.598 |
+
+NOTE: DSB Boundary 64 byte alignment may affect results.  See [issue #129](https://github.com/drujensen/fib/issues/129) for details.
 
 ## VM compiled before execution, mixed/dynamically typed
 
-| Language | Time, s | Run |
-|----------|---------|-----|
-| Julia |   11.182 | julia -O3 fib.jl |
-| Dart |   11.531 | dart fib.dart |
-| Escript |   16.066 | escript fib.es |
-| Lua Jit |   16.633 | luajit fib.lua |
-| Elixir |   17.099 | ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]' elixir Fib.exs |
-| Node |   25.975 | node fib.js |
-| Clojure |   35.140 | clojure -M fib.cljc |
-| Python3 (PyPy) |   40.708 | pypy3 fib.py |
-| Ruby (jit) |   62.792 | ruby --jit fib.rb |
-
-NOTE: These languages include compilation time which should be taken into consideration when comparing.
+| Ext | Language | Time, s | Run |
+|-----|----------|---------|-----|
+| dart | Dart |   10.824 | dart fib.dart |
+| jl | Julia |   11.092 | julia -O3 fib.jl |
+| es | Escript |   14.754 | escript fib.es |
+| luajit | Lua Jit |   15.925 | luajit fib.lua |
+| exs | Elixir |   16.005 | ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]' elixir Fib.exs |
+| node | Node |   24.471 | node fib.js |
+| cljc | Clojure |   26.522 | clojure -M fib.cljc |
+| pypy | Python3 (PyPy) |   44.244 | pypy3 fib.py |
+| rbjit | Ruby (jit) |   59.760 | ruby --jit fib.rb |
 
 ## Interpreted, dynamically typed
 
-| Language | Time, s | Run |
-|----------|---------|-----|
-| Php |  117.779 | php fib.php |
-| Ruby |  187.516 | ruby fib.rb |
-| Scheme |  191.774 | guile fib.scm |
-| Lua |  262.031 | lua fib.lua |
-| Janet |  296.435 | janet ./fib.janet |
-| Python |  508.441 | python fib.py |
-| Python3 |  531.542 | python3 fib.py |
-| Perl | 1101.333 | perl fib.pl |
-| Tcl | 1620.024 | tclsh fib.tcl |
-| Perl 6 | 3174.896 | perl6 fib.p6 |
-| K |    DNF | k fib.k |
-| R |    DNF | r -f fib.r |
-| Bash |    DNF | bash fib.sh |
-| Powershell |    DNF | pwsh fib.ps1 |
-
-NOTE: Interpreted languages have a startup time cost that should be taken into consideration when comparing.
-
-## Optimized code that breaks the benchmark
-
-The code examples provided in the [optimized](optimized) folder use techniques that break the benchmark. They do not perform the same internal tasks as the other examples so are not a good for an apples to apples comparison. They all perform at sub-second response times. It demonstrates that all benchmarks will have some caveat.
-
-Several of these examples add very little changes to the original code that are worth mentioning:
- - The [C++ constexpr](optimized/fib-constexpr.cpp) is using a `constexpr` which optimizes the recursive call to a constant.
- - The [Lisp compiletime](optimized/fib-compiletime.lisp) shows how you can perform the calculation at compile time. simply add `#.` before outputing the results.
- - The [Python lru_cache](optimized/fib-cache.py) is using `lru_cache` directive with no code changes.
- - The [Ruby mem](optimized/fib-mem.rb), [Crystal mem](optimized/fib-mem.cr) and [JS mem](optimized/fib-mem.js) are maintaining a simple cache to avoid recalculating the results for that value.
-
-For the fun of it, here are the benchmarks for the optimized versions
-
-Last benchmark was ran on April 15, 2021
-
-## Optimized
-
-| Language | Time, s | Compile | Run |
-|----------|---------|---------|-----|
-| C++ Constant |    0.000 | g++-8 -O3 -o fib-const fib-constexpr.cpp | ./fib-const |
-| Nim Constant |    0.000 | nim c -d:danger fib_const.nim | ./fib_cont |
-| Lisp Compile Time |    0.000 | sbcl --load fib-compiletime.lisp | ./fib-compiletime |
-| Perl Memoized 2 |    0.000 |  | perl fib-mem2.pl |
-| D Memoized |    0.001 | ldc2 -O3 -release -flto=full -of=fib-mem fib-mem.d | ./fib-mem |
-| Go Memoized |    0.001 | go build fib-mem.go | ./fib-mem |
-| K Memoized |    0.001 |  | k fib-mem.k |
-| Nim Memoized |    0.001 | nim c -d:danger fib_mem.nim | ./fib_mem |
-| Nim Rewrite |    0.001 | nim c -d:danger fib_rewrite.nim | ./fib_rewrite |
-| Perl Inline |    0.001 |  | perl fib-inline.py |
-| Swift Memoized |    0.001 | swiftc -O -g fib-mem.swift | ./fib-mem |
-| Haskell Memoized |    0.001 | ghc -O3 -o fib_mem fib_mem.hs | ./fib_mem |
-| OCaml TCO |    0.001 | ocamlopt -O3 -o fib_tail fib_tail.ml | ./fib_tail |
-| Janet Memoized |    0.002 |  | janet ./fib-mem.janet |
-| Janet TCO |    0.002 |  | janet ./fib-tco.janet |
-| Tcl Memoized |    0.003 |  | tclsh fib-mem.tcl |
-| Perl Memoized |    0.008 |  | perl fib-mem.pl |
-| Python Cached |    0.021 |  | python3 fib-cache.py |
-| Ruby Memoized |    0.067 |  | ruby fib-mem.rb |
-| Java Iterative |    0.194 | javac FibOptimized.java | java FibOptimized |
-| Node Memoized |    0.205 |  | node fib-mem.js |
-| Erlang Memoized |    0.271 | erlc +native +'{hipe,[o3]}' fib_mem.erl | erl -noinput -noshell -s fib_mem |
-| Escript Memoized |    0.291 |  | escript fib_mem.es |
-| Lua Memoized |    0.296 |  | lua fib-mem.lua |
-| Perl6 Memoized |    0.357 |  | perl6 fib-mem.p6 |
-| Elixir Iterative |    0.688 |  | elixir fib-iterative.exs |
+| Ext | Language | Time, s | Run |
+|-----|----------|---------|-----|
+| php | Php |  112.759 | php fib.php |
+| scm | Scheme |  179.639 | guile fib.scm |
+| rb | Ruby |  179.711 | ruby fib.rb |
+| lua | Lua |  249.706 | lua fib.lua |
+| janet | Janet |  281.048 | janet ./fib.janet |
+| py | Python |  488.743 | python fib.py |
+| py3 | Python3 |  500.493 | python3 fib.py |
+| pl | Perl | 1045.041 | perl fib.pl |
+| tcl | Tcl | 1526.907 | tclsh fib.tcl |
+| p6 | Perl 6 | 2872.754 | perl6 fib.p6 |
+| r | R |    DNF | r -f fib.r |
+| sh | Bash |    DNF | bash fib.sh |
+| ps1 | Powershell |    DNF | pwsh fib.ps1 |
 
 ## Versions
 

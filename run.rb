@@ -49,7 +49,7 @@ languages << Language.new("f03", "Fortran", :compiled, "gfortran -fno-inline-sma
 languages << Language.new("pas", "Pascal", :compiled, "fpc -O3 -Si ./fib.pas", "./fib")
 languages << Language.new("nim", "Nim", :compiled, "nim c -d:danger --passC:-fno-inline-small-functions fib.nim", "./fib")
 languages << Language.new("pyx", "Cython", :compiled, "cython -3 --embed -o fib.pyx.c fib.pyx && gcc -fno-inline-small-functions -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python)", "./fib")
-languages << Language.new("d", "D", :compiled, 'bash -c "ldc2 -O3 -release -flto=full -of=fib fib.d"', "./fib")
+languages << Language.new("d", "D", :compiled, 'ldc2 -O3 -release -flto=full -of=fib fib.d', "./fib")
 languages << Language.new("v", "V", :compiled, "v -cflags -fno-inline-small-functions -prod -o fib fib.v", "./fib")
 languages << Language.new("pony", "Pony", :compiled, "ponyc -s -b fib -p ./fib.pony", "./fib")
 languages << Language.new("rs", "Rust", :compiled, "rustc -C opt-level=3 fib.rs", "./fib")
@@ -59,6 +59,7 @@ languages << Language.new("go", "Go", :compiled, "go build fib.go", "./fib")
 languages << Language.new("ml", "OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml", "./fib")
 languages << Language.new("lisp", "Lisp", :compiled, "sbcl --load fib.lisp", "./fib")
 languages << Language.new("hs", "Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fib.hs", "./fib")
+#languages << Language.new("emo", "Emojicode", :compiled, "emojicodec fib.emojic", "./fib")
 
 languages << Language.new("java", "Java", :vm, "javac Fib.java", "java Fib")
 languages << Language.new("kt", "Kotlin", :vm, "kotlinc Fib.kt -include-runtime -d Fib.jar", "java -jar Fib.jar")
@@ -86,10 +87,9 @@ languages << Language.new("janet", "Janet", :interpreted, "", "janet ./fib.janet
 languages << Language.new("pl", "Perl", :interpreted, "", "perl fib.pl")
 languages << Language.new("tcl", "Tcl", :interpreted, "", "tclsh fib.tcl")
 languages << Language.new("p6", "Perl 6", :interpreted, "", "perl6 fib.p6")
-languages << Language.new("r", "R", :interpreted, "", "r -f fib.r")
+languages << Language.new("r", "R", :interpreted, "", "R -f fib.r")
 languages << Language.new("sh", "Bash", :interpreted, "", "bash fib.sh")
 languages << Language.new("ps1", "Powershell", :interpreted, "", "pwsh fib.ps1")
-languages << Language.new("k", "K", :interpreted, "", "k fib.k")
 
 filter = ARGV[0] ? ARGV[0].split(",") : []
 count = ARGV[1] ? ARGV[1].to_i : 5
