@@ -43,7 +43,7 @@ By default, it will compile and run all languages 5 times. Totals are calculated
 
 To only run a subset of the languages, provide a list of extensions and optionally the count
 
-`docker run -it drujensen/fib ./run.rb cr,kt,pypy,rbjit 5`
+`docker run -it drujensen/fib ./run.sh cr,kt,pypy,rbjit 5`
 
 Last benchmark was ran on April 17, 2021
 
@@ -70,17 +70,18 @@ Last benchmark was ran on April 17, 2021
 | hs | Haskell |   12.726 | rm ./fib.o && ghc -O3 -o fib fib.hs |    0.001 | ./fib |   12.725 |
 | lisp | Lisp |   16.873 | sbcl --load fib.lisp |    1.771 | ./fib |   15.101 |
 
+NOTE: DSB Boundary 64 byte alignment may affect results.  See [issue #129](https://github.com/drujensen/fib/issues/129) for details.
+
 ## VM compiled bytecode, statically typed
 
 | Ext | Language | Total | Compile | Time, s | Run | Time, s |
 |-----|----------|-------|---------|---------|-----|---------|
 | java | Java |    8.683 | javac Fib.java |    0.941 | java Fib |    7.741 |
 | kt | Kotlin |   11.794 | kotlinc Fib.kt -include-runtime -d Fib.jar |    4.198 | java -jar Fib.jar |    7.596 |
+| scala | Scala |   12.051 | scalac Fib.scala |    2.176 | scala Fib |    9.875 |
 | cs | C# |   14.024 | dotnet build -c Release -o ./bin |    1.949 | dotnet ./bin/fib.dll |   12.075 |
 | mono | C# (Mono) |   15.804 | mcs Fib.cs |    0.462 | mono Fib.exe |   15.342 |
 | erl | Erlang |   16.107 | erlc +native +'{hipe,[o3]}' fib.erl |    0.509 | erl -noinput -noshell -s fib |   15.598 |
-
-NOTE: DSB Boundary 64 byte alignment may affect results.  See [issue #129](https://github.com/drujensen/fib/issues/129) for details.
 
 ## VM compiled before execution, mixed/dynamically typed
 
@@ -109,8 +110,8 @@ NOTE: DSB Boundary 64 byte alignment may affect results.  See [issue #129](https
 | py3 | Python3 |  500.493 | python3 fib.py |
 | pl | Perl | 1045.041 | perl fib.pl |
 | tcl | Tcl | 1526.907 | tclsh fib.tcl |
+| r | R |    2271.277 | r -f fib.r |
 | p6 | Perl 6 | 2872.754 | perl6 fib.p6 |
-| r | R |    DNF | r -f fib.r |
 | sh | Bash |    DNF | bash fib.sh |
 | ps1 | Powershell |    DNF | pwsh fib.ps1 |
 
@@ -157,6 +158,7 @@ R              3.6.3
 rakudo         2020.01
 ruby           3.0.1
 rust           1.42.0
+scala          2.13.5
 scheme (guile) 2.2
 swift          5.3.3
 tcl            8.6.10

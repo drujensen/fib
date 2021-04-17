@@ -42,7 +42,7 @@ end
 
 languages = []
 languages << Language.new("adb", "Ada", :compiled, "gnat make -O2 -gnatp -o fib fib.adb", "./fib")
-languages << Language.new("s", "Assembly", :compiled, "gcc -no-pie -o fib fib-gcc-x64.s", "./fib")
+languages << Language.new("s", "Assembly", :compiled, "gcc -no-pie -o fib fib.s", "./fib")
 languages << Language.new("c", "C", :compiled, "gcc -fno-inline-small-functions -O3 -o fib fib.c", "./fib")
 languages << Language.new("cpp", "C++", :compiled, "g++ -fno-inline-small-functions -O3 -o fib fib.cpp", "./fib")
 languages << Language.new("f03", "Fortran", :compiled, "gfortran -fno-inline-small-functions -O3 -o fib fib.f03", "./fib")
@@ -62,6 +62,7 @@ languages << Language.new("hs", "Haskell", :compiled, "rm ./fib.o && ghc -O3 -o 
 #languages << Language.new("emo", "Emojicode", :compiled, "emojicodec fib.emojic", "./fib")
 
 languages << Language.new("java", "Java", :vm, "javac Fib.java", "java Fib")
+languages << Language.new("scala", "Scala", :vm, "scalac Fib.scala", "scala Fib")
 languages << Language.new("kt", "Kotlin", :vm, "kotlinc Fib.kt -include-runtime -d Fib.jar", "java -jar Fib.jar")
 languages << Language.new("cs", "C#", :vm, "dotnet build -c Release -o ./bin", "dotnet ./bin/fib.dll")
 languages << Language.new("mono", "C# (Mono)", :vm, "mcs Fib.cs", "mono Fib.exe")
@@ -130,36 +131,17 @@ puts ""
 unless list.select {|l| l.type == :compiled}.empty?
   puts "## Natively compiled, statically typed"
   puts ""
-  puts "| Ext | Language | Total | Compile | Time, s | Run | Time, s |"
-  puts "|-----|----------|-------|---------|---------|-----|---------|"
+  puts "| Language | Total | Compile | Time, s | Run | Time, s | Ext |"
+  puts "|----------|-------|---------|---------|-----|---------|-----|"
   list.select {|l| l.type == :compiled}.sort_by {|l| l.total_time}.each do |lang|
       results = []
-      results << lang.ext
       results << lang.name
       results << ("%.3f" % lang.total_time).rjust(8, " ")
       results << lang.compile_cmd
       results << ("%.3f" % lang.average_compile_time).rjust(8, " ")
       results << lang.run_cmd
       results << ("%.3f" % lang.average_run_time).rjust(8, " ")
-      puts "| #{results.join(" | ")} |"
-  end
-  puts ""
-end
-
-unless list.select {|l| l.type == :vm}.empty?
-  puts "## VM compiled bytecode, statically typed"
-  puts ""
-  puts "| Ext | Language | Total | Compile | Time, s | Run | Time, s |"
-  puts "|-----|----------|-------|---------|---------|-----|---------|"
-  list.select {|l| l.type == :vm}.sort_by {|l| l.total_time}.each do |lang|
-      results = []
       results << lang.ext
-      results << lang.name
-      results << ("%.3f" % lang.total_time).rjust(8, " ")
-      results << lang.compile_cmd
-      results << ("%.3f" % lang.average_compile_time).rjust(8, " ")
-      results << lang.run_cmd
-      results << ("%.3f" % lang.average_run_time).rjust(8, " ")
       puts "| #{results.join(" | ")} |"
   end
   puts ""
@@ -167,17 +149,36 @@ unless list.select {|l| l.type == :vm}.empty?
   puts ""
 end
 
+unless list.select {|l| l.type == :vm}.empty?
+  puts "## VM compiled bytecode, statically typed"
+  puts ""
+  puts "| Language | Total | Compile | Time, s | Run | Time, s | Ext |"
+  puts "|----------|-------|---------|---------|-----|---------|-----|"
+  list.select {|l| l.type == :vm}.sort_by {|l| l.total_time}.each do |lang|
+      results = []
+      results << lang.name
+      results << ("%.3f" % lang.total_time).rjust(8, " ")
+      results << lang.compile_cmd
+      results << ("%.3f" % lang.average_compile_time).rjust(8, " ")
+      results << lang.run_cmd
+      results << ("%.3f" % lang.average_run_time).rjust(8, " ")
+      results << lang.ext
+      puts "| #{results.join(" | ")} |"
+  end
+  puts ""
+end
+
 unless list.select {|l| l.type == :mixed}.empty?
   puts "## VM compiled before execution, mixed/dynamically typed"
   puts ""
-  puts "| Ext | Language | Time, s | Run |"
-  puts "|-----|----------|---------|-----|"
+  puts "| Language | Time, s | Run | Ext |"
+  puts "|----------|---------|-----|-----|"
   list.select {|l| l.type == :mixed}.sort_by {|l| l.total_time}.each do |lang|
       results = []
-      results << lang.ext
       results << lang.name
       results << ("%.3f" % lang.total_time).rjust(8, " ")
       results << lang.run_cmd
+      results << lang.ext
       puts "| #{results.join(" | ")} |"
   end
   puts ""
@@ -186,14 +187,14 @@ end
 unless list.select {|l| l.type == :interpreted}.empty?
   puts "## Interpreted, dynamically typed"
   puts ""
-  puts "| Ext | Language | Time, s | Run |"
-  puts "|-----|----------|---------|-----|"
+  puts "| Language | Time, s | Run | Ext |"
+  puts "|----------|---------|-----|-----|"
   list.select {|l| l.type == :interpreted}.sort_by {|l| l.total_time}.each do |lang|
       results = []
-      results << lang.ext
       results << lang.name
       results << ("%.3f" % lang.total_time).rjust(8, " ")
       results << lang.run_cmd
+      results << lang.ext
       puts "| #{results.join(" | ")} |"
   end
 end

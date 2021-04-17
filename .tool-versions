@@ -37,6 +37,7 @@ R              3.6.3
 rakudo         2020.01
 ruby           3.0.1
 rust           1.42.0
+scala          2.13.5
 scheme (guile) 2.2
 swift          5.3.3
 tcl            8.6.10

@@ -247,5 +247,8 @@ RUN asdf install lua
 RUN asdf plugin-add julia https://github.com/rkyleg/asdf-julia.git
 RUN asdf install julia
 
+RUN asdf plugin-add scala
+RUN asdf install scala
+
 COPY . /root/app
-CMD ["/bin/bash", "-c", "./run.rb"]
+CMD ["/bin/bash", "-c", "./run.sh"]
