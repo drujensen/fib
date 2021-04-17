@@ -35,7 +35,17 @@ All tests are run on:
  - OS: Ubuntu 20.04
  - Docker Base Image: ubuntu:20.04
 
+## How to run them
+
 You can run the tests using Docker: `docker run -it drujensen/fib`
+
+By default, it will run all languages 5 times.
+
+This will generate markdown with an average compile time, average run time, and combined total time.
+
+To only run a subset of the languages, provide a list of extensions and optionally the count
+
+`docker run -it drujensen/fib ./run.rb cr,kt,pypy,rbjit 5`
 
 Last benchmark was ran on April 15, 2021
 

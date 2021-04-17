@@ -242,6 +242,4 @@ RUN asdf plugin-add julia https://github.com/rkyleg/asdf-julia.git
 RUN asdf install julia
 
 COPY . /root/app
-CMD /bin/bash -c 'ruby ./run.rb'
-
-
+CMD ["/bin/bash", "-c", "ruby", "run.rb"]
