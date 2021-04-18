@@ -1,8 +1,8 @@
 # Recursive Fibonacci Benchmark using top languages on Github
 
-Top 10: C, Java, Python, C++, C#, JavaScript, Assembly, Php, Ruby, Go [reference](https://www.tiobe.com/tiobe-index/)
+Top 10: JavaScript, Python, Java, TypeScript, C#, Php, C++, C, Shell, Ruby [reference](https://octoverse.github.com)
 
-Others: Rust, Swift, Crystal, Pony, Ada, Pascal, Fortran, Kotlin, Clojure, Scala, Mono, R, Dart, Julia, D, Nim, Cython, Python3, PyPy, Ruby jit, OCaml, Lisp, Haskell, Erlang, Elixir, Escript, Dart, Scheme, Lua, Perl, Perl6, Bash, Emoji
+Others: Go, Rust, Swift, Crystal, Pony, Ada, Pascal, Fortran, Kotlin, Clojure, Scala, Mono, R, Dart, Julia, D, Nim, Cython, Python3, PyPy, Ruby jit, OCaml, Lisp, Haskell, Erlang, Elixir, Escript, Dart, Scheme, Lua, Perl, Perl6, Bash, Emoji
 
 The code performs a recursive fibonacci to the 46th position with the result of 2,971,215,073.  This is the original version where the sequence starts at 1 instead of 0. 1,1,2,3,5,8...
 
