@@ -92,7 +92,7 @@ NOTE: DSB Boundary 64 byte alignment may affect results.  See [issue #129](https
 | Escript |   14.810 | escript fib.es | es |
 | Lua Jit |   15.896 | luajit fib.lua | luajit |
 | Elixir |   16.242 | ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]' elixir Fib.exs | exs |
-| Node |   24.434 | node fib.js | node |
+| Node |   24.434 | node fib.js | js |
 | Clojure |   26.591 | clojure -M fib.cljc | cljc |
 | Python3 (PyPy) |   52.748 | pypy3 fib.py | pypy |
 | Ruby (jit) |   60.363 | ruby --jit fib.rb | rbjit |
