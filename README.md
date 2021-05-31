@@ -69,7 +69,8 @@ Last benchmark was ran on April 18, 2021
 | Go |   12.462 | go build fib.go |    0.527 | ./fib |   11.935 | go |
 | Haskell |   12.732 | rm ./fib.o && ghc -O3 -o fib fib.hs |    0.002 | ./fib |   12.730 | hs |
 | Lisp |   16.923 | sbcl --load fib.lisp |    1.818 | ./fib |   15.106 | lisp |
-| Cobol | 4461.371s | cobc -x -O3  -o fib ./fib.cbl | 0.123 | ./fib |   4461.248 | cbl |
+| Cobol | 4461.371 | cobc -x -O3  -o fib ./fib.cbl | 0.123 | ./fib | 4461.248 | cbl |
+
 NOTE: DSB Boundary 64 byte alignment may affect results.  See [issue #129](https://github.com/drujensen/fib/issues/129) for details.
 
 ## VM compiled bytecode, statically typed
