@@ -129,6 +129,7 @@ RUN ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/python-2.7.pc /usr/lib/x86_64-linu
 
 # apt languages
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
+            open-cobol \
             cython \
             fp-compiler \
             gfortran \

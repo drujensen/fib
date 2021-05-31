@@ -59,7 +59,9 @@ languages << Language.new("go", "Go", :compiled, "go build fib.go", "./fib")
 languages << Language.new("ml", "OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml", "./fib")
 languages << Language.new("lisp", "Lisp", :compiled, "sbcl --load fib.lisp", "./fib")
 languages << Language.new("hs", "Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fib.hs", "./fib")
+languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3  -o fib ./fib.cbl", "./fib")
 #languages << Language.new("emo", "Emojicode", :compiled, "emojicodec fib.emojic", "./fib")
+
 
 languages << Language.new("java", "Java", :vm, "javac Fib.java", "java Fib")
 languages << Language.new("scala", "Scala", :vm, "scalac Fib.scala", "scala Fib")
