@@ -60,6 +60,7 @@ languages << Language.new("ml", "OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml"
 languages << Language.new("lisp", "Lisp", :compiled, "sbcl --load fib.lisp", "./fib")
 languages << Language.new("hs", "Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fib.hs", "./fib")
 languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3  -o fib ./fib.cbl", "./fib")
+languages << Language.new("dart", "Dart", :compiled, "dart compile exe -o fib ./fib.dart", "./fib")
 #languages << Language.new("emo", "Emojicode", :compiled, "emojicodec fib.emojic", "./fib")
 
 
@@ -69,6 +70,7 @@ languages << Language.new("kt", "Kotlin", :vm, "kotlinc Fib.kt -include-runtime 
 languages << Language.new("cs", "C#", :vm, "dotnet build -c Release -o ./bin", "dotnet ./bin/fib.dll")
 languages << Language.new("mono", "C# (Mono)", :vm, "mcs Fib.cs", "mono Fib.exe")
 languages << Language.new("erl", "Erlang", :vm, "erlc +native +'{hipe,[o3]}' fib.erl", "erl -noinput -noshell -s fib")
+languages << Language.new("dart", "Dart", :vm, "dart compile kernel fib.dart", "dart fib.dill")
 
 languages << Language.new("dart", "Dart", :mixed, "", "dart fib.dart")
 languages << Language.new("jl", "Julia", :mixed, "", "julia -O3 fib.jl")
