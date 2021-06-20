@@ -121,8 +121,14 @@ RUN tar xzf janet-v1.12.2-linux.tar.gz
 RUN mv janet-v1.12.2-linux /usr/share/janet
 RUN rm janet-v1.12.2-linux.tar.gz
 
+# QB64
+RUN wget -q https://github.com/QB64Team/qb64/releases/download/v1.5/qb64_1.5_lnx.tar.gz
+RUN tar xzf qb64_1.5_lnx.tar.gz
+RUN mv qb64_1.5_lnx /usr/share/qb64
+RUN rm qb64_1.5_lnx.tar.gz
+
 # Add languages to PATH
-ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin:/usr/share/janet:/usr/share/dlang/ldc-1.25.1/bin:/usr/share/swift/usr/bin:/root/.local/share/ponyup/bin:/usr/share/v"
+ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin:/usr/share/janet:/usr/share/qb64:/usr/share/dlang/ldc-1.25.1/bin:/usr/share/swift/usr/bin:/root/.local/share/ponyup/bin:/usr/share/v"
 
 # Cython requires python.pc
 RUN ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/python-2.7.pc /usr/lib/x86_64-linux-gnu/pkgconfig/python.pc
