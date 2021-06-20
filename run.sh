@@ -61,6 +61,7 @@ languages << Language.new("lisp", "Lisp", :compiled, "sbcl --load fib.lisp", "./
 languages << Language.new("hs", "Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fib.hs", "./fib")
 languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3  -o fib ./fib.cbl", "./fib")
 languages << Language.new("dartc", "Dart Compiled", :compiled, "dart compile exe -o fib ./fib.dart", "./fib")
+languages << Language.new("qb64", "QB64", :compiled, "qb64 -x $(pwd)/fib.bas", "./fib")
 #languages << Language.new("emo", "Emojicode", :compiled, "emojicodec fib.emojic", "./fib")
 
 
