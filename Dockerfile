@@ -124,7 +124,7 @@ RUN rm janet-v1.12.2-linux.tar.gz
 # QB64
 RUN wget -q https://github.com/QB64Team/qb64/releases/download/v1.5/qb64_1.5_lnx.tar.gz
 RUN tar xzf qb64_1.5_lnx.tar.gz
-RUN mv qb64_1.5_lnx /usr/share/qb64
+RUN mv qb64 /usr/share/qb64
 RUN rm qb64_1.5_lnx.tar.gz
 
 # Add languages to PATH
@@ -186,8 +186,8 @@ RUN asdf install clojure
 RUN asdf plugin-add kotlin https://github.com/missingcharacter/asdf-kotlin.git
 RUN asdf install kotlin
 
-RUN asdf plugin-add guile
-RUN asdf install guile
+#RUN asdf plugin-add guile
+#RUN asdf install guile
 
 RUN asdf plugin-add ocaml
 RUN asdf install ocaml
