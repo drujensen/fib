@@ -21,7 +21,7 @@ puts fib(46)
 Here is the Crystal version:
 ```
 def fib(n : UInt64)
-  return 1 if n <= 1
+  return 1_u64 if n <= 1
   fib(n - 1) + fib(n - 2)
 end
 
