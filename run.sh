@@ -41,15 +41,15 @@ class Language
 end
 
 languages = []
-languages << Language.new("adb", "Ada", :compiled, "gnat make -O2 -gnatp -o fib fib.adb", "./fib")
-languages << Language.new("s", "Assembly", :compiled, "gcc -no-pie -o fib fib.s", "./fib")
+languages << Language.new("adb", "Ada", :compiled, "gcc -fno-inline-small-functions -O3 -o fib fib.adb", "./fib")
+languages << Language.new("s", "Assembly", :compiled, "gcc -no-pie -O3 -o fib fib.s", "./fib")
 languages << Language.new("c", "C", :compiled, "gcc -fno-inline-small-functions -O3 -o fib fib.c", "./fib")
 languages << Language.new("cpp", "C++", :compiled, "g++ -fno-inline-small-functions -O3 -o fib fib.cpp", "./fib")
 languages << Language.new("f03", "Fortran", :compiled, "gfortran -fno-inline-small-functions -O3 -o fib fib.f03", "./fib")
 languages << Language.new("pas", "Pascal", :compiled, "fpc -O3 -Si ./fib.pas", "./fib")
 languages << Language.new("nim", "Nim", :compiled, "nim c -d:danger --passC:-fno-inline-small-functions fib.nim", "./fib")
 languages << Language.new("pyx", "Cython", :compiled, "cython -3 --embed -o fib.pyx.c fib.pyx && gcc -fno-inline-small-functions -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python)", "./fib")
-languages << Language.new("d", "D", :compiled, 'ldc2 -O3 -release -flto=full -of=fib fib.d', "./fib")
+languages << Language.new("d", "D", :compiled, 'dmd -O3 -release -flto=full -of=fib fib.d', "./fib")
 languages << Language.new("v", "V", :compiled, "v -cflags -fno-inline-small-functions -prod -o fib fib.v", "./fib")
 languages << Language.new("pony", "Pony", :compiled, "ponyc -s -b fib -p ./fib.pony", "./fib")
 languages << Language.new("rs", "Rust", :compiled, "rustc -C opt-level=3 fib.rs", "./fib")
@@ -91,9 +91,11 @@ languages << Language.new("py", "Python", :interpreted, "", "python fib.py")
 languages << Language.new("py3", "Python3", :interpreted, "", "python3 fib.py")
 languages << Language.new("janet", "Janet", :interpreted, "", "janet ./fib.janet")
 languages << Language.new("pl", "Perl", :interpreted, "", "perl fib.pl")
+languages << Language.new("raku", "Raku", :interpreted, "", "raku fib.raku")
 languages << Language.new("tcl", "Tcl", :interpreted, "", "tclsh fib.tcl")
-languages << Language.new("p6", "Perl 6", :interpreted, "", "perl6 fib.p6")
 languages << Language.new("r", "R", :interpreted, "", "R -f fib.r")
+
+#shell scripts take forever
 languages << Language.new("sh", "Bash", :interpreted, "", "bash fib.sh")
 languages << Language.new("ps1", "Powershell", :interpreted, "", "pwsh fib.ps1")
 
