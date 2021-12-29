@@ -27,6 +27,7 @@ RUN apt-get update -qq && \
             libxml2 \
             libz3-dev \
             libgd-dev \
+            libpcre2-dev \
             libpcre3-dev \
             libonig-dev \
             libsqlite3-0 \
@@ -48,12 +49,12 @@ RUN apt-get update -qq && \
             libtool \
             libncurses-dev \
             libssh-dev \
-            unixodbc-dev \
             libzip-dev \
             libbz2-dev \
             libevent-dev \
             libicu-dev \
             liblzma-dev \
+            unixodbc-dev \
             locales \
             pkg-config \
             apt-transport-https \
@@ -85,11 +86,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             fp-compiler \
             gcc-10 \
             gfortran \
-            guile \
+            gnat \
+            guile-3.0 \
             open-cobol \
-            rakudo \
-            sbcl \
-            tcl
+            rakudo
 
 # Mono
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
@@ -156,8 +156,8 @@ RUN asdf install golang
 RUN asdf plugin-add haskell
 RUN asdf install haskell
 
-RUN asdf plugin-add janet https://github.com/Jakski/asdf-janet.git
-RUN asdf install janet
+#RUN asdf plugin-add janet https://github.com/Jakski/asdf-janet.git
+#RUN asdf install janet
 
 RUN asdf plugin-add julia https://github.com/rkyleg/asdf-julia.git
 RUN asdf install julia
@@ -165,14 +165,14 @@ RUN asdf install julia
 RUN asdf plugin-add kotlin https://github.com/missingcharacter/asdf-kotlin.git
 RUN asdf install kotlin
 
-RUN asdf plugin-add groovy https://github.com/weibemoura/asdf-groovy.git
-RUN asdf install groovy
+#RUN asdf plugin-add groovy https://github.com/weibemoura/asdf-groovy.git
+#RUN asdf install groovy
 
 RUN asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git
 RUN asdf install lua
 
-RUN asdf plugin-add luaJIT
-RUN asdf install luaJIT
+#RUN asdf plugin-add luaJIT
+#RUN asdf install luaJIT
 
 RUN asdf plugin-add nim
 RUN asdf install nim
@@ -195,14 +195,11 @@ RUN asdf install pony
 RUN asdf plugin-add python
 RUN asdf install python
 
-RUN asdf plugin-add pypy3
-RUN asdf install pypy3
+#RUN asdf plugin-add pypy
+#RUN asdf install pypy
 
 RUN asdf plugin-add R
 RUN asdf install R
-
-#RUN asdf plugin-add raku
-#RUN asdf install raku
 
 RUN asdf plugin-add ruby
 RUN asdf install ruby
@@ -210,8 +207,8 @@ RUN asdf install ruby
 RUN asdf plugin-add rust
 RUN asdf install rust
 
-#RUN asdf plugin-add sbcl
-#RUN asdf install sbcl
+RUN asdf plugin-add sbcl
+RUN asdf install sbcl
 
 RUN asdf plugin-add scala
 RUN asdf install scala
@@ -224,7 +221,6 @@ RUN asdf install swift
 
 RUN asdf plugin-add v
 RUN asdf install v
-
 
 COPY . /root/app
 CMD ["/bin/bash", "-c", "./run.sh"]

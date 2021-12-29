@@ -1,5 +1,5 @@
-ada (gcc)      9.4.0
-assembly (gcc) 9.4.0
+ada (gnat)     9.3.0
+assembly (gcc) 9.3.0
 bash           5.0.0
 crystal        1.2.2
 clojure        1.10.3.1040
@@ -10,9 +10,9 @@ dotnet-core    6.0.101
 elixir         1.12.0
 elm            0.19.1
 erlang         24.2
-fortran        9.4.0
-g++            9.4.0
-gcc            9.4.0
+fortran        9.3.0
+g++            9.3.0
+gcc            9.3.0
 golang         1.17.5
 groovy         4.0
 guile          3.0.7
