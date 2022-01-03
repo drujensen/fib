@@ -120,47 +120,49 @@ NOTE: DSB Boundary 64 byte alignment may affect results.  See [issue #129](https
 
 All compilers are installed using `apt` or `asdf` on Ubuntu 20.04 docker image:
 
-assembly (gcc) 7.4.0
-bash           5.0.0
-crystal        1.0.0
-clojure        1.10.2.774
-cython         0.29.15
-D (ldc2)       v1.20.1
-dart           2.9.3
-dmd            1.20.1
-dotnet-core    3.1.403
-elixir         1.11.2
-elm            0.19.1
-erlang         23.1.2
-g++            7.4.0
-gcc            7.4.0
-gfortran       9.3.0
-golang         1.14.1
-guile          3.0.4
-haskell        8.10.1
-java           openjdk-16
-julia          1.5.0
-K              3.6
-kotlin         1.3.70
-lisp (sbcl)    2.0.3
-lua            5.3.0
-luaJIT         2.1.0-beta3
-mono           6.8.0
-nim            1.4.2
-nodejs         12.16.1
-ocaml          4.11.1
-pascal         3.0.4
-perl           5.30.2
-php            7.4.4
-ponyc          0.38.1
-powershell     v7.0.0
-python         3.8.2
-R              3.6.3
-rakudo         2020.01
-ruby           3.0.1
-rust           1.42.0
-scala          2.13.5
-scheme (guile) 2.2
-swift          5.3.3
-tcl            8.6.10
-v              0.2.2
+| Language | Version |
+|----------|---------|
+| assembly (gcc) | 7.4.0 |
+| bash | 5.0.0 |
+| crystal | 1.0.0 |
+| clojure | 1.10.2.774 |
+| cython | 0.29.15 |
+| D (ldc2) | v1.20.1 |
+| dart | 2.9.3 |
+| dmd | 1.20.1 |
+| dotnet-core | 3.1.403 |
+| elixir | 1.11.2 |
+| elm | 0.19.1 |
+| erlang | 23.1.2 |
+| g++ | 7.4.0 |
+| gcc | 7.4.0 |
+| gfortran | 9.3.0 |
+| golang | 1.14.1 |
+| guile | 3.0.4 |
+| haskell | 8.10.1 |
+| java | openjdk-16 |
+| julia | 1.5.0 |
+| K | 3.6 |
+| kotlin | 1.3.70 |
+| lisp (sbcl) | 2.0.3 |
+| lua | 5.3.0 |
+| luaJIT | 2.1.0-beta3 |
+| mono | 6.8.0 |
+| nim | 1.4.2 |
+| nodejs | 12.16.1 |
+| ocaml | 4.11.1 |
+| pascal | 3.0.4 |
+| perl | 5.30.2 |
+| php | 7.4.4 |
+| ponyc | 0.38.1 |
+| powershell | v7.0.0 |
+| python | 3.8.2 |
+| R | 3.6.3 |
+| rakudo | 2020.01 |
+| ruby | 3.0.1 |
+| rust | 1.42.0 |
+| scala | 2.13.5 |
+| scheme (guile) | 2.2 |
+| swift | 5.3.3 |
+| tcl | 8.6.10 |
+| v | 0.2.2 |
