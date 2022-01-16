@@ -101,7 +101,7 @@ filter = ARGV[0] ? ARGV[0].split(",") : []
 count = ARGV[1] ? ARGV[1].to_i : 5
 list = languages
 
-unless filter.empty?
+unless (filter.empty? || filter[0] == "all")
   list = languages.select{|lang| filter.include? lang.ext}
   names = list.map(&:name).join(", ")
   puts "Filter: #{names}"
