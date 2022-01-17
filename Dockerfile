@@ -93,7 +93,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             rakudo
 
 # Cython requires python.c
-ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/python-2.7.pc /usr/lib/x86_64-linux-gnu/pkgconfig/python.pc
+RUN ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/python-2.7.pc /usr/lib/x86_64-linux-gnu/pkgconfig/python.pc
 
 # Mono
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
