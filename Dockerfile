@@ -54,6 +54,7 @@ RUN apt-get update -qq && \
             libevent-dev \
             libicu-dev \
             liblzma-dev \
+            libglu1-mesa-dev \
             unixodbc-dev \
             locales \
             pkg-config \
@@ -90,6 +91,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             guile-3.0 \
             open-cobol \
             rakudo
+
+# Cython requires python.c
+ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/python-2.7.pc /usr/lib/x86_64-linux-gnu/pkgconfig/python.pc
 
 # Mono
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
@@ -213,7 +217,7 @@ RUN asdf install sbcl
 RUN asdf plugin-add scala
 RUN asdf install scala
 
-RUN asdf plugin-add swift https://github.com/fcrespo82/asdf-swift.git
+RUN asdf plugin-add swift https://github.com/drujensen/asdf-swift.git
 RUN asdf install swift
 
 #RUN asdf plugin-add tcl

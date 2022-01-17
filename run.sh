@@ -59,9 +59,9 @@ languages << Language.new("go", "Go", :compiled, "go build fib.go", "./fib")
 languages << Language.new("ml", "OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml", "./fib")
 languages << Language.new("lisp", "Lisp", :compiled, "sbcl --load fib.lisp", "./fib")
 languages << Language.new("hs", "Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fib.hs", "./fib")
-languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3  -o fib ./fib.cbl", "./fib")
 languages << Language.new("dartc", "Dart Compiled", :compiled, "dart compile exe -o fib ./fib.dart", "./fib")
-languages << Language.new("qb64", "QB64", :compiled, "qb64 -x $(pwd)/fib.bas", "./fib")
+languages << Language.new("qb64", "QB64", :compiled, "qb64 -x $(pwd)/fib.bas -o $(pwd)/fib", "./fib")
+#languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3  -o fib ./fib.cbl", "./fib")
 #languages << Language.new("emo", "Emojicode", :compiled, "emojicodec fib.emojic", "./fib")
 
 
@@ -96,8 +96,8 @@ languages << Language.new("tcl", "Tcl", :interpreted, "", "tclsh fib.tcl")
 languages << Language.new("r", "R", :interpreted, "", "R -f fib.r")
 
 #shell scripts take forever
-languages << Language.new("sh", "Bash", :interpreted, "", "bash fib.sh")
-languages << Language.new("ps1", "Powershell", :interpreted, "", "pwsh fib.ps1")
+#languages << Language.new("sh", "Bash", :interpreted, "", "bash fib.sh")
+#languages << Language.new("ps1", "Powershell", :interpreted, "", "pwsh fib.ps1")
 
 filter = ARGV[0] ? ARGV[0].split(",") : []
 count = ARGV[1] ? ARGV[1].to_i : 5
