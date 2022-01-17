@@ -114,13 +114,34 @@ RUN tar xzf qb64_1.5_lnx.tar.gz
 RUN mv qb64 /usr/share/qb64
 RUN rm qb64_1.5_lnx.tar.gz
 
+# Pony
+RUN SHELL=/bin/sh sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ponylang/ponyup/latest-release/ponyup-init.sh)"
+RUN /root/.local/share/ponyup/bin/ponyup update ponyc release
+ENV CC="/usr/bin/gcc"
+
+# V
+RUN wget https://github.com/vlang/v/releases/download/0.2.4/v_linux.zip
+RUN unzip v_linux.zip
+RUN mv v /usr/share/v
+RUN rm v_linux.zip
+
+# D
+RUN curl -fsS https://dlang.org/install.sh | bash -s ldc
+RUN mv /root/dlang /usr/share/dlang
+
+# Janet
+RUN wget -q https://github.com/janet-lang/janet/releases/download/v1.12.2/janet-v1.12.2-linux.tar.gz
+RUN tar xzf janet-v1.12.2-linux.tar.gz
+RUN mv janet-v1.12.2-linux /usr/share/janet
+RUN rm janet-v1.12.2-linux.tar.gz
+
 # asdf languages
 RUN git clone https://github.com/asdf-vm/asdf.git /root/.asdf --branch v0.8.0
 RUN chmod 755 /root/.asdf/asdf.sh
 RUN echo "/root/.asdf/asdf.sh" >> /etc/bash.bashrc
 
-# Add asdf and qb64 to PATH
-ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin:/usr/share/qb64"
+# Add asdf and above languages to PATH
+ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin:/usr/share/janet:/usr/share/qb64:/usr/share/dlang/ldc-1.25.1/bin:/root/.local/share/ponyup/bin:/usr/share/v"
 
 COPY .tool-versions /root/app/.
 
@@ -136,8 +157,8 @@ RUN asdf install crystal
 RUN asdf plugin-add dart
 RUN asdf install dart
 
-RUN asdf plugin-add dmd https://github.com/sylph01/asdf-dmd.git
-RUN asdf install dmd
+#RUN asdf plugin-add dmd https://github.com/sylph01/asdf-dmd.git
+#RUN asdf install dmd
 
 RUN asdf plugin-add dotnet-core
 RUN asdf install dotnet-core
@@ -193,8 +214,8 @@ RUN asdf install perl
 RUN asdf plugin-add php
 RUN asdf install php
 
-RUN asdf plugin-add pony https://github.com/enilsen16/asdf-pony.git
-RUN asdf install pony
+#RUN asdf plugin-add pony https://github.com/enilsen16/asdf-pony.git
+#RUN asdf install pony
 
 RUN asdf plugin-add python
 RUN asdf install python
@@ -223,8 +244,8 @@ RUN asdf install swift
 #RUN asdf plugin-add tcl
 #RUN asdf install tcl
 
-RUN asdf plugin-add v
-RUN asdf install v
+#RUN asdf plugin-add v
+#RUN asdf install v
 
 COPY . /root/app
 CMD ["/bin/bash", "-c", "./run.sh"]

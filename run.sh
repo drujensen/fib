@@ -49,7 +49,7 @@ languages << Language.new("f03", "Fortran", :compiled, "gfortran -fno-inline-sma
 languages << Language.new("pas", "Pascal", :compiled, "fpc -O3 -Si ./fib.pas", "./fib")
 languages << Language.new("nim", "Nim", :compiled, "nim c -d:danger --passC:-fno-inline-small-functions fib.nim", "./fib")
 languages << Language.new("pyx", "Cython", :compiled, "cython -3 --embed -o fib.pyx.c fib.pyx && gcc -fno-inline-small-functions -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python)", "./fib")
-languages << Language.new("d", "D", :compiled, 'dmd -O3 -release -flto=full -of=fib fib.d', "./fib")
+languages << Language.new("d", "D", :compiled, 'ldc2 -O3 -release -flto=full -of=fib fib.d"./fib")
 languages << Language.new("v", "V", :compiled, "v -cflags -fno-inline-small-functions -prod -o fib fib.v", "./fib")
 languages << Language.new("pony", "Pony", :compiled, "ponyc -s -b fib -p ./fib.pony", "./fib")
 languages << Language.new("rs", "Rust", :compiled, "rustc -C opt-level=3 fib.rs", "./fib")
