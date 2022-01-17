@@ -27,12 +27,12 @@ class Language
 
   def average_compile_time
     return 0 if @compile_times.empty?
-    @compile_times.sum / @compile_times.size.to_f
+    @compile_times.inject(0, :+) / @compile_times.size.to_f
   end
 
   def average_run_time
     return 0 if @run_times.empty?
-    @run_times.sum / @run_times.size.to_f
+    @run_times.inject(0, :+) / @run_times.size.to_f
   end
 
   def total_time
@@ -49,7 +49,7 @@ languages << Language.new("f03", "Fortran", :compiled, "gfortran -fno-inline-sma
 languages << Language.new("pas", "Pascal", :compiled, "fpc -O3 -Si ./fib.pas", "./fib")
 languages << Language.new("nim", "Nim", :compiled, "nim c -d:danger --passC:-fno-inline-small-functions fib.nim", "./fib")
 languages << Language.new("pyx", "Cython", :compiled, "cython -3 --embed -o fib.pyx.c fib.pyx && gcc -fno-inline-small-functions -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python)", "./fib")
-languages << Language.new("d", "D", :compiled, 'ldc2 -O3 -release -flto=full -of=fib fib.d"./fib")
+languages << Language.new("d", "D", :compiled, "ldc2 -O3 -release -flto=full -of=fib fib.d", "./fib")
 languages << Language.new("v", "V", :compiled, "v -cflags -fno-inline-small-functions -prod -o fib fib.v", "./fib")
 languages << Language.new("pony", "Pony", :compiled, "ponyc -s -b fib -p ./fib.pony", "./fib")
 languages << Language.new("rs", "Rust", :compiled, "rustc -C opt-level=3 fib.rs", "./fib")
@@ -152,8 +152,6 @@ unless list.select {|l| l.type == :compiled}.empty?
       puts "| #{results.join(" | ")} |"
   end
   puts ""
-  puts "NOTE: DSB Boundary 64 byte alignment may affect results.  See [issue #129](https://github.com/drujensen/fib/issues/129) for details."
-  puts ""
 end
 
 unless list.select {|l| l.type == :vm}.empty?
@@ -204,4 +202,12 @@ unless list.select {|l| l.type == :interpreted}.empty?
       results << lang.ext
       puts "| #{results.join(" | ")} |"
   end
+  puts ""
+end
+
+puts "## Versions"
+puts "|---|---|"
+File.foreach(".tool-versions") do |line|
+  version = line.split(" ")
+  puts "| #{version[0]} | #{version[1]} |"
 end

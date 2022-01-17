@@ -5,7 +5,7 @@ crystal        1.2.2
 clojure        1.10.3.1040
 cython         0.29.26
 dart           2.15.1
-dmd            2.072.1
+ldc2           1.2.4
 dotnet-core    6.0.101
 elixir         1.12.0
 elm            0.19.1
