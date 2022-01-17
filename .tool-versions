@@ -1,11 +1,10 @@
-ada (gnat)     9.3.0
-assembly (gcc) 9.3.0
+ada            9.3.0
+assembly       9.3.0
 bash           5.0.0
-crystal        1.2.2
+crystal        1.3.0
 clojure        1.10.3.1040
 cython         0.29.26
 dart           2.15.1
-ldc2           1.2.4
 dotnet-core    6.0.101
 elixir         1.12.0
 elm            0.19.1
@@ -14,7 +13,6 @@ fortran        9.3.0
 g++            9.3.0
 gcc            9.3.0
 golang         1.17.5
-groovy         4.0
 guile          3.0.7
 haskell        9.2.1
 janet          1.19.2
@@ -22,8 +20,9 @@ java           openjdk-17
 julia          1.7.1
 K              3.6
 kotlin         1.6.10
+ldc2           1.2.4
 lua            5.4.3
-luaJIT         2.0.5
+luaJIT         2.1.0
 mono           6.8.0
 nim            1.6.2
 nodejs         17.3.0
@@ -34,10 +33,10 @@ php            8.1.1
 pony           0.38.1
 powershell     v7.0.0
 python         3.10.1
-pypy3          7.3.7
+pypy           7.3.7
 qb64           1.5
 R              4.1.2
-raku           2021.12
+rakudo         2021.12
 ruby           3.1.0
 rust           1.57.0
 sbcl           2.11.1

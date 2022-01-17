@@ -89,8 +89,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             gfortran \
             gnat \
             guile-3.0 \
+            luajit \
             open-cobol \
-            rakudo
+            rakudo \
+            tcl 
 
 # Cython requires python.c
 RUN ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/python-2.7.pc /usr/lib/x86_64-linux-gnu/pkgconfig/python.pc
@@ -141,7 +143,7 @@ RUN chmod 755 /root/.asdf/asdf.sh
 RUN echo "/root/.asdf/asdf.sh" >> /etc/bash.bashrc
 
 # Add asdf and above languages to PATH
-ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin:/usr/share/janet:/usr/share/qb64:/usr/share/dlang/ldc-1.25.1/bin:/root/.local/share/ponyup/bin:/usr/share/v"
+ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin:/usr/share/janet:/usr/share/qb64:/usr/share/dlang/ldc-1.28.1/bin:/root/.local/share/ponyup/bin:/usr/share/v"
 
 COPY .tool-versions /root/app/.
 
@@ -220,8 +222,8 @@ RUN asdf install php
 RUN asdf plugin-add python
 RUN asdf install python
 
-#RUN asdf plugin-add pypy
-#RUN asdf install pypy
+RUN asdf plugin-add pypy https://github.com/drujensen/asdf-pypy.git
+RUN asdf install pypy
 
 RUN asdf plugin-add R
 RUN asdf install R

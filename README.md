@@ -45,6 +45,8 @@ To only run a subset of the languages, provide a list of extensions and optional
 
 `docker run -it drujensen/fib ./run.sh cr,kt,pypy,rbjit 5`
 
+# Results
+
 Last benchmark was ran on April 18, 2021
 
 ## Natively compiled, statically typed
