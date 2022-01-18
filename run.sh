@@ -53,14 +53,14 @@ languages << Language.new("f03", "Fortran", :compiled, "gfortran -O3 -o fib fib.
 languages << Language.new("go", "Go", :compiled, "go build fib.go", "./fib")
 languages << Language.new("hs", "Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fib.hs", "./fib")
 languages << Language.new("lisp", "Lisp", :compiled, "sbcl --load fib.lisp", "./fib")
-languages << Language.new("nim", "Nim", :compiled, "nim c fib.nim", "./fib")
+languages << Language.new("nim", "Nim", :compiled, "nim c -d:release fib.nim", "./fib")
 languages << Language.new("ml", "OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml", "./fib")
 languages << Language.new("pas", "Pascal", :compiled, "fpc -O3 -Si ./fib.pas", "./fib")
 languages << Language.new("pony", "Pony", :compiled, "ponyc -s -b fib -p ./fib.pony", "./fib")
 languages << Language.new("rs", "Rust", :compiled, "rustc -C opt-level=3 fib.rs", "./fib")
 languages << Language.new("swift", "Swift", :compiled, "swiftc -O -g fib.swift", "./fib")
-languages << Language.new("v", "V", :compiled, "v -cflags -prod -o fib fib.v", "./fib")
-languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3  -o fib ./fib.cbl", "./fib")
+languages << Language.new("v", "V", :compiled, "v -prod -o fib fib.v", "./fib")
+languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3 -o fib ./fib.cbl", "./fib")
 #languages << Language.new("qb64", "QB64", :compiled, "qb64 -x $(pwd)/fib.bas -o $(pwd)/fib", "./fib")
 #languages << Language.new("emo", "Emojicode", :compiled, "emojicodec fib.emojic", "./fib")
 
@@ -80,7 +80,6 @@ languages << Language.new("luajit", "Lua Jit", :mixed, "", "luajit fib.lua")
 languages << Language.new("pypy", "Python3 (PyPy)", :mixed, "", "pypy3 fib.py")
 languages << Language.new("rbjit", "Ruby (jit)", :mixed, "", "ruby --jit fib.rb")
 
-languages << Language.new("es", "Escript", :interpreted, "", "escript fib.es")
 languages << Language.new("janet", "Janet", :interpreted, "", "janet ./fib.janet")
 languages << Language.new("lua", "Lua", :interpreted, "", "lua fib.lua")
 languages << Language.new("php", "Php", :interpreted, "", "php fib.php")
@@ -92,10 +91,11 @@ languages << Language.new("raku", "Raku", :interpreted, "", "rakudo fib.raku")
 languages << Language.new("rb", "Ruby", :interpreted, "", "ruby fib.rb")
 languages << Language.new("scm", "Scheme", :interpreted, "", "guile fib.scm")
 languages << Language.new("tcl", "Tcl", :interpreted, "", "tclsh fib.tcl")
+languages << Language.new("es", "Escript", :interpreted, "", "escript fib.es")
 
 #shell scripts take forever
-languages << Language.new("sh", "Bash", :interpreted, "", "bash fib.sh")
-languages << Language.new("ps1", "Powershell", :interpreted, "", "pwsh fib.ps1")
+#languages << Language.new("sh", "Bash", :interpreted, "", "bash fib.sh")
+#languages << Language.new("ps1", "Powershell", :interpreted, "", "pwsh fib.ps1")
 
 filter = ARGV[0] ? ARGV[0].split(",") : []
 count = ARGV[1] ? ARGV[1].to_i : 5

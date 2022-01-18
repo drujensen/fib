@@ -41,9 +41,13 @@ You can run the tests using Docker: `docker run -it drujensen/fib`
 
 By default, it will compile and run all languages 5 times. Totals are calculated by adding the average compile and run times.
 
-To only run a subset of the languages, provide a list of extensions and optionally the count
+To only run a subset of the languages, provide a list of extensions and optionally the count:
 
 `docker run -it drujensen/fib ./run.sh cr,kt,pypy,rbjit 5`
+
+To run in the background using nohup:
+
+`nohup docker run drujensen/fib:latest > results.txt 2>&1 &`
 
 # Results
 
