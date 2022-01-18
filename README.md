@@ -124,9 +124,10 @@ Last benchmark was ran on January 18, 2022
 
 ## Versions
 
-All compilers are installed using apt or asdf on Ubuntu 20.04 docker image:
+All compilers are installed using apt or asdf on Ubuntu 20.04 docker image.
 
-|---|---|
+| language | version |
+|----------|---------|
 | ada | 9.3.0 |
 | assembly | 9.3.0 |
 | bash | 5.0.0 |
