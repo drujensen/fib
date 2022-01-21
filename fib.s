@@ -9,7 +9,7 @@ fib:
     mov     %rsp, %rbp
     push    %r14
     push    %rbx
-    mov     $1, %r14
+    mov     %rdi, %r14
     cmp     $2, %rdi
     jb      fib_below_2
     mov     %rdi, %rbx
@@ -29,7 +29,7 @@ fib_below_2:
 main:
     push    %rbp
     mov     %rsp, %rbp
-    mov     $46, %rdi               # param 1 to fib
+    mov     $47, %rdi               # param 1 to fib
     call    fib                     # calling fib
     lea     format(%rip), %rdi
     mov     %rax, %rsi

@@ -2,12 +2,12 @@
 (declaim (ftype    (function (fixnum) fixnum) fib))
 (defun fib (n)
   (if (<= n 1)
-      1
+      n
       (+ (fib (1- n))
          (fib (- n 2)))))
 
 (defun main ()
-  (write (fib 46)))
+  (write (fib 47)))
 
 #+sbcl
 (sb-ext:save-lisp-and-die "fib" :toplevel #'main :executable t)

@@ -1,7 +1,7 @@
 (define (fib n)
-  (if (<= n 1) 1
+  (if (<= n 1) n
       (+ (fib (- n 1))
 	       (fib (- n 2)))))
 
-(display (fib 46))
+(display (fib 47))
 (newline)

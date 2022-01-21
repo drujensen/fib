@@ -5,11 +5,11 @@ procedure Fib is
     function Fib (N : Long_Integer) return Long_Integer is
     begin
         if N <= 1 then
-            return 1;
+            return N;
         end if;
         return Fib (N - 1) + Fib (N - 2);
     end Fib;
 begin
-    Put (Fib (46));
+    Put (Fib (47));
     New_Line;
 end Fib;
