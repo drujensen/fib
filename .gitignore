@@ -27,3 +27,4 @@ optimized/fib_const
 optimized/main
 optimized/main.dSYM/
 .vscode/
+.DS_Store
