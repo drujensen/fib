@@ -11,7 +11,7 @@ Fibonacci can be written many different ways.  The goal of this project is to co
 Here is the Ruby version:
 ```
 def fib(n)
-  return 1 if n <= n
+  return 1 if n <= 1
   fib(n - 1) + fib(n - 2)
 end
 
