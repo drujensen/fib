@@ -85,9 +85,9 @@ Last benchmark was ran on January 18, 2022
 
 | Language | Total | Compile | Time, s | Run | Time, s | Ext |
 |----------|-------|---------|---------|-----|---------|-----|
-| Java |    9.007 | javac Fib.java |    0.985 | java Fib |    8.021 | java |
-| Scala |   13.459 | scalac Fib.scala |    3.595 | scala Fib |    9.865 | scala |
-| Kotlin |   14.653 | kotlinc Fib.kt -include-runtime -d Fib.jar |    6.605 | java -jar Fib.jar |    8.049 | kt |
+| Scala |    9.047 | scalac Fib.scala |    0.942 | scala Fib |    8.104 | scala |
+| Java |   10.391 | javac Fib.java |    0.894 | java Fib |    9.497 | java |
+| Kotlin |   11.721 | kotlinc Fib.kt |    2.097 | java FibKt |    9.624 | kt |
 | C# (Mono) |   16.107 | mcs Fib.cs |    0.491 | mono Fib.exe |   15.616 | mono |
 | C# |   16.218 | dotnet build -c Release -o ./bin |    2.162 | dotnet ./bin/fib.dll |   14.056 | cs |
 | Erlang |   28.868 | erlc +native +'{hipe,[o3]}' fib.erl |    0.500 | erl -noinput -noshell -s fib |   28.368 | erl |

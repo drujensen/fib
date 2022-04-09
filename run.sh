@@ -68,7 +68,7 @@ languages << Language.new("cs", "C#", :vm, "dotnet build -c Release -o ./bin", "
 languages << Language.new("mono", "C# (Mono)", :vm, "mcs Fib.cs", "mono Fib.exe")
 languages << Language.new("erl", "Erlang", :vm, "erlc +native +'{hipe,[o3]}' fib.erl", "erl -noinput -noshell -s fib")
 languages << Language.new("java", "Java", :vm, "javac Fib.java", "java Fib")
-languages << Language.new("kt", "Kotlin", :vm, "kotlinc Fib.kt -include-runtime -d Fib.jar", "java -jar Fib.jar")
+languages << Language.new("kt", "Kotlin", :vm, "kotlinc Fib.kt", "java FibKt")
 languages << Language.new("scala", "Scala", :vm, "scalac Fib.scala", "scala Fib")
 
 languages << Language.new("cljc", "Clojure", :mixed, "", "clojure -M fib.cljc")
