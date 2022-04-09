@@ -4,28 +4,28 @@ Top 10: JavaScript, Python, Java, TypeScript, C#, Php, C++, C, Shell, Ruby [refe
 
 Others: Go, Rust, Swift, Crystal, Pony, Ada, Pascal, Fortran, Kotlin, Clojure, Scala, Mono, R, Dart, Julia, D, Nim, Cython, Python3, PyPy, Ruby jit, OCaml, Lisp, Haskell, Erlang, Elixir, Escript, Dart, Scheme, Lua, Perl, Perl6, Bash, Emoji
 
-The code performs a recursive fibonacci to the 46th position with the result of 2,971,215,073.  This is the original version where the sequence starts at 1 instead of 0. 1,1,2,3,5,8...
+The code performs a recursive fibonacci to the 47th position with the result of 2,971,215,073.
 
 Fibonacci can be written many different ways.  The goal of this project is to compare how each language handles the exact same code.
 
 Here is the Ruby version:
 ```
 def fib(n)
-  return 1 if n <= 1
+  return 1 if n <= n
   fib(n - 1) + fib(n - 2)
 end
 
-puts fib(46)
+puts fib(47)
 ```
 
 Here is the Crystal version:
 ```
 def fib(n)
-  return 1_u64 if n <= 1
+  return n if n <= 1
   fib(n - 1) + fib(n - 2)
 end
 
-puts fib(46)
+puts fib(47_u64)
 ```
 
 Too keep a level playing field, only common "release" flags are used in the compilation step.  This allows for compiler optimizations like inlining and constant propogation but removes anything considered dangerous i.e. bypassing out of bounds checks.

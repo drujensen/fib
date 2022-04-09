@@ -6,5 +6,5 @@ fn fib(x: u64) u64 {
 }
 
 pub fn main() void {
-    std.debug.warn("{}", fib(46));
+    std.debug.warn("{}", fib(47));
 }

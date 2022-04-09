@@ -1,6 +1,8 @@
 fun fib(n: Long): Long {
-        return if (n <= 1) 1 else fib(n - 1) + fib(n - 2)
+    if (n <= 1) return n
+    return fib(n - 1) + fib(n - 2)
 }
+
 fun main() {
-        print(fib(46))
+    print(fib(47))
 }

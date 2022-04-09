@@ -1,6 +1,6 @@
 sub fib(Int $n) {
-    if $n <= 1 { return 1 };
+    if $n <= 1 { return $n };
     return fib($n - 1) + fib($n - 2);
 };
 
-print fib(46)
+print fib(47)
