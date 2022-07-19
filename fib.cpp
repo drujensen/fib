@@ -7,5 +7,5 @@ static uint64_t fib(uint64_t n) {
 }
 
 int main() {
-  printf("%lu \n", fib(47));
+  printf("%llu \n", fib(47));
 }
