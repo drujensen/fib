@@ -1,4 +1,4 @@
-m = {0: 1, 1: 1}
+m = {0: 0, 1: 1}
 
 var fib = function(n) {
   if (n in m) return m[n];
