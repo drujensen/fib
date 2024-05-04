@@ -46,6 +46,7 @@ languages << Language.new("s", "Assembly", :compiled, "gcc -no-pie -O3 -o fib fi
 languages << Language.new("c", "C", :compiled, "gcc -O3 -o fib fib.c", "./fib")
 languages << Language.new("cpp", "C++", :compiled, "g++ -O3 -o fib fib.cpp", "./fib")
 languages << Language.new("cr", "Crystal", :compiled, "crystal build --release fib.cr", "./fib")
+languages << Language.new("mojo", "Mojo", :compiled, "mojo build fib.mojo", "./fib")
 languages << Language.new("dartc", "Dart Compiled", :compiled, "dart compile exe -o fib ./fib.dart", "./fib")
 languages << Language.new("pyx", "Cython", :compiled, "cython -3 --embed -o fib.pyx.c fib.pyx && gcc -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python)", "./fib")
 languages << Language.new("d", "D", :compiled, "ldc2 -O3 -release -flto=full -of=fib fib.d", "./fib")
