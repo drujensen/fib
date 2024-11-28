@@ -59,7 +59,7 @@ languages << Language.new("ml", "OCaml", :compiled, "ocamlopt -O3 -o fib fib.ml"
 languages << Language.new("pas", "Pascal", :compiled, "fpc -O3 -Si ./fib.pas", "./fib")
 languages << Language.new("pony", "Pony", :compiled, "ponyc -s -b fib -p ./fib.pony", "./fib")
 languages << Language.new("rs", "Rust", :compiled, "rustc -C opt-level=3 fib.rs", "./fib")
-languages << Language.new("swift", "Swift", :compiled, "swiftc -O -g fib.swift", "./fib")
+languages << Language.new("swift", "Swift", :compiled, "swiftc -Ounchecked -parse-as-library fib.swift", "./fib")
 languages << Language.new("v", "V", :compiled, "v -prod -o fib fib.v", "./fib")
 languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3 -o fib ./fib.cbl", "./fib")
 #languages << Language.new("qb64", "QB64", :compiled, "qb64 -x $(pwd)/fib.bas -o $(pwd)/fib", "./fib")
