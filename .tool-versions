@@ -26,7 +26,7 @@ kotlin          2.1.0
 ldc             1.39.0
 lua             5.4.7
 luajit          2.1.1
-mojo            24.5
+mojo            24.5.0
 nim             2.2.0
 nodejs          23.3.0
 ocaml           5.2.1

@@ -182,7 +182,6 @@ RUN asdf install erlang
 RUN asdf plugin-add groovy
 RUN asdf install groovy
 
-
 RUN asdf plugin-add r https://github.com/asdf-community/asdf-r.git
 RUN asdf install r
 
@@ -200,22 +199,26 @@ RUN asdf install zig
 
 # broken
 
-RUN asdf plugin-add pony https://github.com/enilsen16/asdf-pony.git
-RUN asdf install pony
+# RUN asdf plugin-add pony https://github.com/enilsen16/asdf-pony.git
+# RUN asdf install pony
+RUN SHELL=/bin/sh sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ponylang/ponyup/latest-release/ponyup-init.sh)"
+RUN /root/.local/share/ponyup/bin/ponyup update ponyc release
 
 # needs apt install ninja-build and pip3 install meson
-RUN asdf plugin-add janet https://github.com/Jakski/asdf-janet.git
-RUN asdf install janet
+# RUN asdf plugin-add janet https://github.com/Jakski/asdf-janet.git
+# RUN asdf install janet
+RUN wget -q https://github.com/janet-lang/janet/releases/download/v1.36.0/janet-v1.36.0-linux.tar.gz
+RUN tar xzf janet-v1.36.0-linux.tar.gz
+RUN mv janet-v1.36.0-linux /usr/share/janet
+RUN rm janet-v1.36.0-linux.tar.gz
 
-RUN asdf plugin-add luajit https://github.com/smashedtoatoms/asdf-luaJIT
-RUN asdf install luajit
+# RUN asdf plugin-add luajit https://github.com/smashedtoatoms/asdf-luaJIT
+# RUN asdf install luajit
+RUN apt-get install -qq -y luajit
 
-RUN asdf plugin-add tcl https://github.com/mdekstrand/asdf-tcl
-RUN asdf install tcl
-
-# RUN asdf plugin-add guile https://github.com/indiebrain/asdf-guile.git
-# RUN asdf install guile
-
+# RUN asdf plugin-add tcl https://github.com/mdekstrand/asdf-tcl
+# RUN asdf install tcl
+RUN apt-get install -qq -y tcl
 
 COPY . /root/app
 CMD ["/bin/bash", "-c", "./run.sh"]
