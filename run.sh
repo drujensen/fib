@@ -62,8 +62,6 @@ languages << Language.new("rs", "Rust", :compiled, "rustc -C opt-level=3 fib.rs"
 languages << Language.new("swift", "Swift", :compiled, "swiftc -Ounchecked -parse-as-library fib.swift", "./fib")
 languages << Language.new("v", "V", :compiled, "v -prod -o fib fib.v", "./fib")
 languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3 -o fib ./fib.cbl", "./fib")
-#languages << Language.new("qb64", "QB64", :compiled, "qb64 -x $(pwd)/fib.bas -o $(pwd)/fib", "./fib")
-#languages << Language.new("emo", "Emojicode", :compiled, "emojicodec fib.emojic", "./fib")
 
 languages << Language.new("cs", "C#", :vm, "dotnet build -c Release -o ./bin", "dotnet ./bin/fib.dll")
 languages << Language.new("mono", "C# (Mono)", :vm, "mcs Fib.cs", "mono Fib.exe")
