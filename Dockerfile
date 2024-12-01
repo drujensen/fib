@@ -12,14 +12,18 @@ RUN apt-get update -qq && \
             autoconf \
             automake \
             binutils \
+            bison \
+            bubblewrap \
             build-essential \
             ca-certificates \
             curl \
             file \
             git \
+            gnupg2 \
             jq \
             locales \
             pkg-config \
+            re2c \
             software-properties-common \
             time \
             tzdata \
@@ -46,17 +50,40 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
 
 # libraries
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
-                libbz2-dev \
-                libffi-dev \
-                liblzma-dev \
-                libncursesw5-dev \
-                libreadline-dev \
-                libssl-dev \
-                libyaml-dev \
-                libsqlite3-dev \
-                libxml2-dev \
-                libxmlsec1-dev \
-                zlib1g-dev && \
+            libbz2-dev \
+            libffi-dev \
+            liblzma-dev \
+            libncurses5-dev \
+            libreadline-dev \
+            libssl-dev \
+            libyaml-dev \
+            libsqlite3-dev \
+            libxml2-dev \
+            libxmlsec1-dev \
+            libc6-dev \
+            libz3-dev \
+            libgd-dev \
+            libpcre2-dev \
+            libpcre3-dev \
+            libonig-dev \
+            libpq-dev \
+            libedit-dev \
+            libgdbm-dev \
+            libcurl4-openssl-dev \
+            libunistring-dev \
+            libgc-dev \
+            libpng-dev \
+            libxslt-dev \
+            libgmp3-dev \
+            libtool \
+            libncurses-dev \
+            libssh-dev \
+            libzip-dev \
+            libevent-dev \
+            libicu-dev \
+            libglu1-mesa-dev \
+            unixodbc-dev \
+            zlib1g-dev && \
     apt-get clean -qq -y && \
     apt-get autoclean -qq -y && \
     apt-get autoremove -qq -y
@@ -101,53 +128,30 @@ RUN asdf install dotnet-core
 RUN asdf plugin-add nodejs
 RUN asdf install nodejs
 
-# RUN asdf plugin-add bunjs https://github.com/drujensen/asdf-bunjs.git
-# RUN asdf plugin-add bunjs
-# RUN asdf install bunjs
+RUN asdf plugin-add bun
+RUN asdf install bun
 
 RUN asdf plugin-add python
 RUN asdf install python
-
-RUN asdf plugin-add pypy https://github.com/drujensen/asdf-pypy.git
-#RUN asdf plugin-add pypy
-RUN asdf install pypy
+RUN asdf install python pypy3.10-7.3.17
 
 RUN asdf plugin-add ruby
 RUN asdf install ruby
 
-#RUN asdf plugin add perl https://github.com/ouest/asdf-perl.git
 RUN asdf plugin add perl
 RUN asdf install perl
 
 RUN asdf plugin-add php
 RUN asdf install php
 
-#RUN asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git
 RUN asdf plugin-add lua
 RUN asdf install lua
-
-RUN asdf plugin-add luaJIT
-RUN asdf install luaJIT
-
-RUN asdf plugin-add R
-RUN asdf install R
-
-#RUN asdf plugin-add julia https://github.com/rkyleg/asdf-julia.git
-RUN asdf plugin-add julia
-RUN asdf install julia
 
 RUN asdf plugin-add nim
 RUN asdf install nim
 
-#RUN asdf plugin-add janet https://github.com/Jakski/asdf-janet.git
-RUN asdf plugin-add janet
-RUN asdf install janet
-
 RUN asdf plugin-add dart
 RUN asdf install dart
-
-RUN asdf plugin-add pony
-RUN asdf install pony
 
 RUN asdf plugin-add v
 RUN asdf install v
@@ -164,23 +168,44 @@ RUN asdf install sbcl
 RUN asdf plugin-add elm
 RUN asdf install elm
 
-#RUN asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+RUN asdf plugin-add julia
+RUN asdf install julia
+
 RUN asdf plugin-add elixir
 RUN asdf install elixir
 
-#RUN asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 RUN asdf plugin-add erlang
 RUN asdf install erlang
 
-#RUN asdf plugin-add dmd https://github.com/sylph01/asdf-dmd.git
-RUN asdf plugin-add dmd
+RUN asdf plugin-add groovy
+RUN asdf install groovy
+
+
+RUN asdf plugin-add r https://github.com/asdf-community/asdf-r.git
+RUN asdf install r
+
+RUN asdf plugin-add luajit https://github.com/smashedtoatoms/asdf-luaJIT
+RUN asdf install luajit
+
+RUN asdf plugin-add dmd https://github.com/sylph01/asdf-dmd.git
 RUN asdf install dmd
 
-# RUN asdf plugin-add guile https://github.com/indiebrain/asdf-guile.git
-RUN asdf plugin-add guile
+RUN asdf plugin add powershell-core https://github.com/daveneeley/asdf-powershell-core
+RUN asdf install powershell-core
+
+# broken
+
+RUN asdf plugin-add pony https://github.com/enilsen16/asdf-pony.git
+RUN asdf install pony
+
+# needs apt install ninja-build and pip3 install meson
+RUN asdf plugin-add janet https://github.com/Jakski/asdf-janet.git
+RUN asdf install janet
+
+RUN asdf plugin-add guile https://github.com/indiebrain/asdf-guile.git
 RUN asdf install guile
 
-RUN asdf plugin-add tcl
+RUN asdf plugin-add tcl https://github.com/mdekstrand/asdf-tcl
 RUN asdf install tcl
 
 COPY . /root/app
