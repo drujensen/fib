@@ -4,7 +4,6 @@ bash            5.2.21
 bun             1.1.38
 crystal         1.14.0
 clojure         1.11.0
-cython          3.0.11
 dart            3.5.4
 dmd             2.109.1
 dotnet-core     9.0.0
@@ -27,6 +26,7 @@ kotlin          2.1.0
 ldc             1.39.0
 lua             5.4.7
 luajit          2.1.1
+mojo            24.5
 nim             2.2.0
 nodejs          23.3.0
 ocaml           5.2.1
@@ -46,3 +46,4 @@ scala           3.3.4
 swift           6.0.2
 tcl             9.0.0
 v               0.4.8
+zig             0.14.0

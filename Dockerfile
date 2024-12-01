@@ -29,7 +29,8 @@ RUN apt-get update -qq && \
             tzdata \
             unzip \
             vim \
-            wget && \
+            wget \
+            xorg-dev && \
     apt-get clean -qq -y && \
     apt-get autoclean -qq -y && \
     apt-get autoremove -qq -y
@@ -46,6 +47,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             gfortran \
             gnat \
             gnucobol \
+            guile-3.0 \
             rakudo
 
 # libraries
@@ -184,14 +186,17 @@ RUN asdf install groovy
 RUN asdf plugin-add r https://github.com/asdf-community/asdf-r.git
 RUN asdf install r
 
-RUN asdf plugin-add luajit https://github.com/smashedtoatoms/asdf-luaJIT
-RUN asdf install luajit
-
 RUN asdf plugin-add dmd https://github.com/sylph01/asdf-dmd.git
 RUN asdf install dmd
 
 RUN asdf plugin add powershell-core https://github.com/daveneeley/asdf-powershell-core
 RUN asdf install powershell-core
+
+RUN asdf plugin add mojo https://github.com/alvesgabriel/asdf-mojo.git
+RUN asdf install mojo
+
+RUN asdf plugin add zig https://github.com/braunse/asdf-zig
+RUN asdf install zig
 
 # broken
 
@@ -202,11 +207,15 @@ RUN asdf install pony
 RUN asdf plugin-add janet https://github.com/Jakski/asdf-janet.git
 RUN asdf install janet
 
-RUN asdf plugin-add guile https://github.com/indiebrain/asdf-guile.git
-RUN asdf install guile
+RUN asdf plugin-add luajit https://github.com/smashedtoatoms/asdf-luaJIT
+RUN asdf install luajit
 
 RUN asdf plugin-add tcl https://github.com/mdekstrand/asdf-tcl
 RUN asdf install tcl
+
+# RUN asdf plugin-add guile https://github.com/indiebrain/asdf-guile.git
+# RUN asdf install guile
+
 
 COPY . /root/app
 CMD ["/bin/bash", "-c", "./run.sh"]
