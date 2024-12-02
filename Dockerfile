@@ -219,7 +219,7 @@ RUN apt-get install -qq -y luajit
 # RUN asdf install tcl
 RUN apt-get install -qq -y tcl
 
-
+ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin:/usr/share/janet:/usr/share/qb64:/usr/share/dlang/ldc-1.28.1/bin:/root/.local/share/ponyup/bin:/usr/share/v"
 
 COPY . /root/app
 CMD ["/bin/bash", "-c", "./run.sh"]
