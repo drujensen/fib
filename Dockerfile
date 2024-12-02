@@ -191,14 +191,13 @@ RUN asdf install dmd
 RUN asdf plugin add powershell-core https://github.com/daveneeley/asdf-powershell-core
 RUN asdf install powershell-core
 
-RUN asdf plugin add mojo https://github.com/alvesgabriel/asdf-mojo.git
-RUN asdf install mojo
+# RUN asdf plugin add zig https://github.com/asdf-community/asdf-zig
+# RUN asdf install zig
 
-RUN asdf plugin add zig https://github.com/braunse/asdf-zig
-RUN asdf install zig
+# RUN asdf plugin add mojo https://github.com/alvesgabriel/asdf-mojo.git
+# RUN asdf install mojo
 
 # broken
-
 # RUN asdf plugin-add pony https://github.com/enilsen16/asdf-pony.git
 # RUN asdf install pony
 RUN SHELL=/bin/sh sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ponylang/ponyup/latest-release/ponyup-init.sh)"
@@ -207,10 +206,10 @@ RUN /root/.local/share/ponyup/bin/ponyup update ponyc release
 # needs apt install ninja-build and pip3 install meson
 # RUN asdf plugin-add janet https://github.com/Jakski/asdf-janet.git
 # RUN asdf install janet
-RUN wget -q https://github.com/janet-lang/janet/releases/download/v1.36.0/janet-v1.36.0-linux.tar.gz
-RUN tar xzf janet-v1.36.0-linux.tar.gz
+RUN wget -q https://github.com/janet-lang/janet/releases/download/v1.36.0/janet-v1.36.0-linux-x64.tar.gz
+RUN tar xzf janet-v1.36.0-linux-x64.tar.gz
 RUN mv janet-v1.36.0-linux /usr/share/janet
-RUN rm janet-v1.36.0-linux.tar.gz
+RUN rm janet-v1.36.0-linux-x64.tar.gz
 
 # RUN asdf plugin-add luajit https://github.com/smashedtoatoms/asdf-luaJIT
 # RUN asdf install luajit
@@ -219,6 +218,8 @@ RUN apt-get install -qq -y luajit
 # RUN asdf plugin-add tcl https://github.com/mdekstrand/asdf-tcl
 # RUN asdf install tcl
 RUN apt-get install -qq -y tcl
+
+
 
 COPY . /root/app
 CMD ["/bin/bash", "-c", "./run.sh"]
