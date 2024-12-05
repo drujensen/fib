@@ -1,7 +1,7 @@
 using System;
 
 public class Fib {
-  static uint fib(ulong n) {
+  static ulong fib(ulong n) {
     if (n <= 1) return n;
     return fib(n - 1) + fib(n - 2);
   }

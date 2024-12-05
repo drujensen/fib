@@ -3,10 +3,10 @@ assembly        13.2.0
 bash            5.2.21
 bun             1.1.38
 crystal         1.14.0
-clojure         1.11.0
+clojure         1.12.0.1488
 dart            3.5.4
 dmd             2.109.1
-dotnet-core     9.0.0
+dotnet          9.0.101
 elixir          1.17.3
 elm             0.19.1
 erlang          27.1.2
@@ -46,4 +46,4 @@ scala           3.3.4
 swift           6.0.2
 tcl             9.0.0
 v               0.4.8
-zig             0.14.0
+zig             0.13.0

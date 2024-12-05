@@ -48,7 +48,7 @@ languages << Language.new("cpp", "C++", :compiled, "g++ -O3 -o fib fib.cpp", "./
 languages << Language.new("cr", "Crystal", :compiled, "crystal build --release fib.cr", "./fib")
 languages << Language.new("mojo", "Mojo", :compiled, "mojo build fib.mojo", "./fib")
 languages << Language.new("dartc", "Dart Compiled", :compiled, "dart compile exe -o fib ./fib.dart", "./fib")
-languages << Language.new("d", "D", :compiled, "ldc2 -O3 -release -flto=full -of=fib fib.d", "./fib")
+languages << Language.new("d", "D", :compiled, "dmd -release -of=fib fib.d", "./fib")
 languages << Language.new("f03", "Fortran", :compiled, "gfortran -O3 -o fib fib.f03", "./fib")
 languages << Language.new("go", "Go", :compiled, "go build fib.go", "./fib")
 languages << Language.new("hs", "Haskell", :compiled, "rm ./fib.o && ghc -O3 -o fib fib.hs", "./fib")
@@ -61,19 +61,18 @@ languages << Language.new("rs", "Rust", :compiled, "rustc -C opt-level=3 fib.rs"
 languages << Language.new("swift", "Swift", :compiled, "swiftc -Ounchecked fib.swift", "./fib")
 languages << Language.new("v", "V", :compiled, "v -prod -o fib fib.v", "./fib")
 languages << Language.new("zig", "Zig", :compiled, "zig build-exe -OReleaseFast ./fib.zig", "./fib")
-languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3 -o fib ./fib.cbl", "./fib")
+#languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3 -o fib ./fib.cbl", "./fib")
 
 languages << Language.new("cs", "C#", :vm, "dotnet build -c Release -o ./bin", "dotnet ./bin/fib.dll")
 languages << Language.new("java", "Java", :vm, "javac Fib.java", "java Fib")
 languages << Language.new("groovy", "Groovy", :vm, "groovyc Fib.groovy", "groovy Fib")
-languages << Language.new("groovy", "Groovy", :vm, "javac Fib.java", "java Fib")
 languages << Language.new("kt", "Kotlin", :vm, "kotlinc Fib.kt", "java FibKt")
 languages << Language.new("scala", "Scala", :vm, "scalac Fib.scala", "scala Fib")
 languages << Language.new("erl", "Erlang", :vm, "erlc +native +'{hipe,[o3]}' fib.erl", "erl -noinput -noshell -s fib")
 
 languages << Language.new("js", "Node", :mixed, "", "node fib.js")
 languages << Language.new("bun", "Bun", :mixed, "", "bun fib.js")
-languages << Language.new("pypy", "Python3 (PyPy)", :mixed, "", "pypy3 fib.py")
+languages << Language.new("pypy", "Python (PyPy)", :mixed, "", "pypy fib.py")
 languages << Language.new("rbjit", "Ruby (jit)", :mixed, "", "ruby --jit fib.rb")
 languages << Language.new("cljc", "Clojure", :mixed, "", "clojure -M fib.cljc")
 languages << Language.new("dart", "Dart", :mixed, "", "dart fib.dart")
@@ -86,7 +85,6 @@ languages << Language.new("lua", "Lua", :interpreted, "", "lua fib.lua")
 languages << Language.new("php", "Php", :interpreted, "", "php fib.php")
 languages << Language.new("pl", "Perl", :interpreted, "", "perl fib.pl")
 languages << Language.new("py", "Python", :interpreted, "", "python fib.py")
-languages << Language.new("py3", "Python3", :interpreted, "", "python3 fib.py")
 languages << Language.new("rb", "Ruby", :interpreted, "", "ruby fib.rb")
 languages << Language.new("r", "R", :interpreted, "", "R -f fib.r")
 languages << Language.new("raku", "Raku", :interpreted, "", "rakudo fib.raku")
@@ -205,7 +203,7 @@ unless list.select {|l| l.type == :interpreted}.empty?
 end
 
 puts "## Versions"
-puts "All compilers are installed using apt or asdf on Ubuntu 20.04 docker image:"
+puts "All compilers are installed using apt or asdf on Ubuntu 24.04 docker image:"
 puts "|---|---|"
 File.foreach(".tool-versions") do |line|
   version = line.split(" ")

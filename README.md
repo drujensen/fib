@@ -48,9 +48,19 @@ To only run a subset of the languages, provide a list of extensions and optional
 
 `docker run -it drujensen/fib ./run.sh s,c,cpp,go,rs,swift 5`
 
-To run in the background using nohup:
+To run in the background using screen:
 
-`nohup docker run drujensen/fib:latest > results.txt 2>&1 &`
+```bash
+screen
+docker run drujensen/fib > results.txt 2>&1
+```
+
+- Detach from the session by pressing `Ctrl+A` followed by `D`.
+- You can reattach to the session later with:
+
+```bash
+screen -r
+```
 
 # Results
 

@@ -25,6 +25,7 @@ RUN apt-get update -qq && \
             pkg-config \
             re2c \
             software-properties-common \
+            tar \
             time \
             tzdata \
             unzip \
@@ -43,6 +44,8 @@ ENV LC_ALL=en_US.UTF-8
 
 # apt languages
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
+            llvm \
+            clang \
             fp-compiler \
             gfortran \
             gnat \
@@ -106,7 +109,7 @@ RUN asdf install golang
 RUN asdf plugin-add rust
 RUN asdf install rust
 
-RUN asdf plugin-add swift
+RUN asdf plugin-add swift https://github.com/drujensen/asdf-swift
 RUN asdf install swift
 
 RUN asdf plugin-add crystal
@@ -124,8 +127,8 @@ RUN asdf install clojure
 RUN asdf plugin-add scala
 RUN asdf install scala
 
-RUN asdf plugin-add dotnet-core
-RUN asdf install dotnet-core
+RUN asdf plugin-add dotnet
+RUN asdf install dotnet
 
 RUN asdf plugin-add nodejs
 RUN asdf install nodejs
@@ -135,7 +138,6 @@ RUN asdf install bun
 
 RUN asdf plugin-add python
 RUN asdf install python
-RUN asdf install python pypy3.10-7.3.17
 
 RUN asdf plugin-add ruby
 RUN asdf install ruby
@@ -191,8 +193,8 @@ RUN asdf install dmd
 RUN asdf plugin add powershell-core https://github.com/daveneeley/asdf-powershell-core
 RUN asdf install powershell-core
 
-# RUN asdf plugin add zig https://github.com/asdf-community/asdf-zig
-# RUN asdf install zig
+RUN asdf plugin add zig https://github.com/zigcc/asdf-zig
+RUN asdf install zig
 
 # RUN asdf plugin add mojo https://github.com/alvesgabriel/asdf-mojo.git
 # RUN asdf install mojo
