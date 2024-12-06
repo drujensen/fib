@@ -48,129 +48,140 @@ To only run a subset of the languages, provide a list of extensions and optional
 
 `docker run -it drujensen/fib ./run.sh s,c,cpp,go,rs,swift 5`
 
-To run in the background using nohup:
+To run in the background using screen:
 
-`nohup docker run drujensen/fib:latest > results.txt 2>&1 &`
+```bash
+screen
+docker run drujensen/fib > results.txt 2>&1
+```
+
+- Detach from the session by pressing `Ctrl+A` followed by `D`.
+- You can reattach to the session later with:
+
+```bash
+screen -r
+```
 
 # Results
 
-Last benchmark was ran on January 18, 2022
+Last benchmark was ran on December 05, 2024
 
 ## Natively compiled, statically typed
 
-| Language | Total | Compile | Time, s | Run | Time, s | Ext |
+| Language | Total | Compile | Time | Run | Time | Ext |
 |----------|-------|---------|---------|-----|---------|-----|
-| C |    6.865 | gcc -O3 -o fib fib.c |    0.058 | ./fib |    6.807 | c |
-| Fortran |    6.893 | gfortran -O3 -o fib fib.f03 |    0.119 | ./fib |    6.774 | f03 |
-| C++ |    6.954 | g++ -O3 -o fib fib.cpp |    0.126 | ./fib |    6.828 | cpp |
-| Cython |    7.114 | cython -3 --embed -o fib.pyx.c fib.pyx && gcc -O3 -o fib fib.pyx.c $(pkg-config --cflags --libs python) |    0.297 | ./fib |    6.817 | pyx |
-| Nim |    7.337 | nim c -d:release fib.nim |    0.920 | ./fib |    6.416 | nim |
-| Assembly |    7.401 | gcc -no-pie -O3 -o fib fib.s |    0.025 | ./fib |    7.376 | s |
-| Ada |    7.645 | gnat make -O3 -gnatp -o fib fib.adb |    0.213 | ./fib |    7.433 | adb |
-| Rust |    7.652 | rustc -C opt-level=3 fib.rs |    0.638 | ./fib |    7.014 | rs |
-| Pascal |    8.845 | fpc -O3 -Si ./fib.pas |    0.078 | ./fib |    8.766 | pas |
-| Pony |    9.117 | ponyc -s -b fib -p ./fib.pony |    1.038 | ./fib |    8.079 | pony |
-| D |    9.481 | ldc2 -O3 -release -flto=full -of=fib fib.d |    0.612 | ./fib |    8.869 | d |
-| Swift |   10.568 | swiftc -O -g fib.swift |    0.474 | ./fib |   10.094 | swift |
-| OCaml |   10.729 | ocamlopt -O3 -o fib fib.ml |    0.294 | ./fib |   10.435 | ml |
-| V |   10.752 | v -prod -o fib fib.v |    4.352 | ./fib |    6.399 | v |
-| Go |   12.486 | go build fib.go |    0.600 | ./fib |   11.885 | go |
-| Haskell |   12.544 | rm ./fib.o && ghc -O3 -o fib fib.hs |    0.001 | ./fib |   12.543 | hs |
-| Crystal |   17.900 | crystal build --release fib.cr |    4.940 | ./fib |   12.960 | cr |
-| Lisp |   17.996 | sbcl --load fib.lisp |    1.704 | ./fib |   16.293 | lisp |
-| Dart Compiled |   30.942 | dart compile exe -o fib ./fib.dart |    5.058 | ./fib |   25.884 | dartc |
+| Nim |    0.832 | nim c -d:release fib.nim |    0.669 | ./fib |    0.163 | nim |
+| C |    4.835 | gcc -O3 -o fib fib.c |    0.112 | ./fib |    4.723 | c |
+| C++ |    4.888 | g++ -O3 -o fib fib.cpp |    0.139 | ./fib |    4.750 | cpp |
+| Fortran |    6.334 | gfortran -O3 -o fib fib.f03 |    0.130 | ./fib |    6.204 | f03 |
+| Ada |    6.811 | gnat make -O3 -gnatp -o fib fib.adb |    0.220 | ./fib |    6.591 | adb |
+| Rust |    8.108 | rustc -C opt-level=3 fib.rs |    0.358 | ./fib |    7.750 | rs |
+| Odin |    8.838 | odin build fib.odin -file -0:speed |    0.087 | ./fib |    8.751 | odin |
+| Mojo |    8.947 | mojo build fib.mojo |    0.241 | ./fib |    8.706 | mojo |
+| Assembly |    9.367 | gcc -no-pie -O3 -o fib fib.s |    0.025 | ./fib |    9.342 | s |
+| Swift |    9.781 | swiftc -Ounchecked fib.swift |    0.399 | ./fib |    9.381 | swift |
+| Pascal |   10.460 | fpc -O3 -Si ./fib.pas |    0.041 | ./fib |   10.419 | pas |
+| Pony |   11.106 | ponyc -s -b fib -p ./fib.pony |    0.879 | ./fib |   10.226 | pony |
+| OCaml |   16.018 | ocamlopt -O3 -o fib fib.ml |    0.187 | ./fib |   15.831 | ml |
+| Zig |   16.181 | zig build-exe -OReleaseFast ./fib.zig |    6.882 | ./fib |    9.299 | zig |
+| Haskell |   18.095 | rm ./fib.o && ghc -O3 -o fib fib.hs |    0.001 | ./fib |   18.094 | hs |
+| D |   18.193 | dmd -release -of=fib fib.d |    0.342 | ./fib |   17.851 | d |
+| Go |   18.948 | go build fib.go |    1.107 | ./fib |   17.842 | go |
+| Crystal |   20.525 | crystal build --release fib.cr |    3.106 | ./fib |   17.420 | cr |
+| Lisp |   25.726 | sbcl --load fib.lisp |    0.979 | ./fib |   24.747 | lisp |
+| Dart Compiled |   31.707 | dart compile exe -o fib ./fib.dart |    1.558 | ./fib |   30.149 | dartc |
 | Cobol | 4380.728 | cobc -x -O3 -o fib ./fib.cbl |    0.133 | ./fib | 4380.596 | cbl |
 
 ## VM compiled bytecode, statically typed
 
-| Language | Total | Compile | Time, s | Run | Time, s | Ext |
+| Language | Total | Compile | Time | Run | Time | Ext |
 |----------|-------|---------|---------|-----|---------|-----|
-| Scala |    9.047 | scalac Fib.scala |    0.942 | scala Fib |    8.104 | scala |
-| Java |   10.391 | javac Fib.java |    0.894 | java Fib |    9.497 | java |
-| Kotlin |   11.721 | kotlinc Fib.kt |    2.097 | java FibKt |    9.624 | kt |
-| C# (Mono) |   16.107 | mcs Fib.cs |    0.491 | mono Fib.exe |   15.616 | mono |
-| C# |   16.218 | dotnet build -c Release -o ./bin |    2.162 | dotnet ./bin/fib.dll |   14.056 | cs |
-| Erlang |   28.868 | erlc +native +'{hipe,[o3]}' fib.erl |    0.500 | erl -noinput -noshell -s fib |   28.368 | erl |
+| C# |   12.760 | dotnet build -c Release -o ./bin |    2.015 | dotnet ./bin/fib.dll |   10.744 | cs |
+| Java |   13.040 | javac Fib.java |    0.733 | java Fib |   12.307 | java |
+| Scala |   15.836 | scalac Fib.scala |    2.682 | scala Fib |   13.153 | scala |
+| Kotlin |   16.286 | kotlinc Fib.kt |    4.074 | java FibKt |   12.212 | kt |
+| Erlang |   28.378 | erlc +native +'{hipe,[o3]}' fib.erl |    0.402 | erl -noinput -noshell -s fib |   27.976 | erl |
+| Groovy |   70.123 | groovyc Fib.groovy |    1.519 | groovy Fib |   68.604 | groovy |
 
 ## VM compiled before execution, mixed/dynamically typed
 
-| Language | Time, s | Run | Ext |
+| Language | Time | Run | Ext |
 |----------|---------|-----|-----|
-| Dart |   11.286 | dart fib.dart | dart |
-| Julia |   11.318 | julia -O3 fib.jl | jl |
-| Lua Jit |   16.382 | luajit fib.lua | luajit |
-| Clojure |   23.448 | clojure -M fib.cljc | cljc |
-| Elixir |   28.604 | ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]' elixir Fib.exs | exs |
-| Node |   30.232 | node fib.js | js |
-| Python3 (PyPy) |   37.827 | pypy3 fib.py | pypy |
-| Ruby (jit) |   51.793 | ruby --jit fib.rb | rbjit |
+| Clojure |   17.815 | clojure -M fib.cljc | cljc |
+| Julia |   18.000 | julia -O3 fib.jl | jl |
+| Bun |   21.312 | bun fib.js | bun |
+| Dart |   29.984 | dart fib.dart | dart |
+| Node |   34.736 | node fib.js | js |
+| Elixir |   35.243 | ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]' elixir Fib.exs | exs |
+| Lua Jit |   37.837 | luajit fib.lua | luajit |
+| Python (PyPy) |   54.078 | pypy fib.py | pypy |
+| Ruby (jit) |   81.454 | ruby --jit fib.rb | rbjit |
 
 ## Interpreted, dynamically typed
 
-| Language | Time, s | Run | Ext |
+| Language | Time | Run | Ext |
 |----------|---------|-----|-----|
-| Scheme |   66.668 | guile fib.scm | scm |
-| Php |  118.468 | php fib.php | php |
-| Lua |  169.710 | lua fib.lua | lua |
-| Ruby |  223.653 | ruby fib.rb | rb |
-| Janet |  292.366 | janet ./fib.janet | janet |
-| Python |  507.845 | python fib.py | py |
-| Python3 |  527.247 | python3 fib.py | py3 |
-| Perl | 1085.181 | perl fib.pl | pl |
-| Tcl | 1580.804 | tclsh fib.tcl | tcl |
-| R | 2413.682 | R -f fib.r | r |
-| Raku | 2841.391 | rakudo fib.raku | raku |
-| Escript | 3448.282 | escript fib.es | es |
+| Janet |    0.001 | janet ./fib.janet | janet |
+| Escript |   28.380 | escript fib.es | es |
+| Python |   53.770 | python fib.py | py |
+| Scheme |  102.887 | guile fib.scm | scm |
+| Php |  157.312 | php fib.php | php |
+| Lua |  203.702 | lua fib.lua | lua |
+| Ruby |  393.625 | ruby fib.rb | rb |
+| Perl | 1490.416 | perl fib.pl | pl |
+| Raku | 1672.015 | rakudo fib.raku | raku |
+| Tcl | 2230.883 | tclsh fib.tcl | tcl |
+| R | 2575.249 | R -f fib.r | r |
 
 ## Versions
-
-All compilers are installed using apt or asdf on Ubuntu 20.04 docker image.
-
-| language | version |
-|----------|---------|
-| ada | 9.3.0 |
-| assembly | 9.3.0 |
-| bash | 5.0.0 |
-| crystal | 1.3.0 |
-| clojure | 1.10.3.1040 |
-| cython | 0.29.26 |
-| dart | 2.15.1 |
-| dotnet-core | 6.0.101 |
-| elixir | 1.12.0 |
+All compilers are installed using apt or asdf on Ubuntu 24.04 docker image:
+|---|---|
+| ada | 13.2.0 |
+| assembly | 13.2.0 |
+| bash | 5.2.21 |
+| bun | 1.1.38 |
+| crystal | 1.14.0 |
+| clojure | 1.12.0.1488 |
+| dart | 3.5.4 |
+| dmd | 2.109.1 |
+| dotnet | 9.0.101 |
+| elixir | 1.17.3 |
 | elm | 0.19.1 |
-| erlang | 24.2 |
-| fortran | 9.3.0 |
-| g++ | 9.3.0 |
-| gcc | 9.3.0 |
-| golang | 1.17.5 |
-| guile | 3.0.7 |
-| haskell | 9.2.1 |
-| janet | 1.19.2 |
-| java | openjdk-17 |
-| julia | 1.7.1 |
+| erlang | 27.1.2 |
+| fortran | 13.2.0 |
+| g++ | 13.2.0 |
+| gcc | 13.2.0 |
+| gnucobol | 3.2.0 |
+| golang | 1.23.2 |
+| groovy | 4.0.24 |
+| guile | 3.0.10 |
+| haskell | 9.8.3 |
+| janet | 1.36.0 |
+| java | openjdk-23 |
+| julia | 1.11.1 |
 | K | 3.6 |
-| kotlin | 1.6.10 |
-| ldc2 | 1.2.4 |
-| lua | 5.4.3 |
-| luaJIT | 2.1.0 |
-| mono | 6.8.0 |
-| nim | 1.6.2 |
-| nodejs | 17.3.0 |
-| ocaml | 4.11.1 |
-| pascal | 3.0.4 |
-| perl | 5.34.0 |
-| php | 8.1.1 |
-| pony | 0.38.1 |
-| powershell | v7.0.0 |
-| python | 3.10.1 |
-| pypy | 7.3.7 |
-| qb64 | 1.5 |
-| R | 4.1.2 |
-| rakudo | 2021.12 |
-| ruby | 3.1.0 |
-| rust | 1.57.0 |
-| sbcl | 2.11.1 |
-| scala | 3.1.0 |
-| swift | 5.5.2 |
-| tcl | 8.6.10 |
-| v | 0.2.2 |
+| kotlin | 2.1.0 |
+| ldc | 1.39.0 |
+| lua | 5.4.7 |
+| luajit | 2.1.1 |
+| mojo | 24.5.0 |
+| nim | 2.2.0 |
+| nodejs | 23.3.0 |
+| ocaml | 5.2.1 |
+| odin | dev-2024-11 |
+| pascal | 3.2.2 |
+| perl | 5.40.0 |
+| php | 8.4.1 |
+| pony | 0.58.7 |
+| powershell-core | 7.4.6 |
+| python | pypy3.10-7.3.17 |
+| r | 4.4.2 |
+| rakudo | 2024.10 |
+| ruby | 3.3.6 |
+| rust | 1.83.0 |
+| sbcl | 2.4.11 |
+| scala | 3.3.4 |
+| swift | 6.0.2 |
+| tcl | 9.0.0 |
+| v | 0.4.8 |
+| zig | 0.13.0 |
