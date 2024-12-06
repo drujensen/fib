@@ -138,7 +138,7 @@ puts ""
 unless list.select {|l| l.type == :compiled}.empty?
   puts "## Natively compiled, statically typed"
   puts ""
-  puts "| Language | Total | Compile | Time, s | Run | Time, s | Ext |"
+  puts "| Language | Total | Compile | Time | Run | Time | Ext |"
   puts "|----------|-------|---------|---------|-----|---------|-----|"
   list.select {|l| l.type == :compiled}.sort_by {|l| l.total_time}.each do |lang|
       results = []
@@ -157,7 +157,7 @@ end
 unless list.select {|l| l.type == :vm}.empty?
   puts "## VM compiled bytecode, statically typed"
   puts ""
-  puts "| Language | Total | Compile | Time, s | Run | Time, s | Ext |"
+  puts "| Language | Total | Compile | Time | Run | Time | Ext |"
   puts "|----------|-------|---------|---------|-----|---------|-----|"
   list.select {|l| l.type == :vm}.sort_by {|l| l.total_time}.each do |lang|
       results = []
@@ -176,7 +176,7 @@ end
 unless list.select {|l| l.type == :mixed}.empty?
   puts "## VM compiled before execution, mixed/dynamically typed"
   puts ""
-  puts "| Language | Time, s | Run | Ext |"
+  puts "| Language | Time | Run | Ext |"
   puts "|----------|---------|-----|-----|"
   list.select {|l| l.type == :mixed}.sort_by {|l| l.total_time}.each do |lang|
       results = []
@@ -192,7 +192,7 @@ end
 unless list.select {|l| l.type == :interpreted}.empty?
   puts "## Interpreted, dynamically typed"
   puts ""
-  puts "| Language | Time, s | Run | Ext |"
+  puts "| Language | Time | Run | Ext |"
   puts "|----------|---------|-----|-----|"
   list.select {|l| l.type == :interpreted}.sort_by {|l| l.total_time}.each do |lang|
       results = []
@@ -207,6 +207,8 @@ end
 
 puts "## Versions"
 puts "All compilers are installed using apt or asdf on Ubuntu 24.04 docker image:"
+puts ""
+puts "| Language | Version |"
 puts "|---|---|"
 File.foreach(".tool-versions") do |line|
   version = line.split(" ")
