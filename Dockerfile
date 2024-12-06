@@ -181,6 +181,9 @@ RUN asdf install erlang
 RUN asdf plugin-add groovy
 RUN asdf install groovy
 
+RUN asdf plugin-add odin
+RUN asdf install odin
+
 RUN asdf plugin-add r https://github.com/asdf-community/asdf-r.git
 RUN asdf install r
 

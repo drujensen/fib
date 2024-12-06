@@ -79,6 +79,7 @@ languages << Language.new("dart", "Dart", :mixed, "", "dart fib.dart")
 languages << Language.new("jl", "Julia", :mixed, "", "julia -O3 fib.jl")
 languages << Language.new("exs", "Elixir", :mixed, "", "ERL_COMPILER_OPTIONS='[native,{hipe, [o3]}]' elixir Fib.exs")
 languages << Language.new("luajit", "Lua Jit", :mixed, "", "luajit fib.lua")
+languages << Language.new("luajit", "Php", :interpreted, "", "php -djit=1255 fib.php")
 
 languages << Language.new("janet", "Janet", :interpreted, "", "janet ./fib.janet")
 languages << Language.new("lua", "Lua", :interpreted, "", "lua fib.lua")

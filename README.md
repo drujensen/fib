@@ -76,6 +76,7 @@ Last benchmark was ran on December 05, 2024
 | Fortran |    6.334 | gfortran -O3 -o fib fib.f03 |    0.130 | ./fib |    6.204 | f03 |
 | Ada |    6.811 | gnat make -O3 -gnatp -o fib fib.adb |    0.220 | ./fib |    6.591 | adb |
 | Rust |    8.108 | rustc -C opt-level=3 fib.rs |    0.358 | ./fib |    7.750 | rs |
+| Odin |    8.838 | odin build fib.odin -file -0:speed |    0.087 | ./fib |    8.751 | odin |
 | Mojo |    8.947 | mojo build fib.mojo |    0.241 | ./fib |    8.706 | mojo |
 | Assembly |    9.367 | gcc -no-pie -O3 -o fib fib.s |    0.025 | ./fib |    9.342 | s |
 | Swift |    9.781 | swiftc -Ounchecked fib.swift |    0.399 | ./fib |    9.381 | swift |
@@ -89,6 +90,7 @@ Last benchmark was ran on December 05, 2024
 | Crystal |   20.525 | crystal build --release fib.cr |    3.106 | ./fib |   17.420 | cr |
 | Lisp |   25.726 | sbcl --load fib.lisp |    0.979 | ./fib |   24.747 | lisp |
 | Dart Compiled |   31.707 | dart compile exe -o fib ./fib.dart |    1.558 | ./fib |   30.149 | dartc |
+| Cobol | 4380.728 | cobc -x -O3 -o fib ./fib.cbl |    0.133 | ./fib | 4380.596 | cbl |
 
 ## VM compiled bytecode, statically typed
 
@@ -166,6 +168,7 @@ All compilers are installed using apt or asdf on Ubuntu 24.04 docker image:
 | nim | 2.2.0 |
 | nodejs | 23.3.0 |
 | ocaml | 5.2.1 |
+| odin | dev-2024-11 |
 | pascal | 3.2.2 |
 | perl | 5.40.0 |
 | php | 8.4.1 |
