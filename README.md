@@ -135,6 +135,8 @@ Last benchmark was ran on December 05, 2024
 
 ## Versions
 All compilers are installed using apt or asdf on Ubuntu 24.04 docker image:
+
+|Language | Version |
 |---|---|
 | ada | 13.2.0 |
 | assembly | 13.2.0 |
