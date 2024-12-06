@@ -31,11 +31,11 @@ puts fib(47_u64)
 Too keep a level playing field, only common "release" flags are used in the compilation step.  This allows for compiler optimizations like inlining and constant propogation but removes anything considered dangerous i.e. bypassing out of bounds checks.
 
 All tests are run on:
- - AWS EC2 - m5.large 2 vCPU
+ - Hetzner CCX23 - 4 vCPU
  - Processor: Intel Xeon 3.1Ghz
- - Memory: 8 GiB
- - OS: Ubuntu 20.04
- - Docker Base Image: ubuntu:20.04
+ - Memory: 16 GiB
+ - OS: Ubuntu 24.04
+ - Docker Base Image: ubuntu:24.04
 
 
 ## How to run them
