@@ -60,8 +60,10 @@ languages << Language.new("pony", "Pony", :compiled, "ponyc -s -b fib -p ./fib.p
 languages << Language.new("rs", "Rust", :compiled, "rustc -C opt-level=3 fib.rs", "./fib")
 languages << Language.new("swift", "Swift", :compiled, "swiftc -Ounchecked fib.swift", "./fib")
 languages << Language.new("v", "V", :compiled, "v -prod -o fib fib.v", "./fib")
-languages << Language.new("zig", "Zig", :compiled, "zig build-exe -OReleaseFast ./fib.zig", "./fib")
-#languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3 -o fib ./fib.cbl", "./fib")
+languages << Language.new("zig", "Zig", :compiled, "zig build-exe -OReleaseFast fib.zig", "./fib")
+languages << Language.new("cbl", "Cobol", :compiled, "cobc -x -O3 -o fib ./fib.cbl", "./fib")
+#languages << Language.new("qb64", "QB64", :compiled, "qb64 -x $(pwd)/fib.bas -o $(pwd)/fib", "./fib")
+#languages << Language.new("emo", "Emojicode", :compiled, "emojicodec fib.emojic", "./fib")
 
 languages << Language.new("cs", "C#", :vm, "dotnet build -c Release -o ./bin", "dotnet ./bin/fib.dll")
 languages << Language.new("java", "Java", :vm, "javac Fib.java", "java Fib")
