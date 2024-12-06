@@ -157,9 +157,6 @@ RUN asdf install nim
 RUN asdf plugin-add dart
 RUN asdf install dart
 
-RUN asdf plugin-add v
-RUN asdf install v
-
 RUN asdf plugin-add haskell
 RUN asdf install haskell
 
@@ -200,6 +197,9 @@ RUN asdf install zig
 # RUN asdf install mojo
 
 # broken
+# RUN asdf plugin-add v
+# RUN asdf install v
+
 # RUN asdf plugin-add pony https://github.com/enilsen16/asdf-pony.git
 # RUN asdf install pony
 RUN SHELL=/bin/sh sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ponylang/ponyup/latest-release/ponyup-init.sh)"

@@ -6,5 +6,6 @@ fn fib(x: u64) u64 {
 }
 
 pub fn main() void {
-    std.debug.warn("{}", fib(47));
+    const stdout = std.io.getStdOut().writer();
+    stdout.print("{}\n", .{fib(47)}) catch {};
 }

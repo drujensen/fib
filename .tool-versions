@@ -35,8 +35,7 @@ perl            5.40.0
 php             8.4.1
 pony            0.58.7
 powershell-core 7.4.6
-python          3.13.0
-pypy            7.3.17
+python          pypy3.10-7.3.17
 r               4.4.2
 rakudo          2024.10
 ruby            3.3.6
