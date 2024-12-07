@@ -121,7 +121,6 @@ Last benchmark was ran on December 05, 2024
 
 | Language | Time | Run | Ext |
 |----------|---------|-----|-----|
-| Janet |    0.001 | janet ./fib.janet | janet |
 | Escript |   28.380 | escript fib.es | es |
 | Scheme |  102.887 | guile fib.scm | scm |
 | Php |  157.312 | php fib.php | php |
