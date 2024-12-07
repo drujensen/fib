@@ -78,6 +78,7 @@ Last benchmark was ran on December 05, 2024
 | Rust |    8.108 | rustc -C opt-level=3 fib.rs |    0.358 | ./fib |    7.750 | rs |
 | Odin |    8.838 | odin build fib.odin -file -0:speed |    0.087 | ./fib |    8.751 | odin |
 | Mojo |    8.947 | mojo build fib.mojo |    0.241 | ./fib |    8.706 | mojo |
+| V |    9.168 | v -prod -o fib fib.v |    4.450 | ./fib |    4.718 | v |
 | Assembly |    9.367 | gcc -no-pie -O3 -o fib fib.s |    0.025 | ./fib |    9.342 | s |
 | Swift |    9.781 | swiftc -Ounchecked fib.swift |    0.399 | ./fib |    9.381 | swift |
 | Pascal |   10.460 | fpc -O3 -Si ./fib.pas |    0.041 | ./fib |   10.419 | pas |
@@ -127,6 +128,7 @@ Last benchmark was ran on December 05, 2024
 | Lua |  203.702 | lua fib.lua | lua |
 | Ruby |  393.625 | ruby fib.rb | rb |
 | Python | 423.427 | python fib.py | py |
+| Janet |  479.663 | janet ./fib.janet | janet |
 | Perl | 1490.416 | perl fib.pl | pl |
 | Raku | 1672.015 | rakudo fib.raku | raku |
 | Tcl | 2230.883 | tclsh fib.tcl | tcl |
