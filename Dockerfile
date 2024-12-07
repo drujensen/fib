@@ -202,6 +202,8 @@ RUN asdf install zig
 # broken
 # RUN asdf plugin-add v
 # RUN asdf install v
+RUN git clone --depth=1 https://github.com/vlang/v /usr/share/v 
+RUN make -C /usr/share/v
 
 # RUN asdf plugin-add pony https://github.com/enilsen16/asdf-pony.git
 # RUN asdf install pony
@@ -224,7 +226,7 @@ RUN apt-get install -qq -y luajit
 # RUN asdf install tcl
 RUN apt-get install -qq -y tcl
 
-ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin:/usr/share/janet:/usr/share/qb64:/usr/share/dlang/ldc-1.28.1/bin:/root/.local/share/ponyup/bin:/usr/share/v"
+ENV PATH="${PATH}:/root/.asdf/shims:/root/.asdf/bin:/usr/share/janet/bin:/root/.local/share/ponyup/bin:/usr/share/v"
 
 COPY . /root/app
 CMD ["/bin/bash", "-c", "./run.sh"]
