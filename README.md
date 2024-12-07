@@ -123,11 +123,11 @@ Last benchmark was ran on December 05, 2024
 |----------|---------|-----|-----|
 | Janet |    0.001 | janet ./fib.janet | janet |
 | Escript |   28.380 | escript fib.es | es |
-| Python |   53.770 | python fib.py | py |
 | Scheme |  102.887 | guile fib.scm | scm |
 | Php |  157.312 | php fib.php | php |
 | Lua |  203.702 | lua fib.lua | lua |
 | Ruby |  393.625 | ruby fib.rb | rb |
+| Python | 423.427 | python fib.py | py |
 | Perl | 1490.416 | perl fib.pl | pl |
 | Raku | 1672.015 | rakudo fib.raku | raku |
 | Tcl | 2230.883 | tclsh fib.tcl | tcl |
@@ -176,7 +176,8 @@ All compilers are installed using apt or asdf on Ubuntu 24.04 docker image:
 | php | 8.4.1 |
 | pony | 0.58.7 |
 | powershell-core | 7.4.6 |
-| python | pypy3.10-7.3.17 |
+| python | 3.12.0 |
+| pypy | 7.3.17 |
 | r | 4.4.2 |
 | rakudo | 2024.10 |
 | ruby | 3.3.6 |
