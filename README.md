@@ -81,13 +81,13 @@ Last benchmark was ran on December 05, 2024
 | Mojo |    8.947 | mojo build fib.mojo |    0.241 | ./fib |    8.706 | mojo |
 | V |    9.168 | v -prod -o fib fib.v |    4.450 | ./fib |    4.718 | v |
 | Assembly |    9.367 | gcc -no-pie -O3 -o fib fib.s |    0.025 | ./fib |    9.342 | s |
-| Swift |    9.781 | swiftc -Ounchecked fib.swift |    0.399 | ./fib |    9.381 | swift |
 | Pascal |   10.460 | fpc -O3 -Si ./fib.pas |    0.041 | ./fib |   10.419 | pas |
 | Pony |   11.106 | ponyc -s -b fib -p ./fib.pony |    0.879 | ./fib |   10.226 | pony |
 | OCaml |   16.018 | ocamlopt -O3 -o fib fib.ml |    0.187 | ./fib |   15.831 | ml |
 | Zig |   16.181 | zig build-exe -OReleaseFast ./fib.zig |    6.882 | ./fib |    9.299 | zig |
 | Haskell |   18.095 | rm ./fib.o && ghc -O3 -o fib fib.hs |    0.001 | ./fib |   18.094 | hs |
 | D |   18.193 | dmd -release -of=fib fib.d |    0.342 | ./fib |   17.851 | d |
+| Swift |   18.801 | swiftc -O fib.swift |    1.411 | ./fib |   17.390 | swift |
 | Go |   18.948 | go build fib.go |    1.107 | ./fib |   17.842 | go |
 | Crystal |   20.525 | crystal build --release fib.cr |    3.106 | ./fib |   17.420 | cr |
 | Lisp |   25.726 | sbcl --load fib.lisp |    0.979 | ./fib |   24.747 | lisp |
