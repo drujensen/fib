@@ -72,7 +72,6 @@ Last benchmark was ran on December 05, 2024
 
 | Language | Total | Compile | Time | Run | Time | Ext |
 |----------|-------|---------|---------|-----|---------|-----|
-| Nim |    0.832 | nim c -d:release fib.nim |    0.669 | ./fib |    0.163 | nim |
 | C |    4.835 | gcc -O3 -o fib fib.c |    0.112 | ./fib |    4.723 | c |
 | C++ |    4.888 | g++ -O3 -o fib fib.cpp |    0.139 | ./fib |    4.750 | cpp |
 | Fortran |    6.334 | gfortran -O3 -o fib fib.f03 |    0.130 | ./fib |    6.204 | f03 |
