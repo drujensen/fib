@@ -28,7 +28,7 @@ end
 puts fib(47_u64)
 ```
 
-Too keep a level playing field, only common "release" flags are used in the compilation step.  This allows for compiler optimizations like inlining and constant propogation but removes anything considered dangerous i.e. bypassing out of bounds checks.
+To keep a level playing field, only common "release" flags are used in the compilation step.  This allows for compiler optimizations like inlining and constant propogation but removes anything considered dangerous i.e. bypassing out of bounds checks.
 
 All tests are run on:
  - Hetzner CCX23 - 4 vCPU
