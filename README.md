@@ -70,44 +70,44 @@ Last benchmark was ran on December 05, 2024
 
 ## Natively compiled, statically typed
 
-| Language | Total | Compile | Time | Run | Time | Ext |
-|----------|-------|---------|---------|-----|---------|-----|
-| C |    4.835 | gcc -O3 -o fib fib.c |    0.112 | ./fib |    4.723 | c |
-| C++ |    4.888 | g++ -O3 -o fib fib.cpp |    0.139 | ./fib |    4.750 | cpp |
-| Fortran |    6.334 | gfortran -O3 -o fib fib.f03 |    0.130 | ./fib |    6.204 | f03 |
-| Ada |    6.811 | gnat make -O3 -gnatp -o fib fib.adb |    0.220 | ./fib |    6.591 | adb |
-| Rust |    8.108 | rustc -C opt-level=3 fib.rs |    0.358 | ./fib |    7.750 | rs |
-| Odin |    8.838 | odin build fib.odin -file -0:speed |    0.087 | ./fib |    8.751 | odin |
-| Mojo |    8.947 | mojo build fib.mojo |    0.241 | ./fib |    8.706 | mojo |
-| V |    9.168 | v -prod -o fib fib.v |    4.450 | ./fib |    4.718 | v |
-| Assembly |    9.367 | gcc -no-pie -O3 -o fib fib.s |    0.025 | ./fib |    9.342 | s |
-| Pascal |   10.460 | fpc -O3 -Si ./fib.pas |    0.041 | ./fib |   10.419 | pas |
-| Pony |   11.106 | ponyc -s -b fib -p ./fib.pony |    0.879 | ./fib |   10.226 | pony |
-| OCaml |   16.018 | ocamlopt -O3 -o fib fib.ml |    0.187 | ./fib |   15.831 | ml |
-| Zig |   16.181 | zig build-exe -OReleaseFast ./fib.zig |    6.882 | ./fib |    9.299 | zig |
-| Haskell |   18.095 | rm ./fib.o && ghc -O3 -o fib fib.hs |    0.001 | ./fib |   18.094 | hs |
-| D |   18.193 | dmd -release -of=fib fib.d |    0.342 | ./fib |   17.851 | d |
-| Swift |   18.801 | swiftc -O fib.swift |    1.411 | ./fib |   17.390 | swift |
-| Go |   18.948 | go build fib.go |    1.107 | ./fib |   17.842 | go |
-| Crystal |   20.525 | crystal build --release fib.cr |    3.106 | ./fib |   17.420 | cr |
-| Lisp |   25.726 | sbcl --load fib.lisp |    0.979 | ./fib |   24.747 | lisp |
-| Dart Compiled |   31.707 | dart compile exe -o fib ./fib.dart |    1.558 | ./fib |   30.149 | dartc |
-| Cobol | 4380.728 | cobc -x -O3 -o fib ./fib.cbl |    0.133 | ./fib | 4380.596 | cbl |
+| Language | RunTime | Run | CompileTime | Compile | Ext |
+|----------|---------|-----|-------------|---------|-----|
+| C | 4.723 | ./fib | 0.112 | gcc -O3 -o fib fib.c | c |
+| C++ | 4.750 | ./fib | 0.139 | g++ -O3 -o fib fib.cpp | cpp |
+| V | 4.718 | ./fib | 4.450 | v -prod -o fib fib.v | v |
+| Fortran | 6.204 | ./fib | 0.130 | gfortran -O3 -o fib fib.f03 | f03 |
+| Ada | 6.591 | ./fib | 0.220 | gnat make -O3 -gnatp -o fib fib.adb | adb |
+| Rust | 7.750 | ./fib | 0.358 | rustc -C opt-level=3 fib.rs | rs |
+| Mojo | 8.706 | ./fib | 0.241 | mojo build fib.mojo | mojo |
+| Odin | 8.751 | ./fib | 0.087 | odin build fib.odin -file -0:speed | odin |
+| Zig | 9.299 | ./fib | 6.882 | zig build-exe -OReleaseFast ./fib.zig | zig |
+| Assembly | 9.342 | ./fib | 0.025 | gcc -no-pie -O3 -o fib fib.s | s |
+| Pony | 10.226 | ./fib | 0.879 | ponyc -s -b fib -p ./fib.pony | pony |
+| Pascal | 10.419 | ./fib | 0.041 | fpc -O3 -Si ./fib.pas | pas |
+| OCaml | 15.831 | ./fib | 0.187 | ocamlopt -O3 -o fib fib.ml | ml |
+| Swift | 17.390 | ./fib | 1.411 | swiftc -O fib.swift | swift |
+| Crystal | 17.420 | ./fib | 3.106 | crystal build --release fib.cr | cr |
+| Go | 17.842 | ./fib | 1.107 | go build fib.go | go |
+| D | 17.851 | ./fib | 0.342 | dmd -release -of=fib fib.d | d |
+| Haskell | 18.094 | ./fib | 0.001 | rm ./fib.o && ghc -O3 -o fib fib.hs | hs |
+| Lisp | 24.747 | ./fib | 0.979 | sbcl --load fib.lisp | lisp |
+| Dart Compiled | 30.149 | ./fib | 1.558 | dart compile exe -o fib ./fib.dart | dartc |
+| Cobol | 4380.596 | ./fib | 0.133 | cobc -x -O3 -o fib ./fib.cbl | cbl |
 
 ## VM compiled bytecode, statically typed
 
-| Language | Total | Compile | Time | Run | Time | Ext |
-|----------|-------|---------|---------|-----|---------|-----|
-| C# |   12.760 | dotnet build -c Release -o ./bin |    2.015 | dotnet ./bin/fib.dll |   10.744 | cs |
-| Java |   13.040 | javac Fib.java |    0.733 | java Fib |   12.307 | java |
-| Scala |   15.836 | scalac Fib.scala |    2.682 | scala Fib |   13.153 | scala |
-| Kotlin |   16.286 | kotlinc Fib.kt |    4.074 | java FibKt |   12.212 | kt |
-| Erlang |   28.378 | erlc +native +'{hipe,[o3]}' fib.erl |    0.402 | erl -noinput -noshell -s fib |   27.976 | erl |
-| Groovy |   70.123 | groovyc Fib.groovy |    1.519 | groovy Fib |   68.604 | groovy |
+| Language | RunTime | Run | CompileTime | Compile | Ext |
+|----------|---------|-----|-------------|---------|-----|
+| C# | 10.744 | dotnet ./bin/fib.dll | 2.015 | dotnet build -c Release -o ./bin | cs |
+| Java | 12.307 | java Fib | 0.733 | javac Fib.java | java |
+| Kotlin | 12.212 | java FibKt | 4.074 | kotlinc Fib.kt | kt |
+| Scala | 13.153 | scala Fib | 2.682 | scalac Fib.scala | scala |
+| Erlang | 27.976 | erl -noinput -noshell -s fib | 0.402 | erlc +native +'{hipe,[o3]}' fib.erl | erl |
+| Groovy | 68.604 | groovy Fib | 1.519 | groovyc Fib.groovy | groovy |
 
 ## VM compiled before execution, mixed/dynamically typed
 
-| Language | Time | Run | Ext |
+| Language | RunTime | Run | Ext |
 |----------|---------|-----|-----|
 | Clojure |   17.815 | clojure -M fib.cljc | cljc |
 | Julia |   18.000 | julia -O3 fib.jl | jl |
@@ -121,7 +121,7 @@ Last benchmark was ran on December 05, 2024
 
 ## Interpreted, dynamically typed
 
-| Language | Time | Run | Ext |
+| Language | RunTime | Run | Ext |
 |----------|---------|-----|-----|
 | Escript |   28.380 | escript fib.es | es |
 | Scheme |  102.887 | guile fib.scm | scm |

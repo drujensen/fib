@@ -138,16 +138,15 @@ puts ""
 unless list.select {|l| l.type == :compiled}.empty?
   puts "## Natively compiled, statically typed"
   puts ""
-  puts "| Language | Total | Compile | Time | Run | Time | Ext |"
-  puts "|----------|-------|---------|---------|-----|---------|-----|"
-  list.select {|l| l.type == :compiled}.sort_by {|l| l.total_time}.each do |lang|
+  puts "| Language | RunTime | Run | CompileTime | Compile | Ext |"
+  puts "|----------|---------|-----|-------------|---------|-----|"
+  list.select {|l| l.type == :compiled}.sort_by {|l| l.average_run_time}.each do |lang|
       results = []
       results << lang.name
-      results << ("%.3f" % lang.total_time).rjust(8, " ")
-      results << lang.compile_cmd
-      results << ("%.3f" % lang.average_compile_time).rjust(8, " ")
-      results << lang.run_cmd
       results << ("%.3f" % lang.average_run_time).rjust(8, " ")
+      results << lang.run_cmd
+      results << ("%.3f" % lang.average_compile_time).rjust(8, " ")
+      results << lang.compile_cmd
       results << lang.ext
       puts "| #{results.join(" | ")} |"
   end
@@ -157,16 +156,15 @@ end
 unless list.select {|l| l.type == :vm}.empty?
   puts "## VM compiled bytecode, statically typed"
   puts ""
-  puts "| Language | Total | Compile | Time | Run | Time | Ext |"
-  puts "|----------|-------|---------|---------|-----|---------|-----|"
-  list.select {|l| l.type == :vm}.sort_by {|l| l.total_time}.each do |lang|
+  puts "| Language | RunTime | Run | CompileTime | Compile | Ext |"
+  puts "|----------|---------|-----|-------------|---------|-----|"
+  list.select {|l| l.type == :vm}.sort_by {|l| l.average_run_time}.each do |lang|
       results = []
       results << lang.name
-      results << ("%.3f" % lang.total_time).rjust(8, " ")
-      results << lang.compile_cmd
-      results << ("%.3f" % lang.average_compile_time).rjust(8, " ")
-      results << lang.run_cmd
       results << ("%.3f" % lang.average_run_time).rjust(8, " ")
+      results << lang.run_cmd
+      results << ("%.3f" % lang.average_compile_time).rjust(8, " ")
+      results << lang.compile_cmd
       results << lang.ext
       puts "| #{results.join(" | ")} |"
   end
@@ -176,7 +174,7 @@ end
 unless list.select {|l| l.type == :mixed}.empty?
   puts "## VM compiled before execution, mixed/dynamically typed"
   puts ""
-  puts "| Language | Time | Run | Ext |"
+  puts "| Language | RunTime | Run | Ext |"
   puts "|----------|---------|-----|-----|"
   list.select {|l| l.type == :mixed}.sort_by {|l| l.total_time}.each do |lang|
       results = []
@@ -192,7 +190,7 @@ end
 unless list.select {|l| l.type == :interpreted}.empty?
   puts "## Interpreted, dynamically typed"
   puts ""
-  puts "| Language | Time | Run | Ext |"
+  puts "| Language | RunTime | Run | Ext |"
   puts "|----------|---------|-----|-----|"
   list.select {|l| l.type == :interpreted}.sort_by {|l| l.total_time}.each do |lang|
       results = []
