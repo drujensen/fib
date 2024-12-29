@@ -62,7 +62,7 @@ docker run drujensen/fib > results.txt 2>&1
 screen -r
 ```
 
-NOTE: Please see [issues](https://github.com/drujensen/fib/issues) with benchmarks like this.  Its original goal was to compare at a marco level how much faster Crystal is to Ruby.  Any language faster than Assembly is performing unrolling type optimizations.  Modern languages like Go, Swift and Crystal have bounds checking which have safety built-in, but also have a cost associated with runtime performance.
+NOTE: Please see [issues](https://github.com/drujensen/fib/issues) with benchmarks like this.  Its original goal was to compare at a macro level how much faster Crystal is to Ruby.  Any language faster than Assembly is performing unrolling type optimizations.  Modern languages like Go, Swift and Crystal have bounds checking which have safety built-in, but also have a cost associated with runtime performance.
 
 # Results
 
