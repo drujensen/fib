@@ -48,6 +48,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
             clang \
             fp-compiler \
             gfortran \
+            ldc \
             gnat \
             gnucobol \
             guile-3.0 \
