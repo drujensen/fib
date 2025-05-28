@@ -188,8 +188,8 @@ RUN asdf install odin
 RUN asdf plugin-add r https://github.com/asdf-community/asdf-r.git
 RUN asdf install r
 
-RUN asdf plugin-add dmd https://github.com/sylph01/asdf-dmd.git
-RUN asdf install dmd
+# RUN asdf plugin-add dmd https://github.com/sylph01/asdf-dmd.git
+# RUN asdf install dmd
 
 RUN asdf plugin add powershell-core https://github.com/daveneeley/asdf-powershell-core
 RUN asdf install powershell-core
